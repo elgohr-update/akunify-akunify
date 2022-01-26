@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+
+  dolan:
+    container_name: dolan
+    image: ${docker_registry}/${docker_repository}:${docker_repository_tag}
+    ports:
+      - ${PORT}
+    restart: always

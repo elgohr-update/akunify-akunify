@@ -27,13 +27,13 @@ const Meta: React.FC<MetaProps> = ({
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"
     />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="application-name" content="Backpackr.id" />
+    <meta name="application-name" content="Akunify.com" />
 
     <meta content="#1b9cdc" name="theme-color" />
     <meta content="#1b9cdc" name="msapplication-navbutton-color" />
     <meta content="#1b9cdc" name="apple-mobile-web-app-status-bar-style" />
 
-    <meta key="ogSitename" property="og:site_name" content="Backpackr" />
+    <meta key="ogSitename" property="og:site_name" content="Akunify" />
     <meta key="mobileCapable" name="mobile-web-app-capable" content="yes" />
     <meta
       key="appleCapable"
@@ -50,12 +50,12 @@ const Meta: React.FC<MetaProps> = ({
     <link
       key="altAndroid"
       rel="alternate"
-      href={`android-app://com.backpackr.android/${content?.alternate}`}
+      href={`android-app://com.akunify.android/${content?.alternate}`}
     />
     <link
       key="altIos"
       rel="alternate"
-      href={`ios-app://1458307938/Backpackr/${content?.alternate}`}
+      href={`ios-app://1458307938/Akunify/${content?.alternate}`}
     />
 
     <link
@@ -98,7 +98,7 @@ const Meta: React.FC<MetaProps> = ({
     <meta
       key="appleWebAppTitle"
       name="apple-mobile-web-app-title"
-      content="Backpackr.id"
+      content="Akunify.com"
     />
 
     <meta name="msapplication-TileColor" content="#da532c" />
@@ -154,7 +154,7 @@ const Meta: React.FC<MetaProps> = ({
           property="al:ios:app_store_id"
           content="1458307938"
         />
-        <meta key="iosAppName" property="al:ios:app_name" content="Backpackr" />
+        <meta key="iosAppName" property="al:ios:app_name" content="Akunify" />
         <meta
           key="androidUrl"
           property="al:android:url"
@@ -166,17 +166,17 @@ const Meta: React.FC<MetaProps> = ({
         <meta
           key="androidAppName"
           property="al:android:app_name"
-          content="Backpackr"
+          content="Akunify"
         />
         <meta
           key="androidPackage"
           property="al:android:package"
-          content="com.android.backpackr"
+          content="com.android.akunify"
         />
         <meta
           key="androidClass"
           property="al:android:class"
-          content="com.backpackr.android.ui.deeplink.DeepLinkActivity"
+          content="com.akunify.android.ui.deeplink.DeepLinkActivity"
         />
         <meta
           key="urlWeb"
@@ -193,12 +193,12 @@ const Meta: React.FC<MetaProps> = ({
     <meta
       key="googlePlayApp"
       name="google-play-app"
-      content="app-id=com.backpackr.android"
+      content="app-id=com.akunify.android"
     />
     <meta
       key="appleItunesApp"
       name="apple-itunes-app"
-      content="app-id=1458307938, app-argument=https://backpackr.id/"
+      content="app-id=1458307938, app-argument=https://akunify.id/"
     />
     {og?.updatedTime && (
       <meta
@@ -239,15 +239,15 @@ const Meta: React.FC<MetaProps> = ({
     <meta
       key="twIphoneName"
       name="twitter:app:name:iphone"
-      content="Backpackr"
+      content="Akunify"
     />
     <meta key="twIphoneId" name="twitter:app:id:iphone" content="1458307938" />
-    <meta key="twIpadName" name="twitter:app:name:ipad" content="Backpackr" />
+    <meta key="twIpadName" name="twitter:app:name:ipad" content="Akunify" />
     <meta key="twIpadId" name="twitter:app:id:ipad" content="1458307938" />
     <meta
       key="twGooglePlay"
       name="twitter:app:name:googleplay"
-      content="Backpackr"
+      content="Akunify"
     />
     <meta
       key="twGooglePlayId"
@@ -298,7 +298,7 @@ const Meta: React.FC<MetaProps> = ({
     <title key="pageTitle">{pageTitle}</title>
 
     {/* only in detail campaign */}
-    {author != 'Backpackr' && (
+    {author != 'Akunify' && (
       <>
         <meta key="rtVal" itemProp="ratingValue" content="4.8" />
         <meta key="bsRt" itemProp="bestRating" content="5" />
@@ -316,7 +316,7 @@ const Meta: React.FC<MetaProps> = ({
       structuredData?.map((item, i) => (
         <script
           type="application/ld+json"
-          data-rh={author === 'Backpackr' ? 'true' : 'false'}
+          data-rh={author === 'Akunify' ? 'true' : 'false'}
           dangerouslySetInnerHTML={{ __html: item }}
           key={`structure-${i}`}
         ></script>

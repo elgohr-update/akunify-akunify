@@ -6,13 +6,13 @@ import Hex from 'crypto-js/enc-hex'
 const BACKPACKR_SECRET_KEY = process.env.BACKPACKR_SECRET_KEY || ''
 
 interface IGeniHeadersReturn {
-  'X-Backpackr-Request-ID': string
-  'X-Backpackr-Api-Version': string
-  'X-Backpackr-Client-Version': string
-  'X-Backpackr-Platform-Name': string
-  'X-Backpackr-Client-Name': string
-  'X-Backpackr-Signature': string
-  'X-Backpackr-Time': string
+  'X-Akunify-Request-ID': string
+  'X-Akunify-Api-Version': string
+  'X-Akunify-Client-Version': string
+  'X-Akunify-Platform-Name': string
+  'X-Akunify-Client-Name': string
+  'X-Akunify-Signature': string
+  'X-Akunify-Time': string
 }
 
 export const getBackpackrHeader = ({
@@ -27,13 +27,13 @@ export const getBackpackrHeader = ({
   )
 
   const headers = {
-    'X-Backpackr-Request-ID': uuid,
-    'X-Backpackr-Api-Version': '1.0.0',
-    'X-Backpackr-Client-Version': '1.0.0',
-    'X-Backpackr-Platform-Name': platformName,
-    'X-Backpackr-Client-Name': clientName,
-    'X-Backpackr-Signature': signature,
-    'X-Backpackr-Time': `${dateUnix}`,
+    'X-Akunify-Request-ID': uuid,
+    'X-Akunify-Api-Version': '1.0.0',
+    'X-Akunify-Client-Version': '1.0.0',
+    'X-Akunify-Platform-Name': platformName,
+    'X-Akunify-Client-Name': clientName,
+    'X-Akunify-Signature': signature,
+    'X-Akunify-Time': `${dateUnix}`,
   }
 
   return headers

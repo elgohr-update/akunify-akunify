@@ -1,6 +1,6 @@
 const defaultMeta = {
-  pageTitle: 'Backpackr.id - Indonesia Traveling Platform',
-  pageDescription: 'Situs booking online tour and travel nomor 1 di Indonesia',
+  pageTitle: 'Akunify.com - Patungan akun premium ',
+  pageDescription: 'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
   appId:
     process.env.NODE_ENV === 'production'
       ? '1242554542569070'
@@ -9,16 +9,16 @@ const defaultMeta = {
     process.env.NODE_ENV === 'production'
       ? 'index, follow, max-image-preview:large'
       : 'noindex, nofollow',
-  author: 'Backpackr',
+  author: 'Akunify',
   og: {
-    url: 'https://backpackr.id/',
+    url: 'https://akunify.id/',
     type: 'website',
     image: 'https://assets.kitabisa.cc/images/icons/meta/icons-512.png',
-    title: 'Backpackr.id - Indonesia Traveling Platform',
-    description: 'Situs booking online tour and travel nomor 1 di Indonesia',
+    title: 'Akunify.com - Patungan akun premium ',
+    description: 'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
   },
   fb: {
-    campaignerName: 'Backpackr',
+    campaignerName: 'Akunify',
     availability: 'out of stock',
     condition: 'new',
     priceAmount: '0',
@@ -27,14 +27,14 @@ const defaultMeta = {
   },
   twitter: {
     card: 'product',
-    site: '@backpackrid',
-    title: 'Backpackr.id',
-    description: 'Situs booking online tour and travel nomor 1 di Indonesia',
+    site: '@akunify',
+    title: 'Akunify.com',
+    description: 'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
     image: 'https://assets.kitabisa.cc/images/icons/meta/icons-512.png',
     label1: 'price',
-    data1: 'IDR10000',
+    data1: 'IDR25000',
     label2: 'category',
-    data2: 'Backpackr.id',
+    data2: 'Akunify.com',
   },
   bussiness: {
     street_address:
@@ -45,11 +45,11 @@ const defaultMeta = {
     country_name: 'Indonesia',
   },
   content: {
-    title: 'Backpackr.id - Indonesia Traveling Platform',
+    title: 'Akunify.com - Patungan akun premium ',
     keywords: 'Tour, Travel, Trip, Open Trip',
-    author: 'Backpackr',
-    canonical: 'https://backpackr.id',
-    alternate: 'https://www.backpackr.id/',
+    author: 'Akunify',
+    canonical: 'https://akunify.id',
+    alternate: 'https://www.akunify.id/',
   },
 }
 

@@ -1,5 +1,1 @@
-const HomeComponent = (): JSX.Element => {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>
-}
-
-export default HomeComponent
+export { default as WhyMe } from './WhyMe'

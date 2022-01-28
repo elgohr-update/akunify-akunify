@@ -4,6 +4,7 @@ import 'styles/globals.css'
 import Layout from 'components/Commons/Layout'
 
 import 'styles/main.css'
+import 'styles/lineicons.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

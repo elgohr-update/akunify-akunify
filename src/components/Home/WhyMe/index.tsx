@@ -13,17 +13,17 @@ const Banner: React.FC = () => {
           <div className="w-full lg:w-1/2">
             <div className="about_content mx-4 pt-11 lg:pt-15 lg:pb-15">
               <div className="section_title pb-9">
-                <h5 className="sub_title">Why Choose Us</h5>
-                <h4 className="main_title">Your Goal is Our Achievement</h4>
+                <h5 className="sub_title">Kenapa harus Akunify?</h5>
+                <h4 className="main_title">Dijamin amanah dan gak ribet!.</h4>
               </div>
-              <p>Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et rebum. Stet clita kasd gubergren, no sea takimata sanctus. </p>
+              <p>Akunify punya banyak keunggulan lho, kamu tidak perlu khawatir lagi mau berlangganan karena Akunify memberikan semua fasilitas yang kamu butuhkan. </p>
               <ul className="about_list pt-3">
                 <li className="flex mt-5">
                   <div className="about_check">
                     <i className="lni lni-checkmark-circle"></i>
                   </div>
                   <div className="about_list_content pl-5 pr-2">
-                    <p>Vero eos et accusam et justo duo dolores et rebum. Stet clita kasd gubergrenv</p>
+                    <p>Akun yang diberikan adalah akun resmi sehingga kamu tidak perlu ragu untuk berlangganan.</p>
                   </div>
                 </li>
                 <li className="flex mt-5">
@@ -31,7 +31,7 @@ const Banner: React.FC = () => {
                     <i className="lni lni-checkmark-circle"></i>
                   </div>
                   <div className="about_list_content pl-5 pr-2">
-                    <p>At vero eos et accusam et justo duo dolores et rebum. Stet clita kasd gubergrenv</p>
+                    <p>Ada banyak metode pembayaran yang bisa kamu pakai di Akunify.</p>
                   </div>
                 </li>
                 <li className="flex mt-5">
@@ -39,7 +39,23 @@ const Banner: React.FC = () => {
                     <i className="lni lni-checkmark-circle"></i>
                   </div>
                   <div className="about_list_content pl-5 pr-2">
-                    <p>Dvero eos et accusam et justo duo dolores et rebum. Stet clita kasd gubergrenv</p>
+                    <p>Kamu gak perlu ribet mencari teman patungan, biar kami yang carikan. </p>
+                  </div>
+                </li>
+                <li className="flex mt-5">
+                  <div className="about_check">
+                    <i className="lni lni-checkmark-circle"></i>
+                  </div>
+                  <div className="about_list_content pl-5 pr-2">
+                    <p>Jangan takut kalo teman patungan kamu kurang/putus layanan, biar kami yang nombokin!</p>
+                  </div>
+                </li>
+                <li className="flex mt-5">
+                  <div className="about_check">
+                    <i className="lni lni-checkmark-circle"></i>
+                  </div>
+                  <div className="about_list_content pl-5 pr-2">
+                    <p>Lupa bayar? jangan panik. Kami berikan masa tenggang hingga 2x24 jam!</p>
                   </div>
                 </li>
               </ul>

@@ -331,6 +331,10 @@ a, button {
   @apply fill-current text-theme-color;
 }
 .pricing_btn {
+  @apply py-3 px-6 bg-theme-color text-white mt-8 rounded-md;
+}
+.pricing_btn .disabled {
+  @apply bg-theme-color text-white;
   @apply py-3 px-6 text-body-color mt-8 rounded-md;
   background-color: #fff1f1;
 }

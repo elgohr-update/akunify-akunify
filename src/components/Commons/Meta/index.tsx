@@ -26,12 +26,32 @@ const Meta: React.FC<MetaProps> = ({
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"
     />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="application-name" content="Akunify.com" />
 
-    <meta content="#1b9cdc" name="theme-color" />
-    <meta content="#1b9cdc" name="msapplication-navbutton-color" />
-    <meta content="#1b9cdc" name="apple-mobile-web-app-status-bar-style" />
+    <link key="icn57" rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
+    <link key="icn60" rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
+    <link key="icn72" rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
+    <link key="icn76" rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png" />
+    <link key="icn114" rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png" />
+    <link key="icn120" rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png" />
+    <link key="icn144" rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png" />
+    <link key="icn152" rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png" />
+    <link key="icn180" rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png" />
+
+    <link key="icn192" rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png" />
+    <link key="icn32" rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link key="icn96" rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+    <link key="icn16" rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link key="mnfst" rel="manifest" href="/manifest.json" />
+
+    <meta key="msTile" name="msapplication-TileColor" content="#ffffff" />
+    <meta key="msTileImg" name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta key="tmClr" name="theme-color" content="#ffffff" />
+
+    <meta key="frmtDt" name="format-detection" content="telephone=no" />
+    <meta key="apName" name="application-name" content="Akunify.com" />
+
+    <meta key="msNv" content="#1b9cdc" name="msapplication-navbutton-color" />
+    <meta key="apmw" content="#1b9cdc" name="apple-mobile-web-app-status-bar-style" />
 
     <meta key="ogSitename" property="og:site_name" content="Akunify" />
     <meta key="mobileCapable" name="mobile-web-app-capable" content="yes" />
@@ -47,77 +67,16 @@ const Meta: React.FC<MetaProps> = ({
     <link key="authorLink" rel="author" href={content?.author} />
     <link key="canonicalLink" rel="canonical" href={content?.canonical} />
 
-    <link
-      key="altAndroid"
-      rel="alternate"
-      href={`android-app://com.akunify.android/${content?.alternate}`}
-    />
-    <link
-      key="altIos"
-      rel="alternate"
-      href={`ios-app://1458307938/Akunify/${content?.alternate}`}
-    />
-
-    <link
-      key="favIcon"
-      rel="shortcut icon"
-      type="image/png"
-      href={`https://assets.kitabisa.cc/images/icons/meta/favicon.ico`}
-    />
-    <link
-      key="favIcon16"
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href={`https://assets.kitabisa.cc/images/icons/meta/favicon-16x16.png`}
-    />
-    <link
-      key="favIcon32"
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href={`https://assets.kitabisa.cc/images/icons/meta/favicon-32x32.png`}
-    />
-    <link
-      key="favIcon192"
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href={`https://assets.kitabisa.cc/images/icons/meta/android-chrome-192x192.png`}
-    />
-
     <meta key="robots" name="robots" content={robots} />
     <meta key="author" name="author" content={author} />
 
-    <link
-      key="appleTouchIcon"
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href={`https://assets.kitabisa.cc/images/icons/meta/apple-touch-icon.png`}
-    />
     <meta
       key="appleWebAppTitle"
       name="apple-mobile-web-app-title"
       content="Akunify.com"
     />
 
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta
-      name="msapplication-TileImage"
-      content={`https://assets.kitabisa.cc/images/icons/meta/mstile-144x144.png`}
-    />
-    <meta
-      name="msapplication-square310x310logo"
-      content={`https://assets.kitabisa.cc/images/icons/meta/icons-512.png`}
-    />
-
     <link key="manifestJson" rel="manifest" href="/manifest.json" />
-    <link
-      key="safariPinTab"
-      rel="mask-icon"
-      href={`https://assets.kitabisa.cc/images/icons/meta/safari-pinned-tab.svg`}
-      color="#5bbad5"
-    />
 
     <meta name="wot-verification" content="96e88468aef670e8d6f1" />
 

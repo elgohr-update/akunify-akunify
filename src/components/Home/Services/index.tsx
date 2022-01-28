@@ -2,7 +2,7 @@ import React from 'react'
 
 const Services: React.FC = () => {
   return (
-    <section id="work" className="work_area bg-gray pt-120 pb-120">
+    <section id="services" className="work_area bg-gray pt-120 pb-120">
       <div className="container">
         <div className="row justify-center">
           <div className="w-ull lg:w-1/2">

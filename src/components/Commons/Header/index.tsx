@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 const Header: React.FC = () => {
+  const [activeMenu, setActiveMenu] = useState<string>('home')
+
+  const handleSetActiveMenu = (menu: "home" | "services" | "contact"): void => {
+    setActiveMenu(menu)
+  }
+
   return (
     <section className="header_area">
       <div className="navbar-area bg-white">
@@ -21,25 +27,31 @@ const Header: React.FC = () => {
                 <div className="absolute left-0 z-20 hidden w-full px-5 py-3 duration-300 bg-white lg:w-auto collapse navbar-collapse lg:block top-full mt-full lg:static lg:bg-transparent shadow lg:shadow-none" id="navbarOne">
                   <ul id="nav" className="items-center content-start mr-auto lg:justify-end navbar-nav lg:flex">
                     <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll active" href="#home">Home</a>
+                      <a
+                        className={ `page-scroll ${activeMenu === 'home' ? 'active' : ''}` }
+                        href="#home"
+                        onClick={() => handleSetActiveMenu('home')}
+                      >
+                        Home
+                      </a>
                     </li>
                     <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll" href="#about">About</a>
+                      <a
+                        className={ `page-scroll ${activeMenu === 'services' ? 'active' : ''}` }
+                        href="#services"
+                        onClick={() => handleSetActiveMenu('services')}
+                      >
+                        Services
+                      </a>
                     </li>
                     <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll" href="#work">Projects</a>
-                    </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll" href="#pricing">Pricing</a>
-                    </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll" href="#blog">Blog</a>
-                    </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a className="page-scroll" href="#contact">Contact</a>
+                      <a
+                        className={ `page-scroll ${activeMenu === 'contact' ? 'active' : ''}` }
+                        href="#contact"
+                        onClick={() => handleSetActiveMenu('contact')}
+                      >
+                        Contact
+                      </a>
                     </li>
                   </ul>
                 </div>

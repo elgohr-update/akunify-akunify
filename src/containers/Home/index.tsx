@@ -1,16 +1,20 @@
 import { Backtop } from 'components/Commons'
 import {
+  Faq,
   WhyMe,
-  Services,
-  Contact
+  Banner,
+  // Contact,
+  Services
 } from 'components/Home'
 
 const HomeContainer = (): JSX.Element => {
   return (
     <>
+      <Banner />
       <WhyMe />
       <Services />
-      <Contact />
+      <Faq />
+      {/* <Contact /> */}
       <Backtop />
     </>
   )

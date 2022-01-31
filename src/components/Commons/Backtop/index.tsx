@@ -1,11 +1,15 @@
 import React from 'react'
+import {
+  ChevronUp
+} from 'components/Commons/Icons'
 
 const Backtop: React.FC = () => {
   return (
     <>
       <a href="#" className="scroll-top">
-        <i className="lni lni-chevron-up"></i>
+        <ChevronUp />
       </a>
+
       <section className="">
         <div className="container">
           <div className="row">

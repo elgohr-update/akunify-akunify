@@ -24,21 +24,21 @@ const Contact: React.FC = () => {
                     <div className="w-full md:w-1/2">
                       <div className="mx-3">
                         <div className="single_form mt-8">
-                          <input name="name" id="name" type="text" placeholder="Name" className="w-full rounded-md py-4 px-6 border border-solid border-body-color" />
+                          <input name="name" id="name" type="text" placeholder="Name" className="w-full rounded-md py-4 px-6 border border-solid border-gray-40" />
                         </div>
                       </div>
                     </div>
                     <div className="w-full md:w-1/2">
                       <div className="mx-3">
                         <div className="single_form mt-8">
-                          <input name="email" id="email" type="email" placeholder="Email" className="w-full rounded-md py-4 px-6 border border-solid border-body-color" />
+                          <input name="email" id="email" type="email" placeholder="Email" className="w-full rounded-md py-4 px-6 border border-solid border-gray-40" />
                         </div>
                       </div>
                     </div>
                     <div className="w-full">
                       <div className="mx-3">
                         <div className="single_form mt-8">
-                          <textarea name="message" id="message" placeholder="Message" rows={5} className="w-full rounded-md py-4 px-6 border border-solid border-body-color resize-none"></textarea>
+                          <textarea name="message" id="message" placeholder="Message" rows={5} className="w-full rounded-md py-4 px-6 border border-solid border-gray-40 resize-none"></textarea>
                         </div>
                       </div>
                     </div>

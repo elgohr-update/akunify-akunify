@@ -45,7 +45,7 @@ const Meta: React.FC<MetaProps> = ({
 
     <meta key="msTile" name="msapplication-TileColor" content="#ffffff" />
     <meta key="msTileImg" name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta key="tmClr" name="theme-color" content="#ffffff" />
+    <meta key="tmClr" name="primary" content="#ffffff" />
 
     <meta key="frmtDt" name="format-detection" content="telephone=no" />
     <meta key="apName" name="application-name" content="Akunify.com" />

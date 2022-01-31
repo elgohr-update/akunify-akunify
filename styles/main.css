@@ -7,7 +7,7 @@ html {
 
 body {
   font-family: 'Nunito', sans-serif;
-  @apply text-body-color;
+  @apply text-gray-40;
 }
 *:focus, button:focus {
   @apply outline-none shadow-none;
@@ -26,7 +26,7 @@ h3 a,
 h4 a,
 h5 a,
 h6 a {
-  @apply font-bold m-0 text-black;
+  @apply font-bold m-0 text-mirage-50;
 }
 
 h1 {
@@ -57,7 +57,7 @@ a, button {
   @apply flex flex-wrap;
 }
 .main-btn {
-  @apply inline-block font-medium text-base text-center rounded-full text-white cursor-pointer z-10 transition-all duration-300 bg-black overflow-hidden relative px-10 py-4 hover:bg-opacity-80 hover:text-white;
+  @apply inline-block font-medium text-base text-center rounded-full text-white cursor-pointer z-10 transition-all duration-300 bg-mirage-50 overflow-hidden relative px-10 py-4 hover:bg-turquoise-60 hover:text-white;
   border-top-right-radius: 0px;
 }
 
@@ -67,10 +67,10 @@ a, button {
 }
 
 .border-btn {
-  @apply border-2 border-theme-color text-theme-color bg-transparent border-solid;
+  @apply border-2 border-turquoise-50 text-turquoise-50 bg-transparent border-solid;
 }
 .border-btn:hover {
-  @apply text-theme-color relative;
+  @apply text-turquoise-50 relative;
 }
 
 .btn-hover::after {
@@ -85,14 +85,14 @@ a, button {
 }
 
 .scroll-top {
-  @apply w-11 h-11 bg-theme-color flex justify-center items-center text-white fixed bottom-8 right-8 rounded-md text-lg transition-all duration-300 z-20;
+  @apply w-11 h-11 bg-turquoise-60 flex justify-center items-center text-white fixed bottom-8 right-8 rounded-md text-lg transition-all duration-300 z-20;
 }
 .scroll-top:hover {
   @apply text-white;
 }
 
 .section_title .sub_title {
-  @apply text-base md:text-xl font-semibold text-theme-color;
+  @apply text-base md:text-xl font-semibold text-turquoise-50;
 }
 .section_title .main_title {
   @apply text-2xl md:text-4xl font-bold mt-4;
@@ -113,13 +113,13 @@ a, button {
   @apply block;
 }
 .toggler-icon {
-  @apply relative block duration-300 bg-black;
+  @apply relative block duration-300 bg-mirage-50;
   height: 2px;
   width: 30px;
   margin: 6px 0;
 }
 .sticky .toggler-icon {
-  @apply bg-black;
+  @apply bg-mirage-50;
 }
 .active>.toggler-icon:nth-child(1) {
   @apply transform rotate-45;
@@ -133,10 +133,10 @@ a, button {
   transform: rotate(135deg);
 }
 .navbar-nav .nav-item a {
-  @apply inline-block text-base font-normal text-body-color relative z-10 py-2 lg:py-1 hover:text-theme-color;
+  @apply inline-block text-base font-normal text-gray-40 relative z-10 py-2 lg:py-1 hover:text-turquoise-50;
 }
 .navbar-nav .nav-item a.active {
-  @apply text-theme-color;
+  @apply text-turquoise-50;
 }
 
 /* =========== hero =========== */
@@ -218,13 +218,13 @@ a, button {
 /* =========== service =========== */
 
 .single_services {
-  @apply border-2 border-dashed border-border-color rounded-xl py-13 px-6 sm:py-6 sm:px-4 md:py-13 md:px-6 transition-all duration-300  hover:border-theme-color hover:shadow;
+  @apply border-2 border-dashed rounded-xl py-13 px-6 sm:py-6 sm:px-4 md:py-13 md:px-6 transition-all duration-300  hover:border-turquoise-50 hover:shadow;
 }
 .services_icon {
   @apply relative inline-block;
 }
 .services_icon i {
-  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl text-black transition-all duration-300;
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl text-mirage-50 transition-all duration-300;
 }
 .services_shape {
   fill: #fff1f1;
@@ -234,7 +234,7 @@ a, button {
   @apply text-white;
 }
 .single_services:hover .services_shape {
-  @apply fill-current text-theme-color;
+  @apply fill-current text-turquoise-50;
 }
 
 /* ========== about ========== */
@@ -245,7 +245,7 @@ a, button {
   @apply max-w-full lg:w-auto lg:max-w-screen-md;
 }
 .about_check i {
-  @apply w-7 h-7 flex items-center justify-center text-white bg-theme-color rounded-full text-base mt-1;
+  @apply w-7 h-7 flex items-center justify-center text-white bg-turquoise-60 rounded-full text-base mt-1;
 }
 
 /* ======= work ======== */
@@ -259,10 +259,10 @@ a, button {
   @apply p-7 relative;
 }
 .work_content .arrow {
-  @apply w-11 h-11 flex items-center justify-center rounded-full text-lg text-black absolute -top-5 right-7 bg-white transition-all duration-300 shadow hover:bg-theme-color hover:text-white;
+  @apply w-11 h-11 flex items-center justify-center rounded-full text-lg text-mirage-50 absolute -top-5 right-7 bg-white transition-all duration-300 shadow hover:bg-turquoise-60 hover:text-white;
 }
 .work_title a {
-  @apply text-black hover:text-theme-color;
+  @apply text-mirage-50 hover:text-turquoise-50;
 }
 
 /* ======== team ======= */
@@ -270,7 +270,7 @@ a, button {
   @apply absolute -bottom-5 left-0 w-full flex items-center justify-center z-10;
 }
 .tns-nav button {
-  @apply w-3 h-3 rounded-full border-none bg-theme-color bg-opacity-30 mx-2 hover:bg-opacity-100;
+  @apply w-3 h-3 rounded-full border-none bg-turquoise-50 bg-opacity-30 mx-2 hover:bg-opacity-100;
 }
 .tns-nav button.tns-nav-active {
   @apply bg-opacity-100;
@@ -279,13 +279,13 @@ a, button {
   max-width: 405px;
 }
 /* .single_team {
-  @apply shadow rounded-xl my-8 overflow-hidden bg-white transition-all duration-300 group hover:bg-theme-color;
+  @apply shadow rounded-xl my-8 overflow-hidden bg-white transition-all duration-300 group hover:bg-turquoise-50;
 } */
 .team_image .social li {
   @apply mt-4 opacity-0 invisible transform translate-x-full;
 }
 .team_image .social li a {
-  @apply w-9 h-9 flex items-center justify-center rounded-full border-2 border-solid border-white text-white bg-transparent hover:bg-theme-color hover:border-theme-color;
+  @apply w-9 h-9 flex items-center justify-center rounded-full border-2 border-solid border-white text-white bg-transparent hover:bg-turquoise-50 hover:border-turquoise-50;
 }
 .single_team:hover .social li {
   @apply opacity-100 transition-all duration-300 visible translate-x-0;
@@ -305,7 +305,7 @@ a, button {
 
 /* =========== pricing ============= */
 .pricing_menu .active {
-  @apply bg-theme-color text-white;
+  @apply bg-turquoise-50 text-white;
 }
 .pricing_content .tab-pane {
   display: none;
@@ -315,40 +315,40 @@ a, button {
 }
 
 /* .single_pricing {
-  @apply border-2 border-dashed border-border-color rounded-xl p-6 md:p-10 transition-all duration-300 group hover:border-theme-color hover:shadow;
+  @apply border-2 border-dashed rounded-xl p-6 md:p-10 transition-all duration-300 group hover:border-turquoise-50 hover:shadow;
 } */
 .single_pricing.active {
-  @apply border-theme-color shadow;
+  @apply border-turquoise-50 shadow;
 }
 .pricing_title .title {
-  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold text-xl text-black transition-all duration-300;
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-semibold text-xl text-mirage-50 transition-all duration-300;
 }
 .single_pricing.active .pricing_title .title {
   @apply text-white;
 }
 .single_pricing.active .services_shape,
 .single_pricing:hover .services_shape {
-  @apply fill-current text-theme-color;
+  @apply fill-current text-turquoise-50;
 }
 .pricing_btn {
-  @apply py-3 px-6 bg-theme-color text-white mt-8 rounded-md;
+  @apply py-3 px-6 bg-turquoise-50 text-white mt-8 rounded-md;
 }
 .pricing_btn .disabled {
-  @apply bg-theme-color text-white;
-  @apply py-3 px-6 text-body-color mt-8 rounded-md;
+  @apply bg-turquoise-50 text-white;
+  @apply py-3 px-6 text-gray-40 mt-8 rounded-md;
   background-color: #fff1f1;
 }
 .single_pricing:hover .pricing_btn,
 .single_pricing.active .pricing_btn {
-  @apply bg-theme-color text-white;
+  @apply bg-turquoise-50 text-white;
 }
 
 /* ========== blog ========= */
 .blog_title a {
-  @apply block text-black font-semibold mt-5 hover:text-theme-color text-xl sm:text-2xl;
+  @apply block text-mirage-50 font-semibold mt-5 hover:text-turquoise-50 text-xl sm:text-2xl;
 }
 .more_btn {
-  @apply inline-block text-black font-semibold mt-6 hover:text-theme-color;
+  @apply inline-block text-mirage-50 font-semibold mt-6 hover:text-turquoise-50;
 }
 /* ========== contact ========= */
 
@@ -360,14 +360,14 @@ a, button {
   max-width: 770px;
 }
 .contact-btn {
-  @apply bg-theme-color text-white py-4 px-10 rounded-md hover:bg-opacity-80;
+  @apply bg-turquoise-50 text-white py-4 px-10 rounded-md hover:bg-opacity-80;
 }
 
 
 /* =========== footer ========== */
 .subscribe-btn {
-  @apply mt-3 md:mt-0 md:absolute top-1 right-1 py-4 bg-theme-color rounded-full hover:bg-opacity-80;
+  @apply mt-3 md:mt-0 md:absolute top-1 right-1 py-4 bg-turquoise-50 rounded-full hover:bg-opacity-80;
 }
 .footer_social li a {
-  @apply w-8 h-8 rounded-full bg-white bg-opacity-10 text-white flex items-center justify-center hover:text-theme-color hover:bg-opacity-100;
+  @apply w-8 h-8 rounded-full bg-white bg-opacity-10 text-white flex items-center justify-center hover:text-turquoise-50 hover:bg-opacity-100;
 }

@@ -16,7 +16,7 @@ interface IGeniHeadersReturn {
 }
 
 export const getBackpackrHeader = ({
-  clientName = 'dolan',
+  clientName = 'akunify',
   platformName = 'pwa',
   backpackrSecretKey = BACKPACKR_SECRET_KEY,
 } = {}): IGeniHeadersReturn => {

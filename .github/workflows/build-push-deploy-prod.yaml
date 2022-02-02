@@ -1,0 +1,42 @@
+name: Build-Push-Deploy Prod
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout code to latest version
+      uses: actions/checkout@master
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: Github actions cache node
+      uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Publish to docker registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      env:
+        MINIO_URL: ${{ secrets.MINIO_URL }}
+        MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+        MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+        MINIO_ENV_PATH: production
+      with:
+        registry: ${{ secrets.DOCKER_REGISTRY }}
+        name: backpackrid/akunify
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: ./Dockerfile
+        buildargs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH
+        tags: "latest"

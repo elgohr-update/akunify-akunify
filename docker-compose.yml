@@ -1,8 +1,8 @@
 version: "3.7"
 services:
 
-  dolan:
-    container_name: dolan
+  akunify:
+    container_name: akunify
     image: ${docker_registry}/${docker_repository}:${docker_repository_tag}
     ports:
       - ${PORT}

@@ -1,5 +1,5 @@
 {
-  "name": "dolan",
+  "name": "akunify",
   "private": true,
   "scripts": {
     "dev": "next dev",

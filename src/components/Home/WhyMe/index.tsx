@@ -4,8 +4,8 @@ const Banner: React.FC = () => {
   return (
     <section id="why" className="about_area pt-120 relative">
       <div className="about_image flex items-end justify-end">
-        <div className="image lg:pr-13">
-          <img src="assets/images/about.svg" alt="about" />
+        <div className="image lg:pr-13 lg:pb-110 sm:pb-110 w-full">
+          <img src="/images/illustration/music-2.svg" alt="about" />
         </div>
       </div>
       <div className="container">

@@ -58,18 +58,7 @@ export const getHeaders = ({
 }
 
 export const getBaseAPI = (): string => {
-  let baseApi = `${process.env.BASE_API}`
-  const serverHost = process.env.SERVER_HOST
-
-  if (
-    !process.browser &&
-    process.env.NODE_ENV !== 'test' &&
-    !serverHost?.includes('kitabisa.local')
-  ) {
-    baseApi = `${process.env.INTERNAL_API_HOST}`
-  }
-
-  return baseApi
+  return `${process.env.API_HOST}`
 }
 
 export const getCookies = {

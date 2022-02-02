@@ -20,6 +20,7 @@
       "containers/*": ["./src/containers/*"],
       "constants/*": ["./src/constants/*"],
       "interfaces/*": ["./src/interfaces/*"],
+      "hooks/*": ["./src/hooks/*"],
       "pages/*": ["./pages/*"],
       "public/*": ["./public/*"],
       "styles/*": ["./src/styles/*"],

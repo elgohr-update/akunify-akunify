@@ -34,7 +34,7 @@ const Faq: React.FC = () => {
       </div>
     </div>
     <div className="container-fluid">
-      <div className="work_wrapper relative">
+      <div className="work_wrapper relative p-8 md:p-0">
         <Accordion data={faqs} />
       </div>
     </div>

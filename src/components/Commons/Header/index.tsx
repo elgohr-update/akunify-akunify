@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 
 
 const Header: React.FC = () => {
@@ -15,9 +16,11 @@ const Header: React.FC = () => {
           <div className="row items-center">
             <div className="w-full">
               <nav className="flex items-center justify-between py-4 navbar navbar-expand-lg">
-                <a className="navbar-brand mr-5" href="index.html">
-                  <img src="/images/logo-akunify.png" alt="Logo akunify.com" className="w-200 sm:w-100"/>
-                </a>
+                <Link href={`/`}>
+                  <a className="navbar-brand mr-5">
+                    <img src="/images/logo-akunify.png" alt="Logo akunify.com" className="w-200 sm:w-100"/>
+                  </a>
+                </Link>
                 <button className="block navbar-toggler focus:outline-none lg:hidden" type="button" data-toggle="collapse" data-target="#navbarOne" aria-controls="navbarOne" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="toggler-icon"></span>
                   <span className="toggler-icon"></span>

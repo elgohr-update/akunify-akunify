@@ -3,18 +3,23 @@ import {
   Faq,
   WhyMe,
   Banner,
-  // Contact,
+  Payment,
   Services
 } from 'components/Home'
 
+import useService from 'hooks/service'
+
 const HomeContainer = (): JSX.Element => {
+  const { services }: any = useService()
   return (
     <>
       <Banner />
       <WhyMe />
-      <Services />
+      <Services
+        data={services.data}
+      />
+      <Payment />
       <Faq />
-      {/* <Contact /> */}
       <Backtop />
     </>
   )

@@ -63,8 +63,8 @@ const Banner: React.FC = () => {
       <div className="header_shape hidden lg:block"></div>
 
       <div className="header_image flex items-center">
-        <div className="image 2xl:pl-25">
-          <img src="assets/images/header-image.svg" alt="Header Image" />
+        <div className="image 2xl:pl-25 w-full md:absolute md:mt-260">
+          <img src="/images/illustration/cinema.svg" alt="Header Image"/>
         </div>
       </div>
     </div>

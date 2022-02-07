@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 
 const Footer: React.FC = () => {
@@ -42,7 +43,11 @@ const Footer: React.FC = () => {
                   <ul className="link pt-4">
                     <li><a href="#" className="text-white mt-4 hover:text-primary">Support</a></li>
                     <li><a href="#" className="text-white mt-4 hover:text-primary">Contact</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Terms</a></li>
+                    <li>
+                      <Link href={`/tnc`}>
+                        <a className="text-white mt-4 hover:text-primary">Terms & Condition</a>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>

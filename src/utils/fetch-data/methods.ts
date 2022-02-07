@@ -32,18 +32,12 @@ export const getHeaders = ({
   writeCookie,
 }: IGetHeader): Record<string, any> => {
   const isHaveAuth = !isEmpty(auth)
-  const isHaveVersion = version === '0' || version !== ''
-  const cookieHeader = {
-    'X-Ktbs-Write-Cookie': writeCookie,
-  }
+
   const defaultHeaders = {
     Accept: accept,
     'Content-Type': contentType,
     ...(isHaveAuth && {
       Authorization: `Bearer ${auth?.token}`,
-    }),
-    ...(isHaveVersion && {
-      Version: version,
     }),
     ...additionalHeaders,
   }
@@ -51,7 +45,7 @@ export const getHeaders = ({
   let headers = defaultHeaders
 
   if (writeCookie) {
-    headers = { ...defaultHeaders, ...cookieHeader }
+    headers = { ...defaultHeaders }
   }
 
   return headers

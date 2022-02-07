@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import HomeContainer from 'containers/Home'
+import TermConditionContainer from 'containers/TermCondition'
 
 const Home: NextPage = () => {
-  return <HomeContainer />
+  return <TermConditionContainer />
 }
 
 export default Home

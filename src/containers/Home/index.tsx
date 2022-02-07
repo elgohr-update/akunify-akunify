@@ -7,10 +7,15 @@ import {
   Services
 } from 'components/Home'
 
-import useService from 'hooks/service'
+import {
+  useService,
+  usePaymentOption
+} from 'hooks/index'
 
 const HomeContainer = (): JSX.Element => {
   const { services }: any = useService()
+  const { paymentOptions }: any = usePaymentOption()
+
   return (
     <>
       <Banner />
@@ -18,7 +23,9 @@ const HomeContainer = (): JSX.Element => {
       <Services
         data={services.data}
       />
-      <Payment />
+      <Payment
+        data={paymentOptions.data}
+      />
       <Faq />
       <Backtop />
     </>

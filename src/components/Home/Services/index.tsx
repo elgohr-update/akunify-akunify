@@ -9,8 +9,8 @@ import {
 } from 'utils/index'
 
 interface IServicesProps {
-  data: any[];
-  meta?: any;
+  data: any[]
+  meta?: any
 }
 
 const Services: React.FC<IServicesProps> = ({ data=[] }) => {
@@ -34,13 +34,13 @@ const Services: React.FC<IServicesProps> = ({ data=[] }) => {
                 <div className="single_item mx-auto">
                   <div className="single_work mx-3">
                     <div className="work_image">
-                      <img src={ getImageUrl(service.attributes.image, 'thumbnail') } alt="work" className="w-full" />
+                      <img src={ getImageUrl(service.attributes.image, 'thumbnail') } alt="work" className="w-full aspect-video" />
                     </div>
                     <div className="work_content">
                       <a href="#" className="arrow">
                         <NewsPaper />
                       </a>
-                      <h4 className="work_title text-xl md:text-2xl">
+                      <h4 className="work_title text-xl md:text-2xl truncate ...">
                         <a href="#">{ service.attributes.name }</a>
                       </h4>
                       <p className="mt-2">

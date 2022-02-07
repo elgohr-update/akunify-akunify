@@ -1,30 +1,30 @@
 import { useCallback, useEffect, useState } from 'react'
 import { fetchData } from 'utils/fetch-data'
 
-const useService = () => {
-  const [services, setServices] = useState<any[]>([])
+const usePaymentOption = () => {
+  const [paymentOptions, setPaymentOptions] = useState<any[]>([])
 
-  const getServiceList = useCallback(async () => {
+  const getPaymentOptionList = useCallback(async () => {
     try {
       const response = await fetchData({
         apiHost: process.env.API_HOST,
-        url: '/services?populate=image',
+        url: '/payment-options?populate=image',
         method: 'GET'
       })
 
-      setServices(response?.data)
+      setPaymentOptions(response?.data)
     } catch (error) {
       throw error
     }
   }, [])
 
   useEffect(() => {
-    getServiceList()
+    getPaymentOptionList()
   }, [])
 
   return {
-    services
+    paymentOptions
   }
 }
 
-export default useService
+export default usePaymentOption

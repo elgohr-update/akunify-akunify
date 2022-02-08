@@ -4,7 +4,7 @@ import { fetchData } from 'utils/fetch-data'
 const useTnc = () => {
   const [termCondition, setTermCondition] = useState<any[]>([])
 
-  const getTncList = useCallback(async () => {
+  const getTncList = useCallback(async (): Promise<any> => {
     try {
       const response = await fetchData({
         apiHost: process.env.API_HOST,

@@ -1,6 +1,19 @@
 import React from 'react'
 
-const RegisterContainer: React.FC = () => {
+import {
+  getImageUrl,
+  currencyFormater
+} from 'utils/index'
+
+interface RegisterContainerProps {
+  service: {
+    id: number
+    attributes: any
+  }
+}
+const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
+  const { service } = props
+
   return (
     <section className="max-w-3xl my-12 m-auto">
       <div className="p-16">
@@ -17,16 +30,16 @@ const RegisterContainer: React.FC = () => {
           <div className="rounded-md p-6 shadow-md mt-4 border">
             <div className="flex flex-wrap border-b mb-4 py-4">
               <div className="w-1/4 p-2 text-center">
-                <img src="/images/product/serv-spotify.png" alt="Layanan image" />
+                <img src={ getImageUrl(service.attributes?.image, 'thumbnail') } alt="Layanan image" />
               </div>
               <div className="w-3/4 p-2">
-                <h6>Spotify Premium - Paket premium user Host 12 bulan</h6>
-                <p>Rp.119.000/tahun</p>
+                <h6>{ service.attributes.name }</h6>
+                <p className="font-bold text-gray-70">{ currencyFormater(service.attributes.price) }</p>
               </div>
             </div>
             <div className="flex flex-wrap justify-between">
               <div>Total pembayaran</div>
-              <div>Rp.124.000</div>
+              <div>{ currencyFormater(service.attributes.price) }</div>
             </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
@@ -38,6 +51,7 @@ const RegisterContainer: React.FC = () => {
                 <select
                   name="masa_berlaku"
                   className="py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded-sm"
+                  disabled
                 >
                   <option value="1">1 Bulan</option>
                   <option value="1">6 Bulan</option>

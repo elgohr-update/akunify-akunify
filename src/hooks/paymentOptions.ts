@@ -4,7 +4,7 @@ import { fetchData } from 'utils/fetch-data'
 const usePaymentOption = () => {
   const [paymentOptions, setPaymentOptions] = useState<any[]>([])
 
-  const getPaymentOptionList = useCallback(async () => {
+  const getPaymentOptionList = useCallback(async (): Promise<any> => {
     try {
       const response = await fetchData({
         apiHost: process.env.API_HOST,

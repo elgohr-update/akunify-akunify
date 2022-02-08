@@ -49,12 +49,12 @@ const Banner: React.FC = () => {
                 Yuk! berlangganan layanan premium seperti Netflix, Youtube dan Spotify dengan cara patungan dengan pengguna lain tanpa perlu repot cari teman patungan.
               </p>
               <div className="hero_btn mt-10">
-                <button
-                  className="main-btn"
-                  onClick={() => router.push('/register')}
+                <a
+                  className="main-btn page-scroll"
+                  href="#servces"
                 >
                   Daftar sekarang
-                </button>
+                </a>
               </div>
             </div>
           </div>

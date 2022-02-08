@@ -253,7 +253,7 @@ a, button {
   max-width: 370px;
 }
 .single_work {
-  @apply rounded-xl overflow-hidden my-8 bg-white shadow h-[354px];
+  @apply rounded-xl overflow-hidden my-8 bg-white shadow;
 }
 .work_content {
   @apply p-7 relative;

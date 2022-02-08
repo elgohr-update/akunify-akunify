@@ -48,13 +48,13 @@ const Header: React.FC = () => {
                       </a>
                     </li>
                     <li className="nav-item ml-5 lg:ml-11">
-                      <a
-                        className={ `page-scroll ${activeMenu === 'contact' ? 'active' : ''}` }
-                        href="#contact"
-                        onClick={() => handleSetActiveMenu('contact')}
-                      >
-                        Contact
-                      </a>
+                      <Link href={`/tnc`}>
+                        <a
+                          className={ `page-scroll ${activeMenu === 'contact' ? 'active' : ''}` }
+                        >
+                          Term & Condition
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

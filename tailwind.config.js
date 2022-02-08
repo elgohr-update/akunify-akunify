@@ -103,7 +103,16 @@ module.exports = {
         'gray-60': '#515761',
         'gray-70': '#383C43',
         'gray-80': '#1E2024',
-        'gray-90': '#050506'
+        'gray-90': '#050506',
+        'flamengo-10': '#FCDADA',
+        'flamengo-20': '#F9B5B5',
+        'flamengo-30': '#F58F8F',
+        'flamengo-40': '#F26A6A',
+        'flamengo-50': '#EF4444',
+        'flamengo-60': '#E71414',
+        'flamengo-70': '#B30F0F',
+        'flamengo-80': '#800B0B',
+        'flamengo-90': '#4C0707'
       },
       zIndex: {
         '-10': '-10',

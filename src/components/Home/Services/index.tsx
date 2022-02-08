@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 import {
   NewsPaper
@@ -76,7 +77,9 @@ const Services: React.FC<IServicesProps> = ({ data=[] }) => {
         <div className="text-center my-4">
           <h5>{ currencyFormater(selectedService.attributes?.price) }</h5>
         </div>
-        <div dangerouslySetInnerHTML={{__html: selectedService.attributes?.description}} />
+        <ReactMarkdown>
+          { selectedService.attributes?.description }
+        </ReactMarkdown>
         <Link href="/register/[service_id]" as={`/register/${selectedService?.id}`}>
           <a className="main-btn pricing_btn w-full">Daftar Berlangganan</a>
         </Link>

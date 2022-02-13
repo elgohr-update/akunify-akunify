@@ -256,7 +256,7 @@ a, button {
   @apply rounded-xl overflow-hidden my-8 bg-white shadow;
 }
 .work_content {
-  @apply p-7 relative;
+  @apply p-4 relative;
 }
 .work_content .arrow {
   @apply w-11 h-11 flex items-center justify-center rounded-full text-lg text-mirage-50 absolute -top-5 right-7 bg-white transition-all duration-300 shadow hover:bg-turquoise-60 hover:text-white;
@@ -369,5 +369,5 @@ a, button {
   @apply mt-3 md:mt-0 md:absolute top-1 right-1 py-4 bg-turquoise-50 rounded-full hover:bg-opacity-80;
 }
 .footer_social li a {
-  @apply w-8 h-8 rounded-full bg-white bg-opacity-10 text-white flex items-center justify-center hover:text-turquoise-50 hover:bg-opacity-100;
+  @apply w-10 h-10 p-2 rounded-full bg-white bg-opacity-50 text-white flex items-center justify-center hover:text-turquoise-50 hover:bg-opacity-100 z-50;
 }

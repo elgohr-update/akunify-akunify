@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Image } from 'components/Commons'
+
 import {
   getImageUrl
 } from 'utils/index'
@@ -24,8 +26,8 @@ const Payment: React.FC<IPaymentProps> = ({ data=[] }) => {
         </div>
         <div className="flex flex-wrap justify-center my-10">
           { (data.length > 0) && data.map((item, i) => (
-            <div key={`payment-${i}`} className="md:w-1/6 sm:w-1/2 xs:w-1/4 p-3 mx-4">
-              <img src={getImageUrl(item.attributes.image, 'thumbnail')} alt={item.title} />
+            <div key={`payment-${i}`} className="md:w-1/6 sm:w-1/2 xs:w-1/3 p-3 mx-4 xs:mx-0">
+              <Image src={getImageUrl(item.attributes.image, 'thumbnail')} alt={item.title} />
             </div>
           ))}
           <div></div>

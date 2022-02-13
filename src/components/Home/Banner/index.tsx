@@ -51,7 +51,7 @@ const Banner: React.FC = () => {
               <div className="hero_btn mt-10">
                 <a
                   className="main-btn page-scroll"
-                  href="#servces"
+                  href="#services"
                 >
                   Daftar sekarang
                 </a>

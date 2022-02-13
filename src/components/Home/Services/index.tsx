@@ -1,10 +1,8 @@
-import React, { Fragment, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
+import React, { Fragment } from 'react'
 import Link from 'next/link'
-import {
-  NewsPaper
-} from 'components/Commons/Icons'
-import { Modal } from 'components/Commons'
+
+// import ReactMarkdown from 'react-markdown'
+import { Image } from 'components/Commons'
 
 import {
   getImageUrl,
@@ -17,13 +15,7 @@ interface IServicesProps {
 }
 
 const Services: React.FC<IServicesProps> = ({ data=[] }) => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
-  const [selectedService, setSelectedService] = useState<any>({})
-
-  const handleShowDescription = (content: any): void => {
-    setSelectedService(content)
-    setIsOpenModal(true)
-  }
+  // const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
 
   return (
     <Fragment>
@@ -46,17 +38,14 @@ const Services: React.FC<IServicesProps> = ({ data=[] }) => {
                   <div className="single_item mx-auto">
                     <div className="single_work mx-3">
                       <div className="work_image">
-                        <img src={ getImageUrl(service.attributes?.image, 'thumbnail') } alt="work" className="w-full aspect-video" />
+                        <Image src={ getImageUrl(service.attributes?.image) } alt="work" className="w-full aspect-video" />
                       </div>
                       <div className="work_content">
-                        <a className="arrow" onClick={() => handleShowDescription(service)}>
-                          <NewsPaper/>
-                        </a>
                         <h4 className="work_title text-xl md:text-2xl truncate ...">
                           <a href="#">{ service.attributes?.name }</a>
                         </h4>
                         <p className="mt-2">
-                          { currencyFormater(service.attributes?.price) }
+                          { currencyFormater(service.attributes?.price) }/bulan
                         </p>
                         <Link href="/register/[service_id]" as={`/register/${service.id}`}>
                           <a className="main-btn pricing_btn w-full">Mulai Berlangganan</a>
@@ -70,7 +59,7 @@ const Services: React.FC<IServicesProps> = ({ data=[] }) => {
           </div>
         </div>
       </section>
-      <Modal isOpen={isOpenModal} handleClose={() => setIsOpenModal(false)} title={selectedService.attributes?.id}>
+      {/* <Modal isOpen={isOpenModal} handleClose={() => setIsOpenModal(false)} title={selectedService.attributes?.id}>
         <div className="px-18 mb-4">
           <img src={ getImageUrl(selectedService.attributes?.image, 'medium') } alt="work" className="w-full aspect-video" />
         </div>
@@ -83,7 +72,7 @@ const Services: React.FC<IServicesProps> = ({ data=[] }) => {
         <Link href="/register/[service_id]" as={`/register/${selectedService?.id}`}>
           <a className="main-btn pricing_btn w-full">Daftar Berlangganan</a>
         </Link>
-      </Modal>
+      </Modal> */}
     </Fragment>
   )
 }

@@ -22,7 +22,7 @@ const Faq: React.FC = () => {
     },
   ]
   return (
-  <section id="services" className="work_area bg-gray pt-110 pb-110">
+  <section id="faqs" className="work_area bg-gray pt-110 pb-110">
     <div className="container">
       <div className="row justify-center">
         <div className="w-ull lg:w-1/2">

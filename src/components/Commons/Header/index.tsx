@@ -47,15 +47,6 @@ const Header: React.FC = () => {
                         Services
                       </a>
                     </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <Link href={`/tnc`}>
-                        <a
-                          className={ `page-scroll ${activeMenu === 'contact' ? 'active' : ''}` }
-                        >
-                          Term & Condition
-                        </a>
-                      </Link>
-                    </li>
                   </ul>
                 </div>
               </nav>

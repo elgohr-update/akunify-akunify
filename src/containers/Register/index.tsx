@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import ReactMarkdown from 'react-markdown'
 import {
   validation,
   getImageUrl,
@@ -86,7 +86,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
 
   return (
     <section className="max-w-3xl my-12 m-auto">
-      <div className="p-16">
+      <div className="p-8">
         <div className="section_title pb-9">
           <h1 className="main_title mb-4">Daftar layanan Akunify</h1>
           <h5 className="sub_title border-b">Silahkan isi terlebih dahulu sebelum melakukan pemesanan.</h5>
@@ -94,24 +94,30 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
         <div className="my-4">
           <div className="flex flex-wrap justify-between items-center pr-1">
             <h5 className="text-turquoise-90">Layanan yang dipesan</h5>
-            <p className="text-turquoise-50 cursor-pointer text-sm">Ubah paket</p>
+            {/* <p className="text-turquoise-50 cursor-pointer text-sm">Ubah paket</p> */}
           </div>
           <div className="rounded-md p-6 shadow-md mt-4 border">
-            <div className="flex flex-wrap border-b mb-4 py-4">
+            <div className="flex flex-wrap">
               <div className="w-1/4 p-2 text-center">
-                <img src={ getImageUrl(service?.attributes?.image, 'thumbnail') } alt="Layanan image" />
+                <img src={ getImageUrl(service?.attributes?.image, 'large') } alt="Layanan image" />
               </div>
               <div className="w-3/4 p-2">
                 <h6>{ service?.attributes.name }</h6>
                 <p className="font-bold text-gray-70">{ currencyFormater(service?.attributes.price) }</p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-between">
-              <div>Total pembayaran</div>
-              <div>{ currencyFormater(service?.attributes.price) }</div>
+
+            <div className="px-2 h-15 border-b pb-4 mt-2">
+              { service?.attributes?.description.replace(/<[^>]*>?/gm, '').slice(0, 120) }. . .
+              <span className="float-right font-light text-turquoise-60 text-sm cursor-pointer">selengkapnya</span>
+            </div>
+
+            <div className="flex flex-wrap justify-between mt-2">
+              <p className="font-semibold text-turquoise-90">Total pembayaran</p>
+              <p className="text-turquoise-90">{ currencyFormater(service?.attributes.price) }/bulan</p>
             </div>
           </div>
-          <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          {/* <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-6">
               <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
                 Pilih masa berlaku
@@ -128,7 +134,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                 </select>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-8">
@@ -136,22 +142,27 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
           <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-6">
               <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
-                Full name
+                Nomor Whatsapp (Pastikan nomor sudah benar dan aktif)
               </label>
-              <div className="mt-1">
+              <div className="mt-1 flex">
+                <span
+                  className={`inline-flex items-center px-3 rounded-l-md ${error.phone_number !== '' && error.phone_number !== undefined ? 'bg-flamengo-60' : 'bg-turquoise-50'} text-m-30 text-white font-bold`}
+                >
+                  +62
+                </span>
                 <input
-                  type="text"
-                  name="fullname"
-                  id="fullname"
+                  type="string"
+                  name="phone_number"
+                  id="phone_number"
                   autoComplete="given-name"
-                  className={error.fullname !== '' && error.fullname !== undefined ? errorClass : defaultClass }
+                  className={error.phone_number !== '' && error.phone_number !== undefined ? errorClass : defaultClass }
                   onChange={handleChangeInput}
-                  value={formState.fullname}
+                  value={formState.phone_number}
                 />
-                { error.fullname !== '' && error.fullname !== undefined && (
-                  <span className="font-light text-xs text-flamengo-60">{ error.fullname }</span>
-                )}
               </div>
+              { error.phone_number !== '' && error.phone_number !== undefined && (
+                <span className="font-light text-xs text-flamengo-60">{ error.phone_number }</span>
+              )}
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
@@ -174,27 +185,22 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
             </div>
             <div className="sm:col-span-6">
               <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
-                Nomor whatsapp (Pastikan nomor sudah benar dan aktif)
+                Full name
               </label>
-              <div className="mt-1 flex">
-                <span
-                  className={`inline-flex items-center px-3 rounded-l-md ${error.phone_number !== '' && error.phone_number !== undefined ? 'bg-flamengo-60' : 'bg-turquoise-50'} text-m-30 text-white font-bold`}
-                >
-                  +62
-                </span>
+              <div className="mt-1">
                 <input
-                  type="string"
-                  name="phone_number"
-                  id="phone_number"
+                  type="text"
+                  name="fullname"
+                  id="fullname"
                   autoComplete="given-name"
-                  className={error.phone_number !== '' && error.phone_number !== undefined ? errorClass : defaultClass }
+                  className={error.fullname !== '' && error.fullname !== undefined ? errorClass : defaultClass }
                   onChange={handleChangeInput}
-                  value={formState.phone_number}
+                  value={formState.fullname}
                 />
+                { error.fullname !== '' && error.fullname !== undefined && (
+                  <span className="font-light text-xs text-flamengo-60">{ error.fullname }</span>
+                )}
               </div>
-              { error.phone_number !== '' && error.phone_number !== undefined && (
-                <span className="font-light text-xs text-flamengo-60">{ error.phone_number }</span>
-              )}
             </div>
             <div className="sm:col-span-6">
               <div className="mt-1 flex">

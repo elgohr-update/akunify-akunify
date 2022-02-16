@@ -21,7 +21,9 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="footer_content mt-8">
                   <p className="text-white">
-                    Platform layanan Berlangganan Bersama seperti Netflix, Youtube dan Spotify dengan cara patungan dengan pengguna lain.
+                    Platform layanan Berlangganan Bersama seperti Netflix,
+                    Youtube dan Spotify dengan cara patungan dengan pengguna
+                    lain.
                   </p>
                 </div>
               </div>
@@ -29,21 +31,62 @@ const Footer: React.FC = () => {
             <div className="w-full md:w-1/2 lg:w-5/12">
               <div className="footer_link_wrapper flex flex-wrap mx-3">
                 <div className="footer_link w-1/2 md:pl-13 mt-13">
-                  <h2 className="footer_title text-xl font-semibold text-white">Quick Links</h2>
+                  <h2 className="footer_title text-xl font-semibold text-white">
+                    Quick Links
+                  </h2>
                   <ul className="link pt-4">
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Company</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Privacy Policy</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">About</a></li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        Company
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        Privacy Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        About
+                      </a>
+                    </li>
                   </ul>
                 </div>
                 <div className="footer_link w-1/2 md:pl-13 mt-13">
-                  <h2 className="footer_title text-xl font-semibold text-white">Resources</h2>
+                  <h2 className="footer_title text-xl font-semibold text-white">
+                    Resources
+                  </h2>
                   <ul className="link pt-4">
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Support</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Contact</a></li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        Support
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        Contact
+                      </a>
+                    </li>
                     <li>
                       <Link href={`/tnc`}>
-                        <a className="text-white mt-4 hover:text-primary">Terms & Condition</a>
+                        <a className="text-white mt-4 hover:text-primary">
+                          Terms & Condition
+                        </a>
                       </Link>
                     </li>
                   </ul>
@@ -68,17 +111,26 @@ const Footer: React.FC = () => {
             <ul className="flex justify-center sm:justify-start">
               <li className="mr-3">
                 <a href="https://facebook.com/uideckHQ">
-                  <Image src="/images/socmed/facebook.svg" alt="Akunify Facebook" />
+                  <Image
+                    src="/images/socmed/facebook.svg"
+                    alt="Akunify Facebook"
+                  />
                 </a>
               </li>
               <li className="mr-3">
                 <a href="https://twitter.com/uideckHQ">
-                  <Image src="/images/socmed/instagram.svg" alt="Akunify Instagram" />
+                  <Image
+                    src="/images/socmed/instagram.svg"
+                    alt="Akunify Instagram"
+                  />
                 </a>
               </li>
               <li className="mr-3">
                 <a href="#">
-                  <Image src="/images/socmed/twitter.svg" alt="Akunify Twitter" />
+                  <Image
+                    src="/images/socmed/twitter.svg"
+                    alt="Akunify Twitter"
+                  />
                 </a>
               </li>
               <li className="mr-3">

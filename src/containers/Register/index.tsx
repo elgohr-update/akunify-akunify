@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import {
-  validation,
-  getImageUrl,
-  currencyFormater
-} from 'utils/index'
+import { validation, getImageUrl, currencyFormater } from 'utils/index'
 
 const defaultClass = `py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded-sm`
 const errorClass = `py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded-sm`
@@ -34,18 +30,18 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
     service_id: service?.id,
     fullname: '',
     email: '',
-    phone_number: ''
+    phone_number: '',
   })
   const [error, setError] = useState<ErrorState>({
     fullname: '',
     email: '',
-    phone_number: ''
+    phone_number: '',
   })
 
   useEffect(() => {
     setFormState((prevState) => ({
       ...prevState,
-      service_id: service?.id
+      service_id: service?.id,
     }))
   }, [service?.id])
 
@@ -57,16 +53,12 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
 
     setFormState((prevState) => ({
       ...prevState,
-      [name]: isPhoneField ? phone : value
+      [name]: isPhoneField ? phone : value,
     }))
 
     setError((prevState) => ({
       ...prevState,
-      [name]: validation(
-        'register',
-        name,
-        isPhoneField ? '0'+phone : value
-      )
+      [name]: validation('register', name, isPhoneField ? '0' + phone : value),
     }))
   }
 
@@ -74,10 +66,18 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
     setError({
       fullname: validation('register', 'fullname', formState.fullname),
       email: validation('register', 'email', formState.email),
-      phone_number: validation('register', 'phone_number', '0'+formState.phone_number)
+      phone_number: validation(
+        'register',
+        'phone_number',
+        '0' + formState.phone_number
+      ),
     })
 
-    return (error.fullname !== '' && error.fullname !== undefined) || (error.email !== '' && error.email !== undefined) || (error.phone_number !== '' && error.phone_number !== undefined)
+    return (
+      (error.fullname !== '' && error.fullname !== undefined) ||
+      (error.email !== '' && error.email !== undefined) ||
+      (error.phone_number !== '' && error.phone_number !== undefined)
+    )
   }
 
   const handleSubmitRegister = () => {
@@ -89,7 +89,9 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
       <div className="p-8">
         <div className="section_title pb-9">
           <h1 className="main_title mb-4">Daftar layanan Akunify</h1>
-          <h5 className="sub_title border-b">Silahkan isi terlebih dahulu sebelum melakukan pemesanan.</h5>
+          <h5 className="sub_title border-b">
+            Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
+          </h5>
         </div>
         <div className="my-4">
           <div className="flex flex-wrap justify-between items-center pr-1">
@@ -99,22 +101,36 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
           <div className="rounded-md p-6 shadow-md mt-4 border">
             <div className="flex flex-wrap">
               <div className="w-1/4 p-2 text-center">
-                <img src={ getImageUrl(service?.attributes?.image, 'large') } alt="Layanan image" />
+                <img
+                  src={getImageUrl(service?.attributes?.image, 'large')}
+                  alt="Layanan image"
+                />
               </div>
               <div className="w-3/4 p-2">
-                <h6>{ service?.attributes.name }</h6>
-                <p className="font-bold text-gray-70">{ currencyFormater(service?.attributes.price) }</p>
+                <h6>{service?.attributes.name}</h6>
+                <p className="font-bold text-gray-70">
+                  {currencyFormater(service?.attributes.price)}
+                </p>
               </div>
             </div>
 
             <div className="px-2 h-15 border-b pb-4 mt-2">
-              { service?.attributes?.description.replace(/<[^>]*>?/gm, '').slice(0, 120) }. . .
-              <span className="float-right font-light text-turquoise-60 text-sm cursor-pointer">selengkapnya</span>
+              {service?.attributes?.description
+                .replace(/<[^>]*>?/gm, '')
+                .slice(0, 120)}
+              . . .
+              <span className="float-right font-light text-turquoise-60 text-sm cursor-pointer">
+                selengkapnya
+              </span>
             </div>
 
             <div className="flex flex-wrap justify-between mt-2">
-              <p className="font-semibold text-turquoise-90">Total pembayaran</p>
-              <p className="text-turquoise-90">{ currencyFormater(service?.attributes.price) }/bulan</p>
+              <p className="font-semibold text-turquoise-90">
+                Total pembayaran
+              </p>
+              <p className="text-turquoise-90">
+                {currencyFormater(service?.attributes.price)}/bulan
+              </p>
             </div>
           </div>
           {/* <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
@@ -141,12 +157,20 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
           <h5 className="text-turquoise-90">Informasi Pengguna</h5>
           <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-6">
-              <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-70"
+              >
                 Nomor Whatsapp (Pastikan nomor sudah benar dan aktif)
               </label>
               <div className="mt-1 flex">
                 <span
-                  className={`inline-flex items-center px-3 rounded-l-md ${error.phone_number !== '' && error.phone_number !== undefined ? 'bg-flamengo-60' : 'bg-turquoise-50'} text-m-30 text-white font-bold`}
+                  className={`inline-flex items-center px-3 rounded-l-md ${
+                    error.phone_number !== '' &&
+                    error.phone_number !== undefined
+                      ? 'bg-flamengo-60'
+                      : 'bg-turquoise-50'
+                  } text-m-30 text-white font-bold`}
                 >
                   +62
                 </span>
@@ -155,17 +179,28 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                   name="phone_number"
                   id="phone_number"
                   autoComplete="given-name"
-                  className={error.phone_number !== '' && error.phone_number !== undefined ? errorClass : defaultClass }
+                  className={
+                    error.phone_number !== '' &&
+                    error.phone_number !== undefined
+                      ? errorClass
+                      : defaultClass
+                  }
                   onChange={handleChangeInput}
                   value={formState.phone_number}
                 />
               </div>
-              { error.phone_number !== '' && error.phone_number !== undefined && (
-                <span className="font-light text-xs text-flamengo-60">{ error.phone_number }</span>
-              )}
+              {error.phone_number !== '' &&
+                error.phone_number !== undefined && (
+                  <span className="font-light text-xs text-flamengo-60">
+                    {error.phone_number}
+                  </span>
+                )}
             </div>
             <div className="sm:col-span-6">
-              <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-70"
+              >
                 Email
               </label>
               <div className="mt-1">
@@ -174,17 +209,26 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                   name="email"
                   id="email"
                   autoComplete="given-name"
-                  className={error.email !== '' && error.email !== undefined ? errorClass : defaultClass }
+                  className={
+                    error.email !== '' && error.email !== undefined
+                      ? errorClass
+                      : defaultClass
+                  }
                   onChange={handleChangeInput}
                   value={formState.email}
                 />
-                { error.email !== '' && error.email !== undefined && (
-                  <span className="font-light text-xs text-flamengo-60">{ error.email }</span>
+                {error.email !== '' && error.email !== undefined && (
+                  <span className="font-light text-xs text-flamengo-60">
+                    {error.email}
+                  </span>
                 )}
               </div>
             </div>
             <div className="sm:col-span-6">
-              <label htmlFor="first-name" className="block text-sm font-medium text-gray-70">
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-70"
+              >
                 Full name
               </label>
               <div className="mt-1">
@@ -193,12 +237,18 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                   name="fullname"
                   id="fullname"
                   autoComplete="given-name"
-                  className={error.fullname !== '' && error.fullname !== undefined ? errorClass : defaultClass }
+                  className={
+                    error.fullname !== '' && error.fullname !== undefined
+                      ? errorClass
+                      : defaultClass
+                  }
                   onChange={handleChangeInput}
                   value={formState.fullname}
                 />
-                { error.fullname !== '' && error.fullname !== undefined && (
-                  <span className="font-light text-xs text-flamengo-60">{ error.fullname }</span>
+                {error.fullname !== '' && error.fullname !== undefined && (
+                  <span className="font-light text-xs text-flamengo-60">
+                    {error.fullname}
+                  </span>
                 )}
               </div>
             </div>
@@ -211,7 +261,10 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                     type="checkbox"
                     className="focus:ring-turquoise-50 h-4 w-4 border border-turquoise-40 rounded"
                   />
-                  <label htmlFor="agreement" className="font-medium text-gray-70 ml-2">
+                  <label
+                    htmlFor="agreement"
+                    className="font-medium text-gray-70 ml-2"
+                  >
                     Saya menyetujui aturan yang dibuat oleh Akunify.com
                   </label>
                 </div>

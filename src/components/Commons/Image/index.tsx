@@ -18,11 +18,9 @@ interface Props {
 
 const Image: React.FC<Props> = (props) => {
   const { withNext, ...nextImageProps } = props
-
   if (withNext) {
     return <NextImage {...nextImageProps} />
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { layout, placeholder, blurDataURL, priority, ...imageProps } =
       nextImageProps
     return <img {...imageProps} />

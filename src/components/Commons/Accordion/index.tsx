@@ -7,12 +7,12 @@ const classNames = (...classes: any) => {
 }
 
 interface IItems {
-  title: string;
+  title: string
   content: string
 }
 
 interface AccordionProps {
-  data: IItems[];
+  data: IItems[]
 }
 
 const Accordion: React.FC<AccordionProps> = ({ data }) => {
@@ -25,17 +25,22 @@ const Accordion: React.FC<AccordionProps> = ({ data }) => {
               <>
                 <dt className="text-lg">
                   <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
-                    <span className="font-medium text-gray-900">{item.title}</span>
+                    <span className="font-medium text-gray-900">
+                      {item.title}
+                    </span>
                     <span className="ml-6 h-7 flex items-center">
                       <ChevronDownIcon
-                        className={classNames(open ? '-rotate-180' : 'rotate-0', 'h-6 w-6 transform')}
+                        className={classNames(
+                          open ? '-rotate-180' : 'rotate-0',
+                          'h-6 w-6 transform'
+                        )}
                         aria-hidden="true"
                       />
                     </span>
                   </Disclosure.Button>
                 </dt>
                 <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                  <p className="text-base text-gray-500">{item.content}</p>
+                  <div dangerouslySetInnerHTML={{ __html: item.content }} />
                 </Disclosure.Panel>
               </>
             )}

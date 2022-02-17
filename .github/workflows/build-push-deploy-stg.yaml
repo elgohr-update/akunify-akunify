@@ -35,7 +35,7 @@ jobs:
         MINIO_ENV_PATH: staging
       with:
         registry: ${{ secrets.DOCKER_REGISTRY }}
-        name: backpackrid/akunify
+        name: backpackrid/dolan
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: ./Dockerfile
@@ -49,7 +49,7 @@ jobs:
         username: ${{ secrets.STAGING_SSH_USERNAME }}
         password: ${{ secrets.STAGING_SSH_PASSWORD }}
         source: "docker-compose.yml"
-        target: "/docker/akunify"
+        target: "/docker/dolan"
         use_insecure_cipher: true
 
     - name: Executing remote ssh commands
@@ -60,7 +60,7 @@ jobs:
         MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
         MINIO_ENV_PATH: staging
         DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
-        DOCKER_REPOSITORY: backpackrid/akunify
+        DOCKER_REPOSITORY: backpackrid/dolan
         DOCKER_REPOSITORY_TAG: staging
         COMPOSE_PROJECT_NAME: staging
       with:
@@ -69,9 +69,9 @@ jobs:
         password: ${{ secrets.STAGING_SSH_PASSWORD }}
         envs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH, DOCKER_REGISTRY, DOCKER_REPOSITORY, DOCKER_REPOSITORY_TAG, COMPOSE_PROJECT_NAME
         script: |
-          cd /docker/akunify
+          cd /docker/dolan
           mc config host add minio $MINIO_URL $MINIO_ACCESS_KEY $MINIO_SECRET_KEY --api S3v4 && \
-          mc cp -r minio/params/akunify/$MINIO_ENV_PATH/.env .
+          mc cp -r minio/params/dolan/$MINIO_ENV_PATH/.env .
           docker pull $DOCKER_REGISTRY/$DOCKER_REPOSITORY:$DOCKER_REPOSITORY_TAG
           docker-compose -p $COMPOSE_PROJECT_NAME up -d
           docker image prune -f

@@ -11,16 +11,15 @@ interface RegisterProps {
 
 const RegisterPage = (props: RegisterProps) => {
   const [detail, setDetail] = useState<any>({})
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(true)
 
   const getServiceList = useCallback(async (): Promise<any> => {
-    setLoading(true)
     NProgress.start()
     try {
       const response: any = await fetchData({
         apiHost: process.env.API_HOST,
         url: `/services/${props.serviceId}?populate=image`,
-        method: 'GET'
+        method: 'GET',
       })
       setLoading(false)
       setDetail(response?.data)
@@ -35,22 +34,14 @@ const RegisterPage = (props: RegisterProps) => {
     getServiceList()
   }, [])
 
-  return (
-    <>
-      { !loading && (
-        <RegisterContainer service={detail.data} />
-      )}
-    </>
-  )
+  return <>{!loading && <RegisterContainer service={detail.data} />}</>
 }
 
-export const getServerSideProps = async (
-  ctx: NextPageContext
-) => {
+export const getServerSideProps = async (ctx: NextPageContext) => {
   const { query } = ctx
   return {
     props: {
-      serviceId: query.service_id
+      serviceId: query.service_id,
     },
   }
 }

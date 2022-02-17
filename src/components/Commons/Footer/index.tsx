@@ -21,29 +21,33 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="footer_content mt-8">
                   <p className="text-white">
-                    Platform layanan Berlangganan Bersama seperti Netflix, Youtube dan Spotify dengan cara patungan dengan pengguna lain.
+                    Platform layanan Berlangganan Bersama seperti Netflix,
+                    Youtube dan Spotify dengan cara patungan dengan pengguna
+                    lain.
                   </p>
                 </div>
               </div>
             </div>
             <div className="w-full md:w-1/2 lg:w-5/12">
               <div className="footer_link_wrapper flex flex-wrap mx-3">
-                <div className="footer_link w-1/2 md:pl-13 mt-13">
+                {/* <div className="footer_link w-1/2 md:pl-13 mt-13">
                   <h2 className="footer_title text-xl font-semibold text-white">Quick Links</h2>
                   <ul className="link pt-4">
                     <li><a href="#" className="text-white mt-4 hover:text-primary">Company</a></li>
                     <li><a href="#" className="text-white mt-4 hover:text-primary">Privacy Policy</a></li>
                     <li><a href="#" className="text-white mt-4 hover:text-primary">About</a></li>
                   </ul>
-                </div>
+                </div> */}
                 <div className="footer_link w-1/2 md:pl-13 mt-13">
-                  <h2 className="footer_title text-xl font-semibold text-white">Resources</h2>
+                  <h2 className="footer_title text-xl font-semibold text-white">
+                    Akunify.com
+                  </h2>
                   <ul className="link pt-4">
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Support</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Contact</a></li>
                     <li>
                       <Link href={`/tnc`}>
-                        <a className="text-white mt-4 hover:text-primary">Terms & Condition</a>
+                        <a className="text-white mt-4 hover:text-primary">
+                          Terms & Condition
+                        </a>
                       </Link>
                     </li>
                   </ul>
@@ -67,30 +71,43 @@ const Footer: React.FC = () => {
           <div className="footer_social pt-4 mx-3 text-center">
             <ul className="flex justify-center sm:justify-start">
               <li className="mr-3">
-                <a href="https://facebook.com/uideckHQ">
-                  <Image src="/images/socmed/facebook.svg" alt="Akunify Facebook" />
+                <a
+                  href="https://www.facebook.com/Akunify-102410452354811"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Image
+                    src="/images/socmed/facebook.svg"
+                    alt="Akunify Facebook"
+                  />
                 </a>
               </li>
               <li className="mr-3">
-                <a href="https://twitter.com/uideckHQ">
-                  <Image src="/images/socmed/instagram.svg" alt="Akunify Instagram" />
+                <a
+                  href="https://www.instagram.com/akunify/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Image
+                    src="/images/socmed/instagram.svg"
+                    alt="Akunify Instagram"
+                  />
                 </a>
               </li>
               <li className="mr-3">
-                <a href="#">
-                  <Image src="/images/socmed/twitter.svg" alt="Akunify Twitter" />
-                </a>
-              </li>
-              <li className="mr-3">
-                <a href="https://instagram.com/uideckHQ">
-                  <Image src="/images/socmed/tiktok.svg" alt="Akunify Tiktok" />
+                <a
+                  href="https://twitter.com/akunify"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Image
+                    src="/images/socmed/twitter.svg"
+                    alt="Akunify Twitter"
+                  />
                 </a>
               </li>
             </ul>
           </div>
-          {/* <div className="footer_copyright_content pt-4 text-center">
-            <p className="text-white">Designed and Developed by <a href="https://uideck.com" rel="nofollow" className="text-white hover:text-primary">UIdeck</a> and <a href="https://tailwindtemplates.co" rel="nofollow" className="text-white hover:text-primary">Tailwind Templates</a></p>
-          </div> */}
         </div>
       </div>
     </footer>

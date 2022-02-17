@@ -34,7 +34,7 @@ jobs:
         MINIO_ENV_PATH: production
       with:
         registry: ${{ secrets.DOCKER_REGISTRY }}
-        name: backpackrid/akunify
+        name: backpackrid/dolan
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: ./Dockerfile

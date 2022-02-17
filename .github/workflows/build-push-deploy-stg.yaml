@@ -25,7 +25,6 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
-
     - name: Publish to docker registry
       uses: elgohr/Publish-Docker-Github-Action@master
       env:

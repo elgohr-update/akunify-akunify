@@ -11,7 +11,7 @@ const Backtop: React.FC = () => {
       <section className="">
         <div className="container">
           <div className="row">
-            <div className="col-lg-"/>
+            <div className="col-lg-" />
           </div>
         </div>
       </section>

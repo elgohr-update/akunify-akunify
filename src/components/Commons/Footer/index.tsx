@@ -33,9 +33,30 @@ const Footer: React.FC = () => {
                 {/* <div className="footer_link w-1/2 md:pl-13 mt-13">
                   <h2 className="footer_title text-xl font-semibold text-white">Quick Links</h2>
                   <ul className="link pt-4">
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Company</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">Privacy Policy</a></li>
-                    <li><a href="#" className="text-white mt-4 hover:text-primary">About</a></li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        Company
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        Privacy Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-white mt-4 hover:text-primary"
+                      >
+                        About
+                      </a>
+                    </li>
                   </ul>
                 </div> */}
                 <div className="footer_link w-1/2 md:pl-13 mt-13">

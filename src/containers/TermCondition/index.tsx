@@ -1,13 +1,11 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 import { useTnc } from 'hooks/index'
 
 const TermConditionContainer: React.FC = () => {
-  const { termCondition }: any  = useTnc()
-
-  const renderTermService = (content: string): any => {
-    return {__html: content}
-  }
+  const { termCondition }: any = useTnc()
 
   return (
     <section className="max-w-3xl my-12 m-auto">
@@ -15,7 +13,9 @@ const TermConditionContainer: React.FC = () => {
         <div className="section_title pb-9 text-center">
           <h1 className="main_title mb-4">Syarat dan Ketentuan Penggunaan</h1>
         </div>
-        <div dangerouslySetInnerHTML={renderTermService(termCondition.data?.attributes?.descriptions)} />
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+          {termCondition.data?.attributes?.descriptions}
+        </ReactMarkdown>
       </div>
     </section>
   )

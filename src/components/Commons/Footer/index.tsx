@@ -30,35 +30,6 @@ const Footer: React.FC = () => {
             </div>
             <div className="w-full md:w-1/2 lg:w-5/12">
               <div className="footer_link_wrapper flex flex-wrap mx-3">
-                {/* <div className="footer_link w-1/2 md:pl-13 mt-13">
-                  <h2 className="footer_title text-xl font-semibold text-white">Quick Links</h2>
-                  <ul className="link pt-4">
-                    <li>
-                      <a
-                        href="#"
-                        className="text-white mt-4 hover:text-primary"
-                      >
-                        Company
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-white mt-4 hover:text-primary"
-                      >
-                        Privacy Policy
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-white mt-4 hover:text-primary"
-                      >
-                        About
-                      </a>
-                    </li>
-                  </ul>
-                </div> */}
                 <div className="footer_link w-1/2 md:pl-13 mt-13">
                   <h2 className="footer_title text-xl font-semibold text-white">
                     Akunify.com
@@ -70,6 +41,23 @@ const Footer: React.FC = () => {
                           Terms & Condition
                         </a>
                       </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="footer_link w-1/2 md:pl-13 mt-13">
+                  <h2 className="footer_title text-xl font-semibold text-white">
+                    Reach Us
+                  </h2>
+                  <ul className="link pt-4">
+                    <li>
+                      <p className="text-white mt-4 hover:text-primary">
+                        CS: 0851-7152-5500
+                      </p>
+                    </li>
+                    <li>
+                      <p className="text-white mt-4 hover:text-primary">
+                        Email: akunify@gmail.com
+                      </p>
                     </li>
                   </ul>
                 </div>

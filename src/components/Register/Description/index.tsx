@@ -16,7 +16,7 @@ const Description: React.FC<DescProps> = ({
   return (
     <>
       {!isShow && (
-        <div className="px-2 h-15 border-b pb-4 mt-2">
+        <div className="px-2 sm:h-24 xs:h-25 h-15 border-b pb-4 mt-2">
           {content?.replace(/<[^>]*>?/gm, '').slice(0, 120)}. . .
           <button
             className="float-right font-light text-turquoise-60 text-sm cursor-pointer"

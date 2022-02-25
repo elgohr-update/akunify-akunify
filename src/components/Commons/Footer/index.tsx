@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { PhoneIcon, MailIcon } from '@heroicons/react/outline'
 
 import { Image } from 'components/Commons'
 
@@ -50,13 +51,15 @@ const Footer: React.FC = () => {
                   </h2>
                   <ul className="link pt-4">
                     <li>
-                      <p className="text-white mt-4 hover:text-primary">
-                        CS: 0851-7152-5500
+                      <p className="text-white mt-4 hover:text-primary flex flex-wrap items-center">
+                        <PhoneIcon className="w-5 h-5 mr-2 text-turquoise-50" />{' '}
+                        0851-7152-5500
                       </p>
                     </li>
                     <li>
-                      <p className="text-white mt-4 hover:text-primary">
-                        Email: akunify@gmail.com
+                      <p className="text-white mt-4 hover:text-primary flex flex-wrap items-center">
+                        <MailIcon className="w-5 h-5 mr-2 text-turquoise-50" />{' '}
+                        akunify@gmail.com
                       </p>
                     </li>
                   </ul>

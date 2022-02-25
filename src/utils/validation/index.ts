@@ -13,7 +13,7 @@ export const returnSchema = (
   }
 }
 
-export const validation = (
+const validation = (
   schema: string,
   field: string,
   value: string,
@@ -30,3 +30,5 @@ export const validation = (
       })[0]
   }
 }
+
+export default validation

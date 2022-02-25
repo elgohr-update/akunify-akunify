@@ -18,7 +18,6 @@ interface FetchDataProps {
   headers?: Record<string, unknown>
   contentType?: string
   accept?: string
-  version?: string
   writeCookie?: boolean
 }
 
@@ -29,9 +28,8 @@ export const fetchData = async ({
   auth = {},
   data,
   headers = {},
-  contentType = 'application/x-www-form-urlencoded',
+  contentType = 'application/json',
   accept = 'application/json',
-  version = '3.4.0',
   writeCookie = false,
 }: FetchDataProps) => {
   try {
@@ -47,7 +45,6 @@ export const fetchData = async ({
           accept,
           additionalHeaders: headers,
           contentType,
-          version,
           writeCookie,
         }),
       },

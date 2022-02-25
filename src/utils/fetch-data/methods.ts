@@ -19,7 +19,6 @@ interface IGetHeader {
   accept?: string
   additionalHeaders?: Record<string, any>
   contentType?: string
-  version?: string | Record<string, any>
   writeCookie?: boolean
 }
 
@@ -28,7 +27,6 @@ export const getHeaders = ({
   accept,
   additionalHeaders,
   contentType,
-  version,
   writeCookie,
 }: IGetHeader): Record<string, any> => {
   const isHaveAuth = !isEmpty(auth)

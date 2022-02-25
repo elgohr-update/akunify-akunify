@@ -1,4 +1,4 @@
-export const getImageUrl = (
+const getImageUrl = (
   image: any,
   format?: 'large' | 'medium' | 'small' | 'thumbnail'
 ) => {
@@ -10,3 +10,5 @@ export const getImageUrl = (
 
   return imageHost + imgUrl
 }
+
+export default getImageUrl

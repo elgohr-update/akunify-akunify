@@ -35,7 +35,10 @@ const register = (
   phone_number: {
     rules: [
       {
-        validation: minMax.required(value, 'Nama lengkap tidak boleh kosong.'),
+        validation: minMax.required(
+          value,
+          'Nomor HP/WhatsApp tidak boleh kosong.'
+        ),
       },
       {
         validation: pattern.whatsAppEmail(

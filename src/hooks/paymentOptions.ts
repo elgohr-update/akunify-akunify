@@ -8,8 +8,8 @@ const usePaymentOption = () => {
     try {
       const response = await fetchData({
         apiHost: process.env.API_HOST,
-        url: '/payment-options?populate=image',
-        method: 'GET'
+        url: '/payment-options?populate=image&filters[is_active][$eq]=true',
+        method: 'GET',
       })
 
       setPaymentOptions(response?.data)
@@ -23,7 +23,7 @@ const usePaymentOption = () => {
   }, [])
 
   return {
-    paymentOptions
+    paymentOptions,
   }
 }
 

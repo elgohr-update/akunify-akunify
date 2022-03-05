@@ -1,8 +1,20 @@
-import type { NextPage } from 'next'
-import HomeContainer from 'containers/Home'
+import { NextPageContext } from 'next'
+import basicAuthMiddleware from 'nextjs-basic-auth-middleware'
 
-const Home: NextPage = () => {
-  return <HomeContainer />
+import AdminContainer from 'containers/Admin'
+
+const AdminPage = (): JSX.Element => {
+  return <AdminContainer />
 }
 
-export default Home
+AdminPage.getInitialProps = async (ctx: NextPageContext) => {
+  const { req, res } = ctx
+
+  await basicAuthMiddleware(req as any, res as any)
+
+  return {
+    props: {},
+  }
+}
+
+export default AdminPage

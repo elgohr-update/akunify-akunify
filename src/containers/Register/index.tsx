@@ -11,13 +11,17 @@ import {
   isEmpty,
   validation,
   getUserDetail,
-  isUserAvailable,
   getInitialName,
+  isUserAvailable,
 } from 'utils/index'
-import { fetchData } from 'utils/fetch-data'
 
 // Services
-import { sendWaMessage } from 'services/index'
+import { sendWaMessage } from 'services/external/whatsapp'
+import {
+  checkMember,
+  registerMember,
+  subscribeService,
+} from 'services/subscribtion'
 
 const defaultClass = `py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded`
 const errorClass = `py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded`
@@ -155,14 +159,12 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
       is_checked: true,
     }))
     try {
-      const response: any = await fetchData({
-        url: `/members?populate=member_subscriptions.service&filters[phone_number][$eq]=0${userDetail.phone_number}`,
-        method: 'GET',
-      })
-      const { data } = response.data
-      const isAvailable = isUserAvailable(data, service?.id)
-      const userData: any = getUserDetail(data)
+      const response: any = await checkMember(userDetail.phone_number)
 
+      const isAvailable = isUserAvailable(response, service?.id)
+      const userData: any = getUserDetail(response)
+
+      // check user status
       if (!isEmpty(userData)) {
         // if member already registered
         setUserDetail((prevState) => ({
@@ -200,18 +202,13 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
       if (userDetail.member_id > 0) {
         await submitService(userDetail.member_id, userDetail.service_id)
       } else {
-        const memberResponse = await fetchData({
-          url: '/members',
-          method: 'POST',
-          data: {
-            data: {
-              name: userDetail.name,
-              name_alias: userDetail.name_alias,
-              email: userDetail.email,
-              phone_number: `0${userDetail.phone_number}`,
-            },
-          },
+        const memberResponse: any = await registerMember({
+          name: userDetail.name,
+          name_alias: userDetail.name_alias,
+          email: userDetail.email,
+          phone_number: `62${userDetail.phone_number}`,
         })
+
         if (memberResponse.status === 200) {
           await submitService(
             memberResponse.data.data.id,
@@ -227,16 +224,11 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
 
   const submitService = async (memberId: number, serviceId: number) => {
     try {
-      const response = await fetchData({
-        url: '/member-subscriptions',
-        method: 'POST',
-        data: {
-          data: {
-            member: memberId,
-            service: serviceId,
-          },
-        },
+      const response: any = await subscribeService({
+        member_id: memberId,
+        service_id: serviceId,
       })
+
       if (response.status === 200) {
         setNotification({
           show: true,
@@ -268,7 +260,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
   }
 
   const sendWaNotification = (): void => {
-    sendWaMessage(`0${userDetail.phone_number}`, 'halo cok bisa gak nih cok')
+    sendWaMessage(`62${userDetail.phone_number}`, 'halo cok bisa gak nih cok')
   }
 
   return (
@@ -277,7 +269,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
         <div className="section_title pb-9">
           <h1 className="main_title mb-4">Daftar layanan Akunify</h1>
           <h5 className="sub_title border-b">
-            Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
+            Silahkan lengkapi data berikut.
           </h5>
         </div>
 
@@ -316,14 +308,16 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                   className={
                     error.phone_number !== '' &&
                     error.phone_number !== undefined
-                      ? 'py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded-r'
+                      ? 'py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded-r'
                       : 'py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded-r'
                   }
                   onChange={(e) => {
                     const { value } = e.target
                     setUserDetail((prevState) => ({
                       ...prevState,
-                      phone_number: value.replace(/^0+/, ''),
+                      phone_number: value
+                        .replace(/\D/g, '')
+                        .replace(/(^0+)|(^62+)/, ''),
                     }))
                     setError((prevState) => ({
                       ...prevState,
@@ -335,7 +329,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                     }))
                   }}
                   value={userDetail.phone_number}
-                  disabled={userDetail.is_available}
+                  disabled={userDetail.is_checked}
                 />
               </div>
               {error.phone_number !== '' &&
@@ -506,7 +500,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                           style={{ borderTopColor: 'transparent' }}
                           className="w-5 h-5 border-l-2 border-2 border-solid border-white rounded-full animate-spin mr-2"
                         ></div>
-                        Diproses . . .
+                        Harap tunggu . . .
                       </div>
                     ) : (
                       'Daftar Layanan'

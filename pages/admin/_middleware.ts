@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* eslint-disable */
-import type { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export const middleware = (req: NextRequest) => {
   const basicAuth = req.headers.get('authorization')

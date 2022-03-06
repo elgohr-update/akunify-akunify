@@ -64,8 +64,8 @@ const AdminContainer: React.FC = () => {
   }
 
   return (
-    <section className="max-w-3xl my-12 m-auto">
-      <div className="p-8">
+    <section className="max-w-3xl my-12 m-auto pt-20">
+      <div className="md:p-8 sm:p-6 xs:p-4">
         <div className="mt-2 border-2 border-turquoise-60 p-2 rounded-md">
           <div className="text-center my-2">
             <h3 className="main_title mb-4">Subscribtion Confirmation</h3>
@@ -149,7 +149,7 @@ const AdminContainer: React.FC = () => {
             <div className="sm:col-span-6">
               <button
                 type="button"
-                className="pricing_btn justify-between main-btn mt-0 w-1/5 disabled:bg-turquoise-70 disabled:cursor-not-allowed"
+                className="pricing_btn justify-between main-btn mt-0 xs:w-full md:w-1/5 sm:w-1/3 disabled:bg-turquoise-70 disabled:cursor-not-allowed"
                 onClick={() => getSubscribtionDetail()}
                 disabled={disabled}
               >

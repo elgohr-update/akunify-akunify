@@ -206,7 +206,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
           name: userDetail.name,
           name_alias: userDetail.name_alias,
           email: userDetail.email,
-          phone_number: `62${userDetail.phone_number}`,
+          phone_number: `0${userDetail.phone_number}`,
         })
 
         if (memberResponse.status === 200) {
@@ -260,7 +260,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
   }
 
   const sendWaNotification = (): void => {
-    sendWaMessage(`62${userDetail.phone_number}`, 'halo cok bisa gak nih cok')
+    sendWaMessage(`0${userDetail.phone_number}`, 'halo cok bisa gak nih cok')
   }
 
   return (

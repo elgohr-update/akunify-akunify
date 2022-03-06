@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                     <li>
                       <p className="text-white mt-4 hover:text-primary flex flex-wrap items-center">
                         <MailIcon className="w-5 h-5 mr-2 text-turquoise-50" />{' '}
-                        akunify@gmail.com
+                        info.akunify@gmail.com
                       </p>
                     </li>
                   </ul>

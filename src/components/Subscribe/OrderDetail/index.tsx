@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Description from 'components/Register/Description'
+import Description from 'components/Subscribe/Description'
 
 import { getImageUrl, currencyFormater } from 'utils/index'
 

@@ -17,7 +17,7 @@ const Description: React.FC<DescProps> = ({
     <>
       {!isShow && (
         <div className="px-2 sm:h-24 xs:h-25 h-15 border-b pb-4 mt-2">
-          {content?.replace(/<[^>]*>?/gm, '').slice(0, 120)}. . .
+          {content?.replace(/<[^>]*>?/gm, '').slice(0, 100)}. . .
           <button
             className="float-right font-light text-turquoise-60 text-sm cursor-pointer"
             onClick={() => handleChangeShow()}

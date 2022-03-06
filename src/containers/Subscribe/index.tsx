@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 // Components
 import { NotificationModal } from 'components/Commons'
-import OrderDetail from 'components/Register/OrderDetail'
+import OrderDetail from 'components/Subscribe/OrderDetail'
 
 // Utils
 import {
@@ -38,7 +38,7 @@ type ErrorMessageState = {
   type: 'error' | 'success' | 'warning'
   message: string
 }
-interface RegisterContainerProps {
+interface SubscribeContainerProps {
   service: {
     id: number
     attributes: any
@@ -69,7 +69,7 @@ const initialUserDetail = {
   is_agreed: false,
 }
 
-const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
+const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
   const { service } = props
   const router = useRouter()
   const [userDetail, setUserDetail] = useState<IUserDetail>(initialUserDetail)
@@ -149,7 +149,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
       show: true,
       type: 'error',
       title: 'Oops!',
-      message: 'Registerasi layanan gagal, silahkan coba lagi nanti!',
+      message: 'Subscribeasi layanan gagal, silahkan coba lagi nanti!',
     })
   }
 
@@ -196,7 +196,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
     }
   }
 
-  const handleSubmitRegister = async () => {
+  const handleSubmitSubscribe = async () => {
     setLoading(true)
     try {
       if (userDetail.member_id > 0) {
@@ -235,7 +235,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
           type: 'success',
           title: 'Success!',
           message:
-            'Registerasi layanan berhasil, silahkan cek pesan Whatsapp anda!',
+            'Subscribeasi layanan berhasil, silahkan cek pesan Whatsapp anda!',
         })
         setLoading(false)
         sendWaNotification()
@@ -491,7 +491,7 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
                   <button
                     type="button"
                     className="main-btn pricing_btn w-full disabled:bg-turquoise-70 disabled:cursor-not-allowed"
-                    onClick={() => handleSubmitRegister()}
+                    onClick={() => handleSubmitSubscribe()}
                     disabled={isDisable || loading}
                   >
                     {loading ? (
@@ -524,4 +524,4 @@ const RegisterContainer: React.FC<RegisterContainerProps> = (props) => {
   )
 }
 
-export default RegisterContainer
+export default SubscribeContainer

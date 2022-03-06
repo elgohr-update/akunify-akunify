@@ -56,8 +56,8 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                             </span>
                           </p>
                           <Link
-                            href="/register/[service_id]"
-                            as={`/register/${service.id}`}
+                            href="/subscribe/[service_id]/[slug]"
+                            as={`/subscribe/${service.id}/${service.attributes?.short_url}`}
                           >
                             <a className="main-btn pricing_btn w-full">
                               Mulai Berlangganan
@@ -82,7 +82,7 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
         <ReactMarkdown>
           { selectedService.attributes?.description }
         </ReactMarkdown>
-        <Link href="/register/[service_id]" as={`/register/${selectedService?.id}`}>
+        <Link href="/subscribe/[service_id]" as={`/subscribe/${selectedService?.id}`}>
           <a className="main-btn pricing_btn w-full">Daftar Berlangganan</a>
         </Link>
       </Modal> */}

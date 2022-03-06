@@ -3,7 +3,7 @@ import { fetchData } from 'utils/fetch-data'
 const checkMember = async (phone_number: string): Promise<boolean> => {
   try {
     const response: any = await fetchData({
-      url: `/members?populate=member_subscriptions.service&filters[member_subscriptions][is_active][$eq]=true&filters[phone_number][$eq]=62${phone_number}`,
+      url: `/members?populate=member_subscriptions.service&filters[member_subscriptions][is_active][$eq]=true&filters[phone_number][$eq]=0${phone_number}`,
       method: 'GET',
     })
     const { data } = response.data

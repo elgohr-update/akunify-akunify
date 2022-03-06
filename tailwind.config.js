@@ -125,6 +125,9 @@ module.exports = {
         600: '600ms',
       },
     },
+    listStyleType: {
+      decimal: 'decimal',
+    },
   },
   plugins: [],
 }

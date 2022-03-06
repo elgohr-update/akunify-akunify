@@ -57,7 +57,7 @@ a, button {
   @apply flex flex-wrap;
 }
 .main-btn {
-  @apply inline-block font-medium text-base text-center rounded-full text-white cursor-pointer z-10 transition-all duration-300 bg-mirage-50 overflow-hidden relative px-10 py-4 hover:bg-turquoise-60 hover:text-white;
+  @apply inline-block font-medium text-base text-center rounded-full text-white cursor-pointer transition-all duration-300 bg-mirage-50 overflow-hidden relative px-10 py-4 hover:bg-turquoise-60 hover:text-white;
   border-top-right-radius: 0px;
 }
 
@@ -104,7 +104,7 @@ a, button {
 /* ============ navbar =========== */
 
 .navbar-area {
-  @apply fixed top-0 left-0 w-full z-10 transition-all duration-300;
+  @apply fixed top-0 left-0 w-full z-50 transition-all duration-300;
 }
 .sticky {
   @apply fixed bg-white shadow-md;

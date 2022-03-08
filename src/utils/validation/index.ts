@@ -1,4 +1,5 @@
 import register from './schema/register'
+import admin from './schema/admin'
 
 export const returnSchema = (
   schema: string,
@@ -8,6 +9,8 @@ export const returnSchema = (
   switch (schema) {
     case 'register':
       return register(value, otherValue)
+    case 'admin':
+      return admin(value, otherValue)
     default:
       return null
   }

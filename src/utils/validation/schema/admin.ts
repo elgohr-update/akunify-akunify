@@ -1,7 +1,10 @@
 import minMax from '../rules/minMax'
 import pattern from '../rules/patterns'
 
-const admin = (value: string): Record<string, unknown> => ({
+const admin = (
+  value: string,
+  otherValue?: string
+): Record<string, unknown> => ({
   service_id: {
     rules: [
       {

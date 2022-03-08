@@ -303,6 +303,21 @@ a, button {
   @apply delay-400;
 }
 
+/* =========== form input ============= */
+.input-form-default {
+  @apply py-4 px-3 border block w-full rounded border-gray-70  focus:ring-turquoise-60 focus:border-turquoise-60
+}
+.input-form-error {
+  @apply py-4 px-3 border block w-full rounded border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 text-flamengo-50
+}
+
+.input-form-sm-default {
+  @apply py-2 px-2 disabled:cursor-not-allowed border block w-full rounded border-gray-70  focus:ring-turquoise-60 focus:border-turquoise-60
+}
+.input-form-sm-error {
+  @apply py-2 px-2 disabled:cursor-not-allowed border block w-full rounded border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 text-flamengo-50
+}
+
 /* =========== pricing ============= */
 .pricing_menu .active {
   @apply bg-turquoise-50 text-white;

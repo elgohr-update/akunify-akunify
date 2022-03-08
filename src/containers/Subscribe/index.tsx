@@ -287,7 +287,8 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                 htmlFor="first-name"
                 className="block text-sm font-medium text-gray-70"
               >
-                Nomor Whatsapp (Pastikan nomor sudah benar dan aktif)
+                Nomor Whatsapp (Pastikan nomor sudah benar dan aktif){' '}
+                <span className="text-flamengo-60">*</span>
               </label>
               <div className="mt-1 flex">
                 <span
@@ -374,7 +375,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                       htmlFor="first-name"
                       className="block text-sm font-medium text-gray-70"
                     >
-                      Email
+                      Email <span className="text-flamengo-60">*</span>
                     </label>
                     <div className="mt-1">
                       <input
@@ -413,7 +414,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                     htmlFor="first-name"
                     className="block text-sm font-medium text-gray-70"
                   >
-                    Full name
+                    Full name <span className="text-flamengo-60">*</span>
                   </label>
                   <div className="mt-1">
                     <input

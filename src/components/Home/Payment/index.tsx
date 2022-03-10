@@ -30,7 +30,7 @@ const Payment: React.FC<IPaymentProps> = ({ data = [] }) => {
               >
                 <Image
                   src={getImageUrl(item.attributes.image, 'thumbnail')}
-                  alt={item.title}
+                  alt={item.attributes.name}
                 />
               </div>
             ))}

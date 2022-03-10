@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
 
-import { useService } from 'hooks/index'
+import { getListServices } from 'services/service'
 
 import { validation } from 'utils/index'
 
@@ -9,6 +9,7 @@ interface ISearchMember {
   handleSubmit: (data: any) => void
   showRadio: boolean
   onChangeStatus: (status: any) => void
+  status: string
 }
 
 interface IFormState {
@@ -24,8 +25,9 @@ const SearchMember: React.FC<ISearchMember> = ({
   handleSubmit,
   onChangeStatus,
   showRadio,
+  status,
 }) => {
-  const { services }: any = useService()
+  const [services, setServices] = useState<any[]>([])
   const [formState, setFormState] = useState<IFormState>({
     phone_number: '',
     service_id: '',
@@ -34,6 +36,19 @@ const SearchMember: React.FC<ISearchMember> = ({
     phone_number: '',
     service_id: '',
   })
+
+  useEffect(() => {
+    getServicesList()
+  }, [])
+
+  const getServicesList = async () => {
+    try {
+      const response = await getListServices({ with_image: false })
+      setServices(response)
+    } catch (error) {
+      throw error
+    }
+  }
 
   const checkIsValidInput = (): boolean => {
     const phone_number = validation(
@@ -138,8 +153,8 @@ const SearchMember: React.FC<ISearchMember> = ({
             value={formState.service_id}
           >
             <option value="">Pilih layanan</option>
-            {services?.data?.length > 0 &&
-              services.data.map((service: any, i: number) => (
+            {services?.length > 0 &&
+              services.map((service: any, i: number) => (
                 <option value={String(service.id)} key={`opt-serv-${i}`}>
                   {service?.attributes?.name}
                 </option>
@@ -152,17 +167,19 @@ const SearchMember: React.FC<ISearchMember> = ({
           )}
         </div>
       </div>
-      <div className="sm:col-span-6">
-        <button
-          type="button"
-          className=" bg-mirage-10 py-1 font-light px-3 text-white rounded-sm justify-between mt-0 disabled:bg-mirage-20 disabled:cursor-not-allowed"
-          onClick={() => handleSubmitSearch()}
-        >
-          <div className="flex flex-wrap justify-center items-center">
-            <SearchIcon className="h-5 w-5 text-white mr-2" /> Cari
-          </div>
-        </button>
-      </div>
+      {status === 'idle' && (
+        <div className="sm:col-span-6">
+          <button
+            type="button"
+            className=" bg-white py-1 font-light px-3 text-turquoise-60 border border-turquoise-60 rounded-sm justify-between mt-0 disabled:cursor-not-allowed"
+            onClick={() => handleSubmitSearch()}
+          >
+            <div className="flex flex-wrap justify-center items-center">
+              <SearchIcon className="h-5 w-5 text-turquoise-60 mr-2" /> Cari
+            </div>
+          </button>
+        </div>
+      )}
 
       {showRadio && (
         <div className="flex flex-wrap justify-center">

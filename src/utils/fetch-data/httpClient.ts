@@ -26,7 +26,7 @@ const successResponse = (config: any, token: string): Promise<any> => {
     ...config,
     headers: {
       ...config.headers,
-      ...(isAuth && { Authorization: `Bearer ${token}` }),
+      ...(isAuth && { Authorization: `${token}` }),
     },
   })
 }

@@ -62,6 +62,19 @@ const AdminContainer: React.FC = () => {
     setStatus(status)
   }
 
+  const resetConfirmation = (): void => {
+    setStatus('idle')
+  }
+
+  const showNotification = (message: string, type: string) => {
+    setNotification({
+      show: true,
+      type: type === 'error' ? 'error' : 'success',
+      title: type === 'error' ? 'Oops!' : 'Success!',
+      message: message,
+    })
+  }
+
   return (
     <section className="max-w-3xl my-12 m-auto pt-20">
       <div className="md:p-8 sm:p-6 xs:p-4">
@@ -76,9 +89,18 @@ const AdminContainer: React.FC = () => {
             onChangeStatus={(status: keyof typeof Status) =>
               handleChangeStatus(status)
             }
+            status={status}
           />
 
-          {status === 'subscribe' && <NewSubscribtion member={member} />}
+          {status === 'subscribe' && (
+            <NewSubscribtion
+              member={member}
+              handleReset={() => resetConfirmation()}
+              showNotificationModal={(msg: string, type: string) =>
+                showNotification(msg, type)
+              }
+            />
+          )}
           {status === 'renew' && <RenewSubscribtion />}
           {status === 'unsubscribe' && <Unsubscribe />}
         </div>

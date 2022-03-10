@@ -75,10 +75,8 @@ const SearchMember: React.FC<ISearchMember> = ({
 
   const handleSubmitSearch = (): void => {
     const isValid = checkIsValidInput()
-
     if (isValid) {
       handleSubmit(formState)
-    } else {
     }
   }
 

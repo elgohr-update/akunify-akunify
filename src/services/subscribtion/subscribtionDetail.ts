@@ -11,7 +11,7 @@ const subscribtionDetail = async ({
 }: IRegisterMember): Promise<boolean> => {
   try {
     const response: any = await fetchData({
-      url: `/member-subscriptions?populate=service,member&filters[is_unsubscribe][$eq]=false&filters[member][phone_number][$eq]=${phone_number}&filters[service][id][$eq]=${service_id}&sort=id:desc&pagination[pageSize]=1`,
+      url: `/member-subscriptions?populate=service,member,group&filters[is_unsubscribe][$eq]=false&filters[member][phone_number][$eq]=${phone_number}&filters[service][id][$eq]=${service_id}&sort=id:desc&pagination[pageSize]=1`,
       method: 'GET',
     })
 

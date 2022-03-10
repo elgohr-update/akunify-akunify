@@ -161,6 +161,25 @@ const RenewSubscribtion: React.FC<IRenewSubscribe> = ({
       </div>
       <div className="sm:col-span-6">
         <label
+          htmlFor="subscribtion_id"
+          className="block text-md font-semibold text-gray-70"
+        >
+          Group
+        </label>
+        <div className="mt-1">
+          <input
+            type="text"
+            name="group"
+            id="group"
+            autoComplete="given-name"
+            className="input-form-sm-default"
+            value={member?.attributes?.group?.data?.attributes?.name || ''}
+            disabled
+          />
+        </div>
+      </div>
+      <div className="sm:col-span-6">
+        <label
           htmlFor="start_date"
           className="block text-md font-semibold text-gray-70"
         >

@@ -7,7 +7,7 @@ interface IParams {
 const getListGroup = async ({ service_id }: IParams): Promise<any> => {
   try {
     const response: any = await fetchData({
-      url: `/groups?populate=service,member_subscriptions.member&filters[service][id][$eq]=1&filters[member_subscriptions][is_active][$eq]=true`,
+      url: `/groups?populate=service,member_subscriptions.member&filters[service][id][$eq]=${service_id}&filters[member_subscriptions][is_active][$eq]=true`,
       method: 'GET',
     })
     const { data = [] } = response.data

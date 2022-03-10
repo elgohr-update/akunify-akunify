@@ -25,6 +25,7 @@ export const getServerSideProps = async (ctx: NextPageContext) => {
   const { query } = ctx
 
   const detail: any = await getServiceDetail({
+    with_image: true,
     service_id: Number(query.service_id),
     short_url: String(query.short_url),
   })

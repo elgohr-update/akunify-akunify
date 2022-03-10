@@ -182,38 +182,41 @@ const SearchMember: React.FC<ISearchMember> = ({
       )}
 
       {showRadio && (
-        <div className="flex flex-wrap justify-center">
-          <div className="align-middle mr-6">
-            <input
-              className="h-4 w-4 border-gray-40 transition duration-200 mr-2"
-              type="radio"
-              name="type"
-              id="renewal"
-              value="renew"
-              onChange={() => onChangeStatus('renew')}
-            />
-            <label
-              className="inline-block text-gray-70 font-medium"
-              htmlFor="renewal"
-            >
-              Renewal
-            </label>
-          </div>
-          <div className="align-middle">
-            <input
-              className="h-4 w-4 border-gray-40 transition duration-200 mr-2 pt-1"
-              type="radio"
-              name="type"
-              id="usubscribe"
-              value="usubscribe"
-              onChange={() => onChangeStatus('usubscribe')}
-            />
-            <label
-              className="inline-block text-gray-70 font-medium pb-3"
-              htmlFor="usubscribe"
-            >
-              Unsubscribe
-            </label>
+        <div className="sm:col-span-6">
+          <div className="flex flex-wrap justify-center">
+            <div className="align-middle mr-6">
+              <input
+                className="h-4 w-4 border-gray-40 transition duration-200 mr-2"
+                type="radio"
+                name="type"
+                id="renewal"
+                value="renew"
+                onChange={() => onChangeStatus('renew')}
+                defaultChecked
+              />
+              <label
+                className="inline-block text-gray-70 font-medium"
+                htmlFor="renewal"
+              >
+                Renewal
+              </label>
+            </div>
+            <div className="align-middle">
+              <input
+                className="h-4 w-4 border-gray-40 transition duration-200 mr-2 pt-1"
+                type="radio"
+                name="type"
+                id="unsubscribe"
+                value="unsubscribe"
+                onChange={() => onChangeStatus('unsubscribe')}
+              />
+              <label
+                className="inline-block text-gray-70 font-medium pb-3"
+                htmlFor="unsubscribe"
+              >
+                Unsubscribe
+              </label>
+            </div>
           </div>
         </div>
       )}

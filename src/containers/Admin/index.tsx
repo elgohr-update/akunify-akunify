@@ -64,6 +64,7 @@ const AdminContainer: React.FC = () => {
 
   const resetConfirmation = (): void => {
     setStatus('idle')
+    setMember({})
   }
 
   const showNotification = (message: string, type: string) => {
@@ -101,8 +102,24 @@ const AdminContainer: React.FC = () => {
               }
             />
           )}
-          {status === 'renew' && <RenewSubscribtion />}
-          {status === 'unsubscribe' && <Unsubscribe />}
+          {status === 'renew' && (
+            <RenewSubscribtion
+              member={member}
+              handleReset={() => resetConfirmation()}
+              showNotificationModal={(msg: string, type: string) =>
+                showNotification(msg, type)
+              }
+            />
+          )}
+          {status === 'unsubscribe' && (
+            <Unsubscribe
+              member={member}
+              handleReset={() => resetConfirmation()}
+              showNotificationModal={(msg: string, type: string) =>
+                showNotification(msg, type)
+              }
+            />
+          )}
         </div>
       </div>
 

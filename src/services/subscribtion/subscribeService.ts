@@ -1,8 +1,8 @@
 import { fetchData } from 'utils/fetch-data'
 
 interface IRegisterMember {
-  member_id: number
-  service_id: number
+  member: number
+  service: number
 }
 
 const subscribeService = async (body: IRegisterMember): Promise<boolean> => {

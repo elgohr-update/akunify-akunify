@@ -95,6 +95,8 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     }))
   }, [service?.id])
 
+  console.log('service', service)
+
   useEffect(() => {
     const isNotValid = checkIsValidInput()
     if (userDetail.member_id > 0 && userDetail.is_agreed) {
@@ -225,8 +227,8 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
   const submitService = async (memberId: number, serviceId: number) => {
     try {
       const response: any = await subscribeService({
-        member_id: memberId,
-        service_id: serviceId,
+        member: memberId,
+        service: serviceId,
       })
 
       if (response.status === 200) {
@@ -243,7 +245,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
         //redirect to thanks page
         const timer = setTimeout(
-          () => router.push('/register/thankyou'),
+          () => router.push('/subscribe/thankyou'),
           3 * 1000
         )
         return () => {

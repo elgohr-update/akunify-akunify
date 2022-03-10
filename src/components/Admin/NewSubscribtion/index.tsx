@@ -117,7 +117,7 @@ const NewSubscribtion: React.FC<INewSubscribe> = ({
 
         await fetchData({
           url: `/member-subscriptions/${formData.member_subscription}`,
-          method: 'POST',
+          method: 'PUT',
           data: {
             data: {
               start_date: formData.start_date,

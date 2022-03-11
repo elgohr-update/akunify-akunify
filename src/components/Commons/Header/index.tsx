@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const Header: React.FC = () => {
+  const router = useRouter()
   const [activeMenu, setActiveMenu] = useState<string>('home')
 
   const handleSetActiveMenu = (menu: 'home' | 'services' | 'faqs'): void => {
@@ -57,28 +59,33 @@ const Header: React.FC = () => {
                         Home
                       </a>
                     </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a
-                        className={`page-scroll ${
-                          activeMenu === 'services' ? 'active' : ''
-                        }`}
-                        href="#services"
-                        onClick={() => handleSetActiveMenu('services')}
-                      >
-                        Services
-                      </a>
-                    </li>
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a
-                        className={`page-scroll ${
-                          activeMenu === 'faqs' ? 'active' : ''
-                        }`}
-                        href="#faqs"
-                        onClick={() => handleSetActiveMenu('faqs')}
-                      >
-                        FAQ
-                      </a>
-                    </li>
+
+                    {router.pathname === '/' && (
+                      <>
+                        <li className="nav-item ml-5 lg:ml-11">
+                          <a
+                            className={`page-scroll ${
+                              activeMenu === 'services' ? 'active' : ''
+                            }`}
+                            href="#services"
+                            onClick={() => handleSetActiveMenu('services')}
+                          >
+                            Services
+                          </a>
+                        </li>
+                        <li className="nav-item ml-5 lg:ml-11">
+                          <a
+                            className={`page-scroll ${
+                              activeMenu === 'faqs' ? 'active' : ''
+                            }`}
+                            href="#faqs"
+                            onClick={() => handleSetActiveMenu('faqs')}
+                          >
+                            FAQ
+                          </a>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </div>
               </nav>

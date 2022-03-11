@@ -13,6 +13,7 @@ import {
   getUserDetail,
   getInitialName,
   isUserAvailable,
+  currencyFormater,
 } from 'utils/index'
 
 // Services
@@ -22,6 +23,9 @@ import {
   registerMember,
   subscribeService,
 } from 'services/subscribtion'
+
+// Constant
+import watemplate from 'constants/watemplate'
 
 const defaultClass = `py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded`
 const errorClass = `py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded`
@@ -94,8 +98,6 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
       service_id: service?.id || 0,
     }))
   }, [service?.id])
-
-  console.log('service', service)
 
   useEffect(() => {
     const isNotValid = checkIsValidInput()
@@ -261,8 +263,12 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     }
   }
 
-  const sendWaNotification = (): void => {
-    sendWaMessage(`0${userDetail.phone_number}`, 'halo cok bisa gak nih cok')
+  const sendWaNotification = async (): Promise<any> => {
+    const message = watemplate.pendingPayment
+      .replace('{member_name}', userDetail.name)
+      .replace('{payment_amount}', currencyFormater(service.attributes.price))
+
+    await sendWaMessage(`0${userDetail.phone_number}`, message)
   }
 
   return (

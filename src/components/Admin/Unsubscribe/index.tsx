@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react'
 
 import { fetchData } from 'utils/fetch-data'
 
+import { sendWaMessage } from 'services/external/whatsapp'
+
+// Constant
+import watemplate from 'constants/watemplate'
+
 interface IRenewSubscribe {
   member: any
   handleReset: () => void
   showNotificationModal: (msg: string, type: string) => void
+  phone: string
 }
 
 interface IFormUnsubscribe {
@@ -21,6 +27,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
   member,
   handleReset,
   showNotificationModal,
+  phone,
 }) => {
   const [formData, setFormData] = useState<IFormUnsubscribe>({
     amount: 0,
@@ -78,7 +85,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
           token: process.env.BEARER_TOKEN,
         },
       })
-
+      sendWaNotification()
       showNotificationModal(
         'Nah mantab sukses nih pak! balik kerja lagi sana',
         'success'
@@ -87,6 +94,17 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
     } catch (error) {
       showNotificationModal('Waduh coba lagi pak kayanya ada yg salah', 'error')
     }
+  }
+
+  const sendWaNotification = async (): Promise<any> => {
+    const message = watemplate.unsubscribe
+      .replace(
+        '{member_name}',
+        member?.attributes?.member?.data?.attributes?.name_alias
+      )
+      .replace('{service_name}', member?.attributes?.data?.attributes?.name)
+
+    await sendWaMessage(phone, message)
   }
 
   return (

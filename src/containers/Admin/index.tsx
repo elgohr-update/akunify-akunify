@@ -33,6 +33,7 @@ const AdminContainer: React.FC = () => {
   })
   const [member, setMember] = useState<any>({})
   const [status, setStatus] = useState<keyof typeof Status>('idle')
+  const [phone, setPhone] = useState<string>('')
 
   const closeNotification = (): void => {
     setNotification({ show: false, type: 'success', title: '', message: '' })
@@ -43,6 +44,7 @@ const AdminContainer: React.FC = () => {
       const response: any = await subscribtionDetail(data)
       const member = response?.data?.data
       if (member.length) {
+        setPhone(data.phone_number)
         setMember(member[0])
         setStatus(member[0]?.attributes?.is_active ? 'renew' : 'subscribe')
       } else {
@@ -100,6 +102,7 @@ const AdminContainer: React.FC = () => {
               showNotificationModal={(msg: string, type: string) =>
                 showNotification(msg, type)
               }
+              phone={phone}
             />
           )}
           {status === 'renew' && (
@@ -109,6 +112,7 @@ const AdminContainer: React.FC = () => {
               showNotificationModal={(msg: string, type: string) =>
                 showNotification(msg, type)
               }
+              phone={phone}
             />
           )}
           {status === 'unsubscribe' && (
@@ -118,6 +122,7 @@ const AdminContainer: React.FC = () => {
               showNotificationModal={(msg: string, type: string) =>
                 showNotification(msg, type)
               }
+              phone={phone}
             />
           )}
         </div>

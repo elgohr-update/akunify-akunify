@@ -5,8 +5,11 @@ import { getBaseAPI, getHeaders } from './methods'
 
 interface IAuthParams {
   token?: string
-  username?: string
-  password?: string
+}
+
+interface IBasicAuth {
+  username: string
+  password: string
 }
 
 interface FetchDataProps {
@@ -14,6 +17,7 @@ interface FetchDataProps {
   url: string
   method?: Method
   auth?: IAuthParams
+  basicAuth?: IBasicAuth
   data?: any
   headers?: Record<string, unknown>
   contentType?: string
@@ -26,6 +30,7 @@ export const fetchData = async ({
   url,
   method = 'GET',
   auth = {},
+  basicAuth = { username: '', password: '' },
   data,
   headers = {},
   contentType = 'application/json',
@@ -33,6 +38,7 @@ export const fetchData = async ({
   writeCookie = false,
 }: FetchDataProps) => {
   try {
+    const isBasicAuth = basicAuth?.username !== '' && basicAuth?.password !== ''
     const response = await httpClient({
       baseURL: apiHost,
       url: url,
@@ -48,6 +54,12 @@ export const fetchData = async ({
           writeCookie,
         }),
       },
+      ...(isBasicAuth && {
+        auth: {
+          username: basicAuth?.username,
+          password: basicAuth?.password,
+        },
+      }),
     })
     return response
   } catch (error) {

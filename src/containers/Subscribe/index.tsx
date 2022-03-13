@@ -248,7 +248,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
         //redirect to thanks page
         const timer = setTimeout(
           () => router.push('/subscribe/thankyou'),
-          3 * 1000
+          2 * 1000
         )
         return () => {
           clearTimeout(timer)
@@ -265,7 +265,8 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
   const sendWaNotification = async (): Promise<any> => {
     const message = watemplate.pendingPayment
-      .replace('{member_name}', userDetail.name)
+      .replace('{member_name}', userDetail.name || userDetail.name_alias)
+      .replace('{service_name} ', currencyFormater(service.attributes.name))
       .replace('{payment_amount}', currencyFormater(service.attributes.price))
 
     await sendWaMessage(`0${userDetail.phone_number}`, message)

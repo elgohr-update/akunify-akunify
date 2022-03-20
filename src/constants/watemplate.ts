@@ -1,29 +1,7 @@
 const watemplate = {
-  successPayment: `Halo kak {member_name},
-    Terimakasih atas pembayarannya yang telah dilakukan.
-    Layanan {service_name} kamu akan aktif hingga tanggal *{active_date}*`,
-  pendingPayment: `Halo kak {member_name},
-    Terimakasih telah berlangganan akunify.com.
-    Segera lakukan pembayaran untuk menikmati layanan {service_name} kamu dengan detail sebagai berikut :
-    Nominal Pembayaran : *_{payment_amount}_*
-    *_Bank Jago_*
-    No.Rek : 105459400976
-    a.n. Angga Setia Pradana
-    *_BCA_*
-    No.Rek : 5710070077
-    a.n. Angga Setia Pradana
-    *_BTPN / Jenius_*
-    No.Rek : 90011179560
-    a.n. Angga Setia Pradana
-    *_BRI_*
-    No.Rek : XXXXXXXXX
-    a.n. Angga Setia Pradana
-    Setelah melakukan pembayaran, Silahkan lakukan konfirmasi dengan cara mengirimkan bukti transfer. Masa berlangganan akan aktif setelah proses pembayaran disetujui, dan akan berakhir dalam waktu 1 bulan.
-    Terimakasih`,
-  unsubscribe: `Halo kak {member_name},
-    Mohon maaf, layanan [Nama service] kamu telah dihentikan, dan kamu telah dikeluarkan dari grup.
-    Silahkan lakukan pendaftaran kembali di halaman https://akunify.com jika ingin tetap menikmati layanan {service_name} kamu
-    Terimakasih`,
+  successPayment: `Halo kak {member_name},\n\nTerimakasih atas pembayarannya yang telah dilakukan.\nLayanan {service_name} kamu akan aktif hingga tanggal *{active_date}*`,
+  pendingPayment: `Halo kak {member_name},\n\nTerimakasih telah berlangganan akunify.com.\nSegera lakukan pembayaran untuk menikmati layanan {service_name} kamu dengan detail sebagai berikut :\nNominal Pembayaran : *_{payment_amount}_*\n\n*_Bank Jago_*\nNo.Rek : 105459400976\na.n. Angga Setia Pradana\n\n*_BCA_*\nNo.Rek : 5710070077\na.n. Angga Setia Pradana\n\n*_BTPN / Jenius_*\nNo.Rek : 90011179560\na.n. Angga Setia Pradana\n\n*_BRI_*\nNo.Rek : XXXXXXXXX\na.n. Angga Setia Pradana\n\nSetelah melakukan pembayaran, Silahkan lakukan konfirmasi dengan cara mengirimkan bukti transfer. Masa berlangganan akan aktif setelah proses pembayaran disetujui, dan akan berakhir dalam waktu 1 bulan.\n\nTerimakasih`,
+  unsubscribe: `Halo kak {member_name},\n\nMohon maaf, layanan {service_name} kamu telah dihentikan, dan kamu telah dikeluarkan dari grup.\nSilahkan lakukan pendaftaran kembali di halaman https://akunify.com jika ingin tetap menikmati layanan {service_name} kamu\n\nTerimakasih`,
 }
 
 export default watemplate

@@ -15,6 +15,7 @@ import {
   isUserAvailable,
   currencyFormater,
 } from 'utils/index'
+import { encryptData, decryptData } from 'utils/encrypt'
 
 // Services
 import { sendWaMessage } from 'services/external/whatsapp'
@@ -59,6 +60,7 @@ interface IUserDetail {
   email: string
   phone_number: string
   is_agreed: boolean
+  encrypted_id: string
 }
 
 const initialUserDetail = {
@@ -71,6 +73,7 @@ const initialUserDetail = {
   email: '',
   phone_number: '',
   is_agreed: false,
+  encrypted_id: '',
 }
 
 const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
@@ -145,6 +148,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
       email: '',
       name_alias: '',
       is_agreed: false,
+      encrypted_id: '',
     }))
   }
 
@@ -153,7 +157,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
       show: true,
       type: 'error',
       title: 'Oops!',
-      message: 'Subscribeasi layanan gagal, silahkan coba lagi nanti!',
+      message: 'Subscribe layanan gagal, silahkan coba lagi nanti!',
     })
   }
 
@@ -164,6 +168,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     }))
     try {
       const response: any = await checkMember(userDetail.phone_number)
+      // console.log('reponse', decryptData(response[0]?.attributes?.encrypted_id))
 
       const isAvailable = isUserAvailable(response, service?.id)
       const userData: any = getUserDetail(response)
@@ -175,6 +180,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
           ...prevState,
           member_id: userData.member_id,
           name_alias: userData.name_alias,
+          encrypted_id: userData.encrypted_id,
           is_available: isAvailable,
         }))
       } else {
@@ -202,6 +208,16 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
   const handleSubmitSubscribe = async () => {
     setLoading(true)
+
+    // const detailUser = {
+    //   name: userDetail.name,
+    //   email: userDetail.email,
+    //   phone_number: userDetail.phone_number
+    // }
+
+    // const encryptedId = encryptData(detailUser)
+    // console.log('encryptedId', encryptedId)
+
     try {
       if (userDetail.member_id > 0) {
         await submitService(userDetail.member_id, userDetail.service_id)
@@ -211,6 +227,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
           name_alias: userDetail.name_alias,
           email: userDetail.email,
           phone_number: `0${userDetail.phone_number}`,
+          encrypted_id: userDetail.encrypted_id || '',
         })
 
         if (memberResponse.status === 200) {
@@ -239,10 +256,11 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
           type: 'success',
           title: 'Success!',
           message:
-            'Subscribeasi layanan berhasil, silahkan cek pesan Whatsapp anda!',
+            'Subscribe layanan berhasil, silahkan cek pesan Whatsapp anda!',
         })
+        await sendWaNotification()
+
         setLoading(false)
-        sendWaNotification()
         clearAttributes()
 
         //redirect to thanks page

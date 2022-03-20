@@ -143,8 +143,12 @@ const NewSubscribtion: React.FC<INewSubscribe> = ({
         )
         handleReset()
       }
-    } catch (error) {
-      showNotificationModal('Waduh coba lagi pak kayanya ada yg salah', 'error')
+    } catch (error: any) {
+      const errorCode = error?.response?.status || '200'
+      showNotificationModal(
+        `Waduh coba lagi pak kayanya ada yg salah, error code: ${errorCode}`,
+        'error'
+      )
     }
   }
 
@@ -154,7 +158,10 @@ const NewSubscribtion: React.FC<INewSubscribe> = ({
         '{member_name}',
         member?.attributes?.member?.data?.attributes?.name_alias
       )
-      .replace('{service_name}', member?.attributes?.data?.attributes?.name)
+      .replace(
+        '{service_name}',
+        member?.attributes?.service?.data?.attributes?.name
+      )
       .replace('{active_date}', formData.end_date)
 
     await sendWaMessage(phone, message)

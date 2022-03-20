@@ -54,7 +54,7 @@ const RenewSubscribtion: React.FC<IRenewSubscribe> = ({
       member_subscription: member.id,
       transaction_date: '',
       transaction_type: 'renew',
-      start_date: '',
+      start_date: member?.attributes?.end_date,
       end_date: '',
     })
   }, [member.id])
@@ -118,8 +118,12 @@ const RenewSubscribtion: React.FC<IRenewSubscribe> = ({
         )
         handleReset()
       }
-    } catch (error) {
-      showNotificationModal('Waduh coba lagi pak kayanya ada yg salah', 'error')
+    } catch (error: any) {
+      const errorCode = error?.response?.status || '200'
+      showNotificationModal(
+        `Waduh coba lagi pak kayanya ada yg salah, error code: ${errorCode}`,
+        'error'
+      )
     }
   }
 
@@ -129,7 +133,10 @@ const RenewSubscribtion: React.FC<IRenewSubscribe> = ({
         '{member_name}',
         member?.attributes?.member?.data?.attributes?.name_alias
       )
-      .replace('{service_name}', member?.attributes?.data?.attributes?.name)
+      .replace(
+        '{service_name}',
+        member?.attributes?.service?.data?.attributes?.name
+      )
       .replace('{active_date}', formData.end_date)
 
     await sendWaMessage(phone, message)

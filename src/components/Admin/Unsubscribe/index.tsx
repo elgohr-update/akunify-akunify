@@ -54,7 +54,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
     return today.toISOString()
   }
 
-  const handleSubmitSubscribtion = async () => {
+  const handleSubmitUnSubscribtion = async () => {
     try {
       await fetchData({
         url: `/transactions`,
@@ -91,8 +91,12 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
         'success'
       )
       handleReset()
-    } catch (error) {
-      showNotificationModal('Waduh coba lagi pak kayanya ada yg salah', 'error')
+    } catch (error: any) {
+      const errorCode = error?.response?.status || '200'
+      showNotificationModal(
+        `Waduh coba lagi pak kayanya ada yg salah, error code: ${errorCode}`,
+        'error'
+      )
     }
   }
 
@@ -102,7 +106,10 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
         '{member_name}',
         member?.attributes?.member?.data?.attributes?.name_alias
       )
-      .replace('{service_name}', member?.attributes?.data?.attributes?.name)
+      .replace(
+        '{service_name}',
+        member?.attributes?.service?.data?.attributes?.name
+      )
 
     await sendWaMessage(phone, message)
   }
@@ -115,7 +122,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
             id="submit-confirm"
             type="button"
             className="rounded text-white bg-turquoise-60 p-2 mx-1"
-            onClick={() => handleSubmitSubscribtion()}
+            onClick={() => handleSubmitUnSubscribtion()}
           >
             Submit
           </button>

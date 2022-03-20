@@ -5,6 +5,7 @@ interface IRegisterMember {
   name_alias: string
   email: string
   phone_number: string
+  encrypted_id: string
 }
 
 const registerMember = async (body: IRegisterMember): Promise<boolean> => {

@@ -16,7 +16,7 @@ const Payment: React.FC<IPaymentProps> = ({ data = [] }) => {
         <div className="row justify-center">
           <div className="w-ull lg:w-1/2">
             <div className="section_title text-center pb-8">
-              <h5 className="sub_title">Metode Pembayaran</h5>
+              {/* <h5 className="sub_title">Metode Pembayaran</h5> */}
               <h4 className="main_title">Metode Pembayaran Akunify</h4>
             </div>
           </div>

@@ -30,7 +30,7 @@ const Faq: React.FC = () => {
         <div className="row justify-center">
           <div className="w-ull lg:w-1/2">
             <div className="section_title text-center pb-6">
-              <h5 className="sub_title">Frequently Asked Questions (FAQ)</h5>
+              {/* <h5 className="sub_title">Frequently Asked Questions (FAQ)</h5> */}
               <h4 className="main_title">Pertanyaan Tentang Akunify</h4>
             </div>
           </div>

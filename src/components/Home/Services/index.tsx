@@ -21,8 +21,8 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
           <div className="row justify-center">
             <div className="w-ull lg:w-1/2">
               <div className="section_title text-center pb-6">
-                <h5 className="sub_title">Layanan Akunify</h5>
-                <h4 className="main_title">Subscribtion Account</h4>
+                {/* <h5 className="sub_title">Layanan Akunify</h5> */}
+                <h4 className="main_title">Layanan</h4>
               </div>
             </div>
           </div>

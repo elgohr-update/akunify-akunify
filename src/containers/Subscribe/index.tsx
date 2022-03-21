@@ -295,7 +295,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
   return (
     <section className="max-w-3xl my-12 m-auto">
-      <div className="p-8">
+      <div className="p-8 md:mt-110 sm:mt-23 xs:mt-22">
         <div className="section_title pb-9">
           <h1 className="main_title mb-4">Daftar layanan Akunify</h1>
           <h5 className="sub_title border-b">

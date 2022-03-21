@@ -48,20 +48,26 @@ const Header: React.FC = () => {
                     id="nav"
                     className="items-center content-start mr-auto lg:justify-end navbar-nav lg:flex"
                   >
-                    <li className="nav-item ml-5 lg:ml-11">
-                      <a
-                        className={`page-scroll ${
-                          activeMenu === 'home' ? 'active' : ''
-                        }`}
-                        href="#home"
-                        onClick={() => handleSetActiveMenu('home')}
-                      >
-                        Home
-                      </a>
-                    </li>
-
+                    {router.pathname !== '/' && (
+                      <li className="nav-item ml-5 lg:ml-11">
+                        <Link href={`/`}>
+                          <a className={`page-scroll`}>Home</a>
+                        </Link>
+                      </li>
+                    )}
                     {router.pathname === '/' && (
                       <>
+                        <li className="nav-item ml-5 lg:ml-11">
+                          <a
+                            className={`page-scroll ${
+                              activeMenu === 'home' ? 'active' : ''
+                            }`}
+                            href="#home"
+                            onClick={() => handleSetActiveMenu('home')}
+                          >
+                            Home
+                          </a>
+                        </li>
                         <li className="nav-item ml-5 lg:ml-11">
                           <a
                             className={`page-scroll ${

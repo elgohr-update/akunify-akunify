@@ -1,4 +1,5 @@
 export { default as isEmpty } from './isEmpty'
+export { default as formatedDate } from './formatedDate'
 export { default as checkHasEmptyValue } from './checkHasEmptyValue'
 export { default as isUserAvailable } from './user/isUserAvailable'
 export { default as getUserDetail } from './user/getUserDetail'

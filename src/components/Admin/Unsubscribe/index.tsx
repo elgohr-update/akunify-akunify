@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { fetchData } from 'utils/fetch-data'
-
 import { sendWaMessage } from 'services/external/whatsapp'
+
+import { fetchData } from 'utils/fetch-data'
+import { decryptData } from 'utils/encrypt'
 
 // Constant
 import watemplate from 'constants/watemplate'
@@ -101,11 +102,11 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
   }
 
   const sendWaNotification = async (): Promise<any> => {
+    const userData = decryptData(
+      member?.attributes?.member?.data?.attributes?.encrypted_id
+    )
     const message = watemplate.unsubscribe
-      .replace(
-        '{member_name}',
-        member?.attributes?.member?.data?.attributes?.name_alias
-      )
+      .replace('{member_name}', userData?.name)
       .replace(
         '{service_name}',
         member?.attributes?.service?.data?.attributes?.name

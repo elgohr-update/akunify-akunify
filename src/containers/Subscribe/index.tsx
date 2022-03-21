@@ -168,13 +168,13 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     }))
     try {
       const response: any = await checkMember(userDetail.phone_number)
-      // console.log('reponse', decryptData(response[0]?.attributes?.encrypted_id))
 
       const isAvailable = isUserAvailable(response, service?.id)
       const userData: any = getUserDetail(response)
 
       // check user status
       if (!isEmpty(userData)) {
+        console.log('decrupt', decryptData(userData.encrypted_id))
         // if member already registered
         setUserDetail((prevState) => ({
           ...prevState,
@@ -209,14 +209,16 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
   const handleSubmitSubscribe = async () => {
     setLoading(true)
 
-    // const detailUser = {
-    //   name: userDetail.name,
-    //   email: userDetail.email,
-    //   phone_number: userDetail.phone_number
-    // }
-
-    // const encryptedId = encryptData(detailUser)
-    // console.log('encryptedId', encryptedId)
+    const detailUser = {
+      name: userDetail.name,
+      email: userDetail.email,
+      phone_number: userDetail.phone_number,
+    }
+    const encryptedId = encryptData(detailUser)
+    setUserDetail((prevState) => ({
+      ...prevState,
+      encrypted_id: encryptedId,
+    }))
 
     try {
       if (userDetail.member_id > 0) {
@@ -227,7 +229,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
           name_alias: userDetail.name_alias,
           email: userDetail.email,
           phone_number: `0${userDetail.phone_number}`,
-          encrypted_id: userDetail.encrypted_id || '',
+          encrypted_id: userDetail.encrypted_id,
         })
 
         if (memberResponse.status === 200) {
@@ -282,12 +284,14 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
   }
 
   const sendWaNotification = async (): Promise<any> => {
+    const userData = decryptData(userDetail.encrypted_id)
+
     const message = watemplate.pendingPayment
-      .replace('{member_name}', userDetail.name || userDetail.name_alias)
-      .replace('{service_name} ', currencyFormater(service.attributes.name))
+      .replace('{member_name}', userData.name)
+      .replace('{service_name} ', service.attributes.name)
       .replace('{payment_amount}', currencyFormater(service.attributes.price))
 
-    await sendWaMessage(`0${userDetail.phone_number}`, message)
+    await sendWaMessage(userData.phone_number, message)
   }
 
   return (

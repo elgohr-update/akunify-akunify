@@ -6,7 +6,8 @@ import { sendWaMessage } from 'services/external/whatsapp'
 // Constant
 import watemplate from 'constants/watemplate'
 
-import { checkHasEmptyValue } from 'utils/index'
+import { formatedDate, checkHasEmptyValue } from 'utils/index'
+import { decryptData } from 'utils/encrypt'
 import { fetchData } from 'utils/fetch-data'
 
 interface IRenewSubscribe {
@@ -128,16 +129,16 @@ const RenewSubscribtion: React.FC<IRenewSubscribe> = ({
   }
 
   const sendWaNotification = async (): Promise<any> => {
+    const userData = decryptData(
+      member?.attributes?.member?.data?.attributes?.encrypted_id
+    )
     const message = watemplate.successPayment
-      .replace(
-        '{member_name}',
-        member?.attributes?.member?.data?.attributes?.name_alias
-      )
+      .replace('{member_name}', userData?.name)
       .replace(
         '{service_name}',
         member?.attributes?.service?.data?.attributes?.name
       )
-      .replace('{active_date}', formData.end_date)
+      .replace('{active_date}', formatedDate(formData.end_date))
 
     await sendWaMessage(phone, message)
   }

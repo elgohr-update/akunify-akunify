@@ -174,7 +174,6 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
       // check user status
       if (!isEmpty(userData)) {
-        console.log('decrupt', decryptData(userData.encrypted_id))
         // if member already registered
         setUserDetail((prevState) => ({
           ...prevState,

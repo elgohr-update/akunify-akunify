@@ -211,7 +211,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     const detailUser = {
       name: userDetail.name,
       email: userDetail.email,
-      phone_number: userDetail.phone_number,
+      phone_number: `0${userDetail.phone_number}`,
     }
     const encryptedId = encryptData(detailUser)
     setUserDetail((prevState) => ({

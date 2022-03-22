@@ -17,6 +17,7 @@
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
     "axios": "^0.24.0",
+    "crypto": "^1.0.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",

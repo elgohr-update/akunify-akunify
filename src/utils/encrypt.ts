@@ -1,7 +1,8 @@
-import AES from 'crypto-js/aes'
-import Utf8 from 'crypto-js/enc-utf8'
+import crypto from 'crypto'
 
-const passphrase = process.env.PASSPHRASE_KEY || 'XdVCEV90Sw7mmzLD'
+const ALGORITHM = 'aes-256-cbc'
+const CIPHER_KEY = 'XdVCEV90Sw7mmzLDXdVCEV90Sw7mmzLD' // ini nanti di ganti pake env yak rob
+const BLOCK_SIZE = 16
 
 interface IUserDetail {
   name: string
@@ -11,14 +12,33 @@ interface IUserDetail {
 
 export const encryptData = (data: IUserDetail): any => {
   const strJson = JSON.stringify(data)
+  const iv = crypto.randomBytes(BLOCK_SIZE)
+  const cipher = crypto.createCipheriv(ALGORITHM, CIPHER_KEY, iv)
 
-  return AES.encrypt(strJson, passphrase).toString()
+  let cipherText
+  try {
+    cipherText = cipher.update(strJson, 'utf8', 'hex')
+    cipherText += cipher.final('hex')
+    cipherText = iv.toString('hex') + cipherText
+  } catch (e) {
+    cipherText = null
+  }
+
+  return cipherText
 }
 
 export const decryptData = (string: string): any => {
-  const bytes = AES.decrypt(string, passphrase)
-  const originalText = bytes.toString(Utf8)
-  const jsonData = JSON.parse(originalText)
+  const contents = Buffer.from(string, 'hex')
+  const iv = contents.slice(0, BLOCK_SIZE)
+  const textBytes = contents.slice(BLOCK_SIZE)
+
+  const decipher = crypto.createDecipheriv(ALGORITHM, CIPHER_KEY, iv)
+  // @ts-ignore
+  let decrypted = decipher.update(textBytes, 'hex', 'utf8')
+  // @ts-ignore
+  decrypted += decipher.final('utf8')
+
+  const jsonData = JSON.parse(decrypted)
 
   return jsonData
 }

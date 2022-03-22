@@ -1,6 +1,5 @@
-import crypto from 'crypto'
+import CryptoJS from 'crypto-js'
 
-const ALGORITHM = 'aes-256-cbc'
 const CIPHER_KEY = 'XdVCEV90Sw7mmzLDXdVCEV90Sw7mmzLD' // ini nanti di ganti pake env yak rob
 const BLOCK_SIZE = 16
 
@@ -10,35 +9,41 @@ interface IUserDetail {
   phone_number: string
 }
 
-export const encryptData = (data: IUserDetail): any => {
+export const encryptData = (data: IUserDetail): string => {
   const strJson = JSON.stringify(data)
-  const iv = crypto.randomBytes(BLOCK_SIZE)
-  const cipher = crypto.createCipheriv(ALGORITHM, CIPHER_KEY, iv)
+  const iv = CryptoJS.lib.WordArray.random(BLOCK_SIZE)
 
-  let cipherText
-  try {
-    cipherText = cipher.update(strJson, 'utf8', 'hex')
-    cipherText += cipher.final('hex')
-    cipherText = iv.toString('hex') + cipherText
-  } catch (e) {
-    cipherText = null
-  }
+  const encrypted = CryptoJS.AES.encrypt(
+    strJson,
+    CryptoJS.enc.Utf8.parse(CIPHER_KEY),
+    {
+      keySize: 256,
+      iv,
+    }
+  )
 
-  return cipherText
+  const cipherString = CryptoJS.enc.Hex.stringify(encrypted.ciphertext)
+  const cipher = `${iv.toString(CryptoJS.enc.Hex)}${cipherString}`
+
+  return cipher
 }
 
-export const decryptData = (string: string): any => {
-  const contents = Buffer.from(string, 'hex')
-  const iv = contents.slice(0, BLOCK_SIZE)
-  const textBytes = contents.slice(BLOCK_SIZE)
+export const decryptData = (cipher: string): IUserDetail => {
+  const iv = CryptoJS.enc.Hex.parse(cipher.slice(0, BLOCK_SIZE * 2))
+  const encrypted = CryptoJS.enc.Hex.parse(cipher.slice(BLOCK_SIZE * 2))
+  const encryptedString = CryptoJS.enc.Base64.stringify(encrypted)
 
-  const decipher = crypto.createDecipheriv(ALGORITHM, CIPHER_KEY, iv)
-  // @ts-ignore
-  let decrypted = decipher.update(textBytes, 'hex', 'utf8')
-  // @ts-ignore
-  decrypted += decipher.final('utf8')
+  const decrypted = CryptoJS.AES.decrypt(
+    encryptedString,
+    CryptoJS.enc.Utf8.parse(CIPHER_KEY),
+    {
+      keySize: 256,
+      iv,
+    }
+  )
 
-  const jsonData = JSON.parse(decrypted)
+  const plaintext = decrypted.toString(CryptoJS.enc.Utf8)
+  const jsonData = JSON.parse(plaintext)
 
   return jsonData
 }

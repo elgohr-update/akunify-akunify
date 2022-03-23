@@ -214,6 +214,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
       phone_number: `0${userDetail.phone_number}`,
     }
     const encryptedId = encryptData(detailUser)
+
     setUserDetail((prevState) => ({
       ...prevState,
       encrypted_id: encryptedId,
@@ -228,7 +229,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
           name_alias: userDetail.name_alias,
           email: userDetail.email,
           phone_number: `0${userDetail.phone_number}`,
-          encrypted_id: userDetail.encrypted_id,
+          encrypted_id: encryptedId,
         })
 
         if (memberResponse.status === 200) {

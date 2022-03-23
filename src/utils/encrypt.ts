@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js'
 
-const CIPHER_KEY = 'XdVCEV90Sw7mmzLDXdVCEV90Sw7mmzLD' // ini nanti di ganti pake env yak rob
+const CIPHER_KEY = process.env.CIPHER_KEY || ''
 const BLOCK_SIZE = 16
 
 interface IUserDetail {

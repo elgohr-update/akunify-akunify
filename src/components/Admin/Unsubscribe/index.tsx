@@ -107,7 +107,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
     )
     const message = watemplate.unsubscribe
       .replace('{member_name}', userData?.name)
-      .replace(
+      .replaceAll(
         '{service_name}',
         member?.attributes?.service?.data?.attributes?.name
       )

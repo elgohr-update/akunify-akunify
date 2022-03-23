@@ -134,11 +134,11 @@ const RenewSubscribtion: React.FC<IRenewSubscribe> = ({
     )
     const message = watemplate.successPayment
       .replace('{member_name}', userData?.name)
-      .replace(
+      .replace('{active_date}', formatedDate(formData.end_date))
+      .replaceAll(
         '{service_name}',
         member?.attributes?.service?.data?.attributes?.name
       )
-      .replace('{active_date}', formatedDate(formData.end_date))
 
     await sendWaMessage(phone, message)
   }

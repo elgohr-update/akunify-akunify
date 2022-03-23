@@ -159,7 +159,7 @@ const NewSubscribtion: React.FC<INewSubscribe> = ({
     )
     const message = watemplate.newSubscribtion
       .replace('{member_name}', userData?.name)
-      .replace(
+      .replaceAll(
         '{service_name}',
         member?.attributes?.service?.data?.attributes?.name
       )

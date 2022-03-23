@@ -240,6 +240,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
         }
       }
     } catch (error) {
+      console.log('error member registeration', error)
       showErrorMessage()
       setLoading(false)
     }
@@ -260,6 +261,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
           message:
             'Subscribe layanan berhasil, silahkan cek pesan Whatsapp anda!',
         })
+
         await sendWaNotification()
 
         setLoading(false)
@@ -278,20 +280,28 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
         setLoading(false)
       }
     } catch (error) {
+      console.log('error member subscribtion', error)
       showErrorMessage()
       setLoading(false)
     }
   }
 
   const sendWaNotification = async (): Promise<any> => {
-    const userData = decryptData(userDetail.encrypted_id)
+    try {
+      const userData =
+        userDetail.member_id > 0
+          ? decryptData(userDetail.encrypted_id)
+          : userDetail
 
-    const message = watemplate.pendingPayment
-      .replace('{member_name}', userData.name)
-      .replace('{service_name} ', service.attributes.name)
-      .replace('{payment_amount}', currencyFormater(service.attributes.price))
+      const message = watemplate.pendingPayment
+        .replace('{member_name}', userData.name)
+        .replace('{service_name} ', service.attributes.name)
+        .replace('{payment_amount}', currencyFormater(service.attributes.price))
 
-    await sendWaMessage(userData.phone_number, message)
+      await sendWaMessage(userData.phone_number, message)
+    } catch (error) {
+      console.log('whatsapp error', error)
+    }
   }
 
   return (

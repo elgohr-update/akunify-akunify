@@ -17,11 +17,14 @@ class MyDocument extends Document {
       <Html lang="id">
         <HeadLayout />
         <body>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVT65Z8" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          />
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=GTM-KVT65Z8`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
           <Main />
           <NextScript />
         </body>

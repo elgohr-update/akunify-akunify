@@ -46,7 +46,7 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                           />
                         </div>
                         <div className="work_content">
-                          <h4 className="work_title text-xl md:text-2xl h-18">
+                          <h4 className="work_title text-xl md:text-2xl h-auto">
                             <a href="#">{service.attributes?.name}</a>
                           </h4>
                           <p className="mt-2">

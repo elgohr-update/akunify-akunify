@@ -5,9 +5,11 @@ import Link from 'next/link'
 const Header: React.FC = () => {
   const router = useRouter()
   const [activeMenu, setActiveMenu] = useState<string>('home')
+  const [mobileHide, setMobileHide] = useState<boolean>(true)
 
   const handleSetActiveMenu = (menu: 'home' | 'services' | 'faqs'): void => {
     setActiveMenu(menu)
+    setMobileHide(true)
   }
 
   return (
@@ -34,6 +36,7 @@ const Header: React.FC = () => {
                   aria-controls="navbarOne"
                   aria-expanded="false"
                   aria-label="Toggle navigation"
+                  onClick={() => setMobileHide(!mobileHide)}
                 >
                   <span className="toggler-icon"></span>
                   <span className="toggler-icon"></span>
@@ -41,7 +44,9 @@ const Header: React.FC = () => {
                 </button>
 
                 <div
-                  className="absolute left-0 z-20 hidden w-full px-5 py-3 duration-300 bg-white lg:w-auto collapse navbar-collapse lg:block top-full mt-full lg:static lg:bg-transparent shadow lg:shadow-none"
+                  className={`absolute left-0 z-20 ${
+                    mobileHide ? 'hidden' : ''
+                  } w-full px-5 py-3 duration-300 bg-white lg:w-auto collapse navbar-collapse lg:block top-full mt-full lg:static lg:bg-transparent shadow lg:shadow-none`}
                   id="navbarOne"
                 >
                   <ul

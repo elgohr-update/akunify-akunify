@@ -1,13 +1,14 @@
 import type { AppProps } from 'next/app'
-
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 
+import 'nprogress/nprogress.css'
 import 'styles/globals.css'
+import 'styles/main.css'
+
 import Layout from 'components/Commons/Layout'
 
-import 'styles/main.css'
+import { GTMPageView } from 'utils/gtm'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

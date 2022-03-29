@@ -237,20 +237,21 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
             memberResponse.data.data.id,
             userDetail.service_id
           )
-        } else if (memberResponse.status === 400) {
-          setNotification({
-            show: true,
-            type: 'error',
-            title: 'Oops!',
-            message: 'Subscribe layanan gagal, email sudah digunakan!',
-          })
         } else {
           showErrorMessage()
         }
       }
-    } catch (error) {
-      console.log('error member registeration', error)
-      showErrorMessage()
+    } catch (error: any) {
+      if (error.response.status === 400) {
+        setNotification({
+          show: true,
+          type: 'error',
+          title: 'Oops!',
+          message: 'Subscribe layanan gagal, email anda sudah digunakan!',
+        })
+      } else {
+        showErrorMessage()
+      }
       setLoading(false)
     }
   }

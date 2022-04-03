@@ -308,7 +308,10 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
         .replace('{service_name} ', service.attributes.name)
         .replace('{payment_amount}', currencyFormater(service.attributes.price))
 
-      await sendWaMessage(userData.phone_number, message)
+      await sendWaMessage(
+        `${userDetail.member_id > 0 ? '' : '0'}${userData.phone_number}`,
+        message
+      )
     } catch (error) {
       console.log('whatsapp error', error)
     }

@@ -2,16 +2,18 @@
   "name": "akunify",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "pnpm exec zx ./scripts/postbuild.js --quiet",
     "start": "next start",
     "lint": "eslint $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",
     "format": "prettier --write $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",
     "format:all": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "format:check": "prettier --check $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",
     "format:check:all": "prettier --check \"**/*.{js,jsx,ts,tsx}\"",
-    "type:check": "tsc",
-    "prepare": "husky install"
+    "type:check": "tsc"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.3",

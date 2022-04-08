@@ -32,13 +32,14 @@ jobs:
         MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
         MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
         MINIO_ENV_PATH: production
+        BUILD_ENV: production
       with:
         registry: ${{ secrets.DOCKER_REGISTRY }}
         name: backpackrid/akunify
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: ./Dockerfile
-        buildargs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH
+        buildargs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH, BUILD_ENV
         tags: "latest"
 
     - name: Copy file docker-compose.yml via ssh

@@ -3,7 +3,7 @@ services:
 
   akunify:
     container_name: akunify
-    image: ${docker_registry}/${docker_repository}:${docker_repository_tag}
+    image: docker-pkg.backpackr.id/backpackrid/akunify:${APP_TAG}
     ports:
       - ${PORT}
     restart: always

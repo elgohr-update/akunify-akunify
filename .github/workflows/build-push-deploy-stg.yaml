@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  ENV: prod
+  ENV: stg
 
 jobs:
   build-push-deploy:

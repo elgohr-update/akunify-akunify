@@ -11,6 +11,25 @@ async function copyRobotsTxt() {
   console.log('robots.txt file copied')
 }
 
+async function copyNextStatic() {
+  if (process.env.NODE_ENV === 'production') {
+    await $`find .next/static -type f -name '*.map' -exec rm -f {} '\;'`
+    await $`cp -R .next/static .next/standalone/.next/`
+    // eslint-disable-next-line no-console
+    console.log('.next/static folder copied')
+  }
+}
+
+async function copyPublic() {
+  if (process.env.NODE_ENV === 'production') {
+    await $`cp -R public .next/standalone/`
+    // eslint-disable-next-line no-console
+    console.log('public folder copied')
+  }
+}
+
 void (async function () {
-  copyRobotsTxt()
+  await copyRobotsTxt()
+  await copyNextStatic()
+  copyPublic()
 })()

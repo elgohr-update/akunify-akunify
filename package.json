@@ -5,7 +5,7 @@
     "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "pnpm exec zx ./scripts/postbuild.js --quiet",
+    "postbuild": "zx ./scripts/postbuild.js --quiet",
     "start": "next start",
     "lint": "eslint $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",
     "format": "prettier --write $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",
@@ -31,7 +31,8 @@
     "react-markdown": "^8.0.0",
     "rehype-raw": "^6.1.1",
     "universal-cookie": "^4.0.4",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "zx": "^6.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.1",

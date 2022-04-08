@@ -1,3 +1,5 @@
+#!/usr/bin/env zx
+
 async function copyRobotsTxt() {
   const ROBOT_FILE_PATH =
     process.env.BUILD_ENV === 'production'
@@ -8,3 +10,7 @@ async function copyRobotsTxt() {
   // eslint-disable-next-line no-console
   console.log('robots.txt file copied')
 }
+
+void (async function () {
+  copyRobotsTxt()
+})()

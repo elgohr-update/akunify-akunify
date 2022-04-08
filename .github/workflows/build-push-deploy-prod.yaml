@@ -4,74 +4,102 @@ on:
   release:
     types: [released]
 
+env:
+  ENV: prod
+
 jobs:
-  build:
+  build-push-deploy:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checking out repository
+        uses: actions/checkout@v2
 
-    - name: Checkout code to latest version
-      uses: actions/checkout@master
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: ".nvmrc"
 
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Setup Minio client
+        run: |-
+          wget -O /usr/local/bin/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x /usr/local/bin/mc
 
-    - name: Github actions cache node
-      uses: actions/cache@v2
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-    - name: Publish to docker registry
-      uses: elgohr/Publish-Docker-Github-Action@master
-      env:
-        MINIO_URL: ${{ secrets.MINIO_URL }}
-        MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
-        MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
-        MINIO_ENV_PATH: production
-        BUILD_ENV: production
-      with:
-        registry: ${{ secrets.DOCKER_REGISTRY }}
-        name: backpackrid/akunify
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: ./Dockerfile
-        buildargs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH, BUILD_ENV
-        tags: "latest"
+      - name: Cache Yarn packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-    - name: Copy file docker-compose.yml via ssh
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.PROD_SSH_HOST }}
-        username: ${{ secrets.PROD_SSH_USERNAME }}
-        password: ${{ secrets.PROD_SSH_PASSWORD }}
-        source: "docker-compose.yml"
-        target: "/docker/akunify"
-        use_insecure_cipher: true
+      - name: Cache Next.js
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
 
-    - name: Executing remote ssh commands
-      uses: appleboy/ssh-action@master
-      env:
-        MINIO_URL: ${{ secrets.MINIO_URL }}
-        MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
-        MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
-        MINIO_ENV_PATH: production
-        DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
-        DOCKER_REPOSITORY: backpackrid/akunify
-        DOCKER_REPOSITORY_TAG: latest
-        COMPOSE_PROJECT_NAME: production
-      with:
-        host: ${{ secrets.PROD_SSH_HOST }}
-        username: ${{ secrets.PROD_SSH_USERNAME }}
-        password: ${{ secrets.PROD_SSH_PASSWORD }}
-        envs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH, DOCKER_REGISTRY, DOCKER_REPOSITORY, DOCKER_REPOSITORY_TAG, COMPOSE_PROJECT_NAME
-        script: |
-          cd /docker/akunify
-          mc config host add minio $MINIO_URL $MINIO_ACCESS_KEY $MINIO_SECRET_KEY --api S3v4 && \
-          mc cp -r minio/params/akunify/$MINIO_ENV_PATH/.env .
-          docker pull $DOCKER_REGISTRY/$DOCKER_REPOSITORY:$DOCKER_REPOSITORY_TAG
-          docker-compose -p $COMPOSE_PROJECT_NAME up -d
-          docker image prune -f
+      - name: Install dependencies
+        run: |-
+          make install
+
+      - name: Generate config for build time
+        env:
+          MINIO_URL: ${{ secrets.MINIO_URL }}
+          MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+          MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+          MINIO_ENV_PATH: production
+        run: |-
+          make config
+
+      - name: Build application
+        run: |-
+          make build
+
+      - name: Build, tag, and push Docker image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          name: backpackrid/akunify
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "latest"
+
+      - name: Setup Docker compose
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.PROD_SSH_HOST }}
+          username: ${{ secrets.PROD_SSH_USERNAME }}
+          password: ${{ secrets.PROD_SSH_PASSWORD }}
+          source: "docker-compose.yml"
+          target: "/docker/akunify"
+
+      - name: Deploy via ssh
+        uses: appleboy/ssh-action@master
+        env:
+          MINIO_URL: ${{ secrets.MINIO_URL }}
+          MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+          MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+          MINIO_ENV_PATH: production
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+          DOCKER_REPOSITORY: backpackrid/akunify
+          DOCKER_REPOSITORY_TAG: latest
+          COMPOSE_PROJECT_NAME: production
+        with:
+          host: ${{ secrets.PROD_SSH_HOST }}
+          username: ${{ secrets.PROD_SSH_USERNAME }}
+          password: ${{ secrets.PROD_SSH_PASSWORD }}
+          envs: MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, MINIO_ENV_PATH, DOCKER_REGISTRY, DOCKER_REPOSITORY, DOCKER_REPOSITORY_TAG, COMPOSE_PROJECT_NAME
+          script: |
+            cd /docker/akunify
+            mc config host add minio $MINIO_URL $MINIO_ACCESS_KEY $MINIO_SECRET_KEY --api S3v4 && \
+            mc cp -r minio/params/akunify/$MINIO_ENV_PATH/.env .
+            docker pull $DOCKER_REGISTRY/$DOCKER_REPOSITORY:$DOCKER_REPOSITORY_TAG
+            docker-compose -p $COMPOSE_PROJECT_NAME up -d
+            docker image prune -f

@@ -72,7 +72,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: "staging"
 
-      - name: Copy file docker-compose.yml via ssh
+      - name: Setup Docker compose
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.STAGING_SSH_HOST }}
@@ -80,9 +80,8 @@ jobs:
           password: ${{ secrets.STAGING_SSH_PASSWORD }}
           source: "docker-compose.yml"
           target: "/docker/akunify"
-          use_insecure_cipher: true
 
-      - name: Executing remote ssh commands
+      - name: Deploy via ssh
         uses: appleboy/ssh-action@master
         env:
           MINIO_URL: ${{ secrets.MINIO_URL }}

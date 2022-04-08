@@ -5,7 +5,7 @@
     "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "zx ./scripts/postbuild.js --quiet",
+    "postbuild": "zx ./scripts/postbuild.js",
     "start": "next start",
     "lint": "eslint $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",
     "format": "prettier --write $(git diff --diff-filter=d --name-only HEAD^ -- '***.js' '***.jsx' '***.ts' '***.tsx')",

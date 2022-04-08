@@ -4,6 +4,7 @@ ARG MINIO_ACCESS_KEY
 ARG MINIO_SECRET_KEY
 ARG MINIO_ENV_PATH
 ARG BUILD_ENV
+ENV BUILD_ENV=$BUILD_ENV
 WORKDIR /params
 RUN mc config host add minio $MINIO_URL $MINIO_ACCESS_KEY $MINIO_SECRET_KEY --api S3v4 && \
     mc cp -r minio/params/akunify/$MINIO_ENV_PATH/.env .
@@ -14,6 +15,6 @@ COPY package*.json ./
 RUN yarn install
 COPY . .
 COPY --from=params . .
-RUN BUILD_ENV=$BUILD_ENV yarn build
+RUN yarn build
 EXPOSE 3000
 CMD ["yarn", "start"]

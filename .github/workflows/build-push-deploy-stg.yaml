@@ -33,7 +33,7 @@ jobs:
         MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
         MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
         MINIO_ENV_PATH: staging
-        BUILD_ENV: staging
+        BUILD_ENV: production
       with:
         registry: ${{ secrets.DOCKER_REGISTRY }}
         name: backpackrid/akunify

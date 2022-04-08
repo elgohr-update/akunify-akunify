@@ -15,6 +15,6 @@ COPY package*.json ./
 RUN yarn install
 COPY . .
 COPY --from=params . .
-RUN yarn build
+RUN BUILD_ENV=$BUILD_ENV yarn build
 EXPOSE 3000
 CMD ["yarn", "start"]

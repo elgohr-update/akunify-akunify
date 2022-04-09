@@ -20,14 +20,6 @@ async function copyNextStatic() {
   }
 }
 
-async function copyParams() {
-  if (process.env.NODE_ENV === 'production') {
-    await $`cp -R params .next/standalone/`
-    // eslint-disable-next-line no-console
-    console.log('params folder copied')
-  }
-}
-
 async function copyPublic() {
   if (process.env.NODE_ENV === 'production') {
     await $`cp -R public .next/standalone/`
@@ -39,6 +31,5 @@ async function copyPublic() {
 void (async function () {
   await copyRobotsTxt()
   await copyNextStatic()
-  await copyParams()
   copyPublic()
 })()

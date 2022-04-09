@@ -19,7 +19,7 @@ interface FetchDataProps {
   auth?: IAuthParams
   basicAuth?: IBasicAuth
   data?: any
-  headers?: Record<string, unknown>
+  headers?: Record<string, string>
   contentType?: string
   accept?: string
   writeCookie?: boolean

@@ -9,7 +9,11 @@ const runMiddleware = async (data: any): Promise<any> => {
       apiHost: process.env.TELUH_API_HOST,
       url: '/send_message',
       method: 'POST',
-      headers: getSecretHeader(),
+      headers: {
+        ...getSecretHeader({
+          apiSecretKey: process.env.TELUH_API_SECRET,
+        }),
+      },
       basicAuth: {
         username: process.env.BASIC_AUTH_TELUH_USER || '',
         password: process.env.BASIC_AUTH_TELUH_PASSWORD || '',

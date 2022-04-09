@@ -34,7 +34,7 @@ const OrderDetail: React.FC<IOrderDetail> = ({
           <div className="flex flex-wrap">
             <div className="w-1/4 p-2 text-center">
               <img
-                src={getImageUrl(service?.attributes?.image, 'large')}
+                src={getImageUrl(service?.attributes?.image)}
                 alt="Layanan image"
               />
             </div>

@@ -3,12 +3,12 @@ const defaultMeta = {
   pageDescription:
     'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
   robots:
-    process.env.NODE_ENV === 'production'
+    process.env.BUILD_ENV === 'production'
       ? 'index, follow, max-image-preview:large'
       : 'noindex, nofollow',
   author: 'Akunify',
   og: {
-    url: 'https://akunify.id/',
+    url: 'https://akunify.com/',
     type: 'website',
     image: '/favicon/favicon-96x96.png',
     title: 'Akunify.com - Patungan akun premium ',
@@ -45,10 +45,10 @@ const defaultMeta = {
   },
   content: {
     title: 'Akunify.com - Patungan akun premium ',
-    keywords: 'Tour, Travel, Trip, Open Trip',
+    keywords: 'akunify, patungan netflix, patungan spotify, sharing akun',
     author: 'Akunify',
-    canonical: 'https://akunify.id',
-    alternate: 'https://www.akunify.id/',
+    canonical: 'https://akunify.com',
+    alternate: 'https://www.akunify.com/',
   },
 }
 

@@ -2,10 +2,6 @@ const defaultMeta = {
   pageTitle: 'Akunify.com - Patungan akun premium ',
   pageDescription:
     'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
-  appId:
-    process.env.NODE_ENV === 'production'
-      ? '1242554542569070'
-      : '638459803711575',
   robots:
     process.env.NODE_ENV === 'production'
       ? 'index, follow, max-image-preview:large'
@@ -14,7 +10,7 @@ const defaultMeta = {
   og: {
     url: 'https://akunify.id/',
     type: 'website',
-    image: '/favicon-96x96.png',
+    image: '/favicon/favicon-96x96.png',
     title: 'Akunify.com - Patungan akun premium ',
     description:
       'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
@@ -33,7 +29,7 @@ const defaultMeta = {
     title: 'Akunify.com',
     description:
       'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
-    image: '/favicon-96x96.png',
+    image: '/favicon/favicon-96x96.png',
     label1: 'price',
     data1: 'IDR25000',
     label2: 'category',

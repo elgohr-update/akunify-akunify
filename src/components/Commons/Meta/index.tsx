@@ -8,7 +8,7 @@ import { MetaProps } from 'interfaces/meta'
 const Meta: React.FC<MetaProps> = ({
   pageTitle,
   pageDescription,
-  appId,
+  // appId,
   robots,
   author,
   og,
@@ -27,31 +27,108 @@ const Meta: React.FC<MetaProps> = ({
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"
     />
 
-    <link key="icn57" rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
-    <link key="icn60" rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
-    <link key="icn72" rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
-    <link key="icn76" rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png" />
-    <link key="icn114" rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png" />
-    <link key="icn120" rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png" />
-    <link key="icn144" rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png" />
-    <link key="icn152" rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png" />
-    <link key="icn180" rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png" />
+    <link
+      key="icn57"
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/favicon/apple-icon-57x57.png"
+    />
+    <link
+      key="icn60"
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/favicon/apple-icon-60x60.png"
+    />
+    <link
+      key="icn72"
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/favicon/apple-icon-72x72.png"
+    />
+    <link
+      key="icn76"
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/favicon/apple-icon-76x76.png"
+    />
+    <link
+      key="icn114"
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/favicon/apple-icon-114x114.png"
+    />
+    <link
+      key="icn120"
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/favicon/apple-icon-120x120.png"
+    />
+    <link
+      key="icn144"
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/favicon/apple-icon-144x144.png"
+    />
+    <link
+      key="icn152"
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/favicon/apple-icon-152x152.png"
+    />
+    <link
+      key="icn180"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-icon-180x180.png"
+    />
 
-    <link key="icn192" rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png" />
-    <link key="icn32" rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-    <link key="icn96" rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
-    <link key="icn16" rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link
+      key="icn192"
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favicon/android-icon-192x192.png"
+    />
+    <link
+      key="icn32"
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      key="icn96"
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicon/favicon-96x96.png"
+    />
+    <link
+      key="icn16"
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
     <link key="mnfst" rel="manifest" href="/manifest.json" />
 
     <meta key="msTile" name="msapplication-TileColor" content="#ffffff" />
-    <meta key="msTileImg" name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta
+      key="msTileImg"
+      name="msapplication-TileImage"
+      content="/ms-icon-144x144.png"
+    />
     <meta key="tmClr" name="primary" content="#ffffff" />
 
     <meta key="frmtDt" name="format-detection" content="telephone=no" />
     <meta key="apName" name="application-name" content="Akunify.com" />
 
     <meta key="msNv" content="#1b9cdc" name="msapplication-navbutton-color" />
-    <meta key="apmw" content="#1b9cdc" name="apple-mobile-web-app-status-bar-style" />
+    <meta
+      key="apmw"
+      content="#1b9cdc"
+      name="apple-mobile-web-app-status-bar-style"
+    />
 
     <meta key="ogSitename" property="og:site_name" content="Akunify" />
     <meta key="mobileCapable" name="mobile-web-app-capable" content="yes" />
@@ -87,7 +164,7 @@ const Meta: React.FC<MetaProps> = ({
     <meta key="ogDesc" property="og:description" content={og?.description} />
     <meta key="ogPriceAmount" property="og:price:amount" content="10000" />
 
-    <meta key="facebookAppId" property="fb:app_id" content={appId} />
+    {/* <meta key="facebookAppId" property="fb:app_id" content={appId} /> */}
 
     {/* pages defined only from home */}
     {fb?.pages && (
@@ -195,11 +272,7 @@ const Meta: React.FC<MetaProps> = ({
       content={fb?.tripId as string}
     />
 
-    <meta
-      key="twIphoneName"
-      name="twitter:app:name:iphone"
-      content="Akunify"
-    />
+    <meta key="twIphoneName" name="twitter:app:name:iphone" content="Akunify" />
     <meta key="twIphoneId" name="twitter:app:id:iphone" content="1458307938" />
     <meta key="twIpadName" name="twitter:app:name:ipad" content="Akunify" />
     <meta key="twIpadId" name="twitter:app:id:ipad" content="1458307938" />
@@ -207,11 +280,6 @@ const Meta: React.FC<MetaProps> = ({
       key="twGooglePlay"
       name="twitter:app:name:googleplay"
       content="Akunify"
-    />
-    <meta
-      key="twGooglePlayId"
-      name="twitter:app:id:googleplay"
-      content="com.android.kitabisa"
     />
 
     <meta key="twCard" name="twitter:card" content={twitter?.card} />

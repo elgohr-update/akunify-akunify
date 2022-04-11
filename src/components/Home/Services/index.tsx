@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Link from 'next/link'
 
 // import ReactMarkdown from 'react-markdown'
-import { Image } from 'components/commons'
+import { Image } from 'components/common'
 
 import { getImageUrl, currencyFormater } from 'utils/index'
 

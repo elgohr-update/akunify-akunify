@@ -6,7 +6,7 @@ import Document, {
   Html,
 } from 'next/document'
 
-import * as Gtm from 'components/commons/Gtm'
+import * as Gtm from 'components/common/Gtm'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

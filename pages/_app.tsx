@@ -7,8 +7,8 @@ import 'nprogress/nprogress.css'
 import 'styles/globals.css'
 import 'styles/main.css'
 
-import Layout from 'components/commons/Layout'
-import * as Gtm from 'components/commons/Gtm'
+import Layout from 'components/common/Layout'
+import * as Gtm from 'components/common/Gtm'
 
 import { pageview } from 'utils/gtm'
 

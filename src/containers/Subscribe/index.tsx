@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 // Components
-import { NotificationModal } from 'components/commons'
+import { NotificationModal } from 'components/common'
 import OrderDetail from 'components/Subscribe/OrderDetail'
 
 // Utils

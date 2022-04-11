@@ -1,4 +1,4 @@
-import Meta from 'components/commons/Meta'
+import Meta from 'components/common/Meta'
 import { getImageUrl } from 'utils/index'
 
 const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (

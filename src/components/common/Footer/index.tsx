@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { PhoneIcon, MailIcon } from '@heroicons/react/outline'
 
-import { Image } from 'components/commons'
+import { Image } from 'components/common'
 
 const Footer: React.FC = () => {
   return (

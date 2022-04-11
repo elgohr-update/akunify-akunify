@@ -7,11 +7,11 @@ const Faq: React.FC = () => {
     {
       title: 'Apa saja metode pembayaran yang tersedia?',
       content:
-        'Saat ini kamu dapat melakukan pembayaran melalui transfer ke rekening BCA, Bank Jago, Jenius, BRI & e-wallet.',
+        'Saat ini kamu dapat melakukan pembayaran melalui transfer ke rekening BCA, Bank Jago, & Jenius.',
     },
     {
       title: 'Bagaimana cara konfirmasi pembayaran?',
-      content: `Kamu dapat melakukan konfirmasi pembayaran via Whatsapp ke nomor 0851-7152-5500 atau dengan cara <a className="text-turquoise-70" href="//s.id/akunify-konfirmasi" target="_blank" rel="noreferrer">klik disini</a>`,
+      content: `Kamu dapat melakukan konfirmasi pembayaran via Whatsapp ke nomor 0851-7152-5500 atau dengan cara <a class="text-turquoise-70" href="//s.id/akunify-konfirmasi" target="_blank" rel="noreferrer">klik disini</a>`,
     },
     {
       title: 'Kapan masa berlangganan aktif?',

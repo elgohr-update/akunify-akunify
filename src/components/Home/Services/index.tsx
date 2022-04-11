@@ -50,10 +50,10 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                             <a href="#">{service.attributes?.name}</a>
                           </h4>
                           <p className="mt-2">
-                            {currencyFormater(service.attributes?.price)}/{' '}
                             <span className="font-semibold text-turquoise-90">
-                              bulan
-                            </span>
+                              {currencyFormater(service.attributes?.price)}/
+                            </span>{' '}
+                            bulan
                           </p>
                           <Link
                             href="/subscribe/[service_id]/[slug]"

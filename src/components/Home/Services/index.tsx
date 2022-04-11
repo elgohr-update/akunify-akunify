@@ -51,8 +51,9 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                           </h4>
                           <p className="mt-2">
                             <span className="font-semibold text-turquoise-90">
-                              {currencyFormater(service.attributes?.price)}/
-                            </span>{' '}
+                              {currencyFormater(service.attributes?.price)}
+                            </span>
+                            {' / '}
                             bulan
                           </p>
                           <Link

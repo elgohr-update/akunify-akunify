@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'components/Commons'
+import { Image } from 'components/commons'
 
 const Banner: React.FC = () => {
   return (

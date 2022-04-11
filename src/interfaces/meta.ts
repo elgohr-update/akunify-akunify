@@ -47,13 +47,6 @@ export interface MetaProps {
   }
   twitter?: Partial<TwitterMeta>
   structuredData?: string[]
-  bussiness?: {
-    street_address?: string
-    locality?: string
-    region?: string
-    postal_code?: string
-    country_name?: string
-  }
   content?: {
     title?: string
     keywords?: string

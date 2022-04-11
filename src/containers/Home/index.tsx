@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Backtop } from 'components/Commons'
+import { Backtop } from 'components/commons'
 import { Faq, WhyMe, Banner, Payment, Services } from 'components/Home'
 
 import { getListServices } from 'services/service'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Image } from 'components/Commons'
+import { Image } from 'components/commons'
 
 import { getImageUrl } from 'utils/index'
 

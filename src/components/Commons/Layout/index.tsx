@@ -1,9 +1,4 @@
-import {
-  Meta,
-  Loader,
-  Header,
-  Footer
-} from 'components/Commons'
+import { Meta, Loader, Header, Footer } from 'components/commons'
 
 interface Props {
   children: {

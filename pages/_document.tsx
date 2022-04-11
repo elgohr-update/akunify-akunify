@@ -1,10 +1,12 @@
 import Document, {
+  Head,
   DocumentContext,
   Main,
   NextScript,
   Html,
 } from 'next/document'
-import HeadLayout from 'components/Commons/Layout/Head'
+
+import * as Gtm from 'components/commons/Gtm'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -15,16 +17,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="id">
-        <HeadLayout />
+        <Head />
         <body>
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=GTM-KVT65Z8`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
+          {<Gtm.Body />}
           <Main />
           <NextScript />
         </body>

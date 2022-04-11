@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { NotificationModal } from 'components/Commons'
+import { NotificationModal } from 'components/commons'
 import {
   SearchMember,
   Unsubscribe,

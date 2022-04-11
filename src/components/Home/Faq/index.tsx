@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Accordion } from 'components/Commons'
+import { Accordion } from 'components/commons'
 
 const Faq: React.FC = () => {
   const faqs = [

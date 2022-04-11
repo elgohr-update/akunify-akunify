@@ -7,7 +7,8 @@ import 'nprogress/nprogress.css'
 import 'styles/globals.css'
 import 'styles/main.css'
 
-import Layout from 'components/Commons/Layout'
+import Layout from 'components/commons/Layout'
+import * as Gtm from 'components/commons/Gtm'
 
 import { pageview } from 'utils/gtm'
 
@@ -26,9 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      {<Gtm.Head />}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   )
 }
 

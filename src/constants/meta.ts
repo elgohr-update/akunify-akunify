@@ -1,5 +1,5 @@
 const defaultMeta = {
-  pageTitle: 'Akunify.com - Patungan akun premium ',
+  pageTitle: 'Akunify.com - Patungan akun premium',
   pageDescription:
     'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
   robots:
@@ -11,17 +11,16 @@ const defaultMeta = {
     url: 'https://akunify.com/',
     type: 'website',
     image: '/favicon/favicon-96x96.png',
-    title: 'Akunify.com - Patungan akun premium ',
+    title: 'Akunify.com - Patungan akun premium',
     description:
       'Patungan akun premium murah, terpercaya & amanah untuk keluarga anda',
   },
   fb: {
     campaignerName: 'Akunify',
-    availability: 'out of stock',
+    availability: 'available',
     condition: 'new',
-    priceAmount: '0',
+    priceAmount: '25000',
     priceCurrency: 'IDR',
-    campaignId: '1',
   },
   twitter: {
     card: 'product',
@@ -35,16 +34,8 @@ const defaultMeta = {
     label2: 'category',
     data2: 'Akunify.com',
   },
-  bussiness: {
-    street_address:
-      'Jl. Raya Cilandak Kko No.31, RT.1/RW.8, Ragunan, Kec. Ps. Minggu',
-    locality: 'Jakarta Selatan',
-    region: 'DKI Jakarta',
-    postal_code: '12550',
-    country_name: 'Indonesia',
-  },
   content: {
-    title: 'Akunify.com - Patungan akun premium ',
+    title: 'Akunify.com - Patungan akun premium',
     keywords: 'akunify, patungan netflix, patungan spotify, sharing akun',
     author: 'Akunify',
     canonical: 'https://akunify.com',

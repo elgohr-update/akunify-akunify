@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 // Components
-import { NotificationModal } from 'components/Commons'
+import { NotificationModal } from 'components/commons'
 import OrderDetail from 'components/Subscribe/OrderDetail'
 
 // Utils
@@ -27,6 +27,8 @@ import {
 
 // Constant
 import watemplate from 'constants/watemplate'
+
+import { ServiceDetailMeta } from './method'
 
 const defaultClass = `py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded`
 const errorClass = `py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded`
@@ -318,127 +320,172 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
   }
 
   return (
-    <section className="max-w-3xl my-12 m-auto">
-      <div className="p-8 md:mt-110 sm:mt-23 xs:mt-22">
-        <div className="section_title pb-9">
-          <h1 className="main_title mb-4">Daftar layanan Akunify</h1>
-          <h5 className="sub_title border-b">
-            Silahkan lengkapi data berikut.
-          </h5>
-        </div>
+    <>
+      <ServiceDetailMeta service={service} />
+      <section className="max-w-3xl my-12 m-auto">
+        <div className="p-8 md:mt-110 sm:mt-23 xs:mt-22">
+          <div className="section_title pb-9">
+            <h1 className="main_title mb-4">Daftar layanan Akunify</h1>
+            <h5 className="sub_title border-b">
+              Silahkan lengkapi data berikut.
+            </h5>
+          </div>
 
-        <OrderDetail
-          service={service}
-          showMore={showMore}
-          setShowMore={(bool) => setShowMore(bool)}
-        />
+          <OrderDetail
+            service={service}
+            showMore={showMore}
+            setShowMore={(bool) => setShowMore(bool)}
+          />
 
-        <div className="mt-8">
-          <h5 className="text-turquoise-90">Informasi Pengguna</h5>
-          <div className="mt-6 grid grid-cols-1 gap-y-5 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-6">
-              <label
-                htmlFor="first-name"
-                className="block text-sm font-medium text-gray-70"
-              >
-                Nomor Whatsapp (Pastikan nomor sudah benar dan aktif){' '}
-                <span className="text-flamengo-60">*</span>
-              </label>
-              <div className="mt-1 flex">
-                <span
-                  className={`inline-flex items-center px-3 rounded-l ${
-                    error.phone_number !== '' &&
-                    error.phone_number !== undefined
-                      ? 'bg-flamengo-60'
-                      : 'bg-turquoise-50'
-                  } text-m-30 text-white font-bold`}
+          <div className="mt-8">
+            <h5 className="text-turquoise-90">Informasi Pengguna</h5>
+            <div className="mt-6 grid grid-cols-1 gap-y-5 gap-x-4 sm:grid-cols-6">
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="first-name"
+                  className="block text-sm font-medium text-gray-70"
                 >
-                  +62
-                </span>
-                <input
-                  type="string"
-                  name="phone_number"
-                  id="phone_number"
-                  autoComplete="given-name"
-                  className={
-                    error.phone_number !== '' &&
-                    error.phone_number !== undefined
-                      ? 'py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded-r'
-                      : 'py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded-r'
-                  }
-                  onChange={(e) => {
-                    const { value } = e.target
-                    setUserDetail((prevState) => ({
-                      ...prevState,
-                      phone_number: value
-                        .replace(/\D/g, '')
-                        .replace(/(^0+)|(^62+)/, ''),
-                    }))
-                    setError((prevState) => ({
-                      ...prevState,
-                      phone_number: validation(
-                        'register',
-                        'phone_number',
-                        '0' + value
-                      ),
-                    }))
-                  }}
-                  value={userDetail.phone_number}
-                  disabled={userDetail.is_checked}
-                />
-              </div>
-              {error.phone_number !== '' &&
-                error.phone_number !== undefined && (
-                  <span className="font-light text-xs text-flamengo-60">
-                    {error.phone_number}
+                  Nomor Whatsapp (Pastikan nomor sudah benar dan aktif){' '}
+                  <span className="text-flamengo-60">*</span>
+                </label>
+                <div className="mt-1 flex">
+                  <span
+                    className={`inline-flex items-center px-3 rounded-l ${
+                      error.phone_number !== '' &&
+                      error.phone_number !== undefined
+                        ? 'bg-flamengo-60'
+                        : 'bg-turquoise-50'
+                    } text-m-30 text-white font-bold`}
+                  >
+                    +62
                   </span>
-                )}
-            </div>
-
-            {!userDetail.is_checked ? (
-              <div className="sm:col-span-6 -mt-3">
-                <button
-                  type="button"
-                  className="bg-turquoise-60 text-white p-2 rounded disabled:cursor-not-allowed disabled:bg-turquoise-70 text-sm"
-                  onClick={() => searchUserByPhone()}
-                  disabled={
-                    userDetail.phone_number === '' ||
-                    (error.phone_number !== '' &&
-                      error.phone_number !== undefined)
-                  }
-                >
-                  Lanjutkan
-                </button>
+                  <input
+                    type="string"
+                    name="phone_number"
+                    id="phone_number"
+                    autoComplete="given-name"
+                    className={
+                      error.phone_number !== '' &&
+                      error.phone_number !== undefined
+                        ? 'py-4 px-3 border border-flamengo-60 focus:ring-flamengo-50 focus:border-flamengo-60 block w-full rounded-r'
+                        : 'py-4 px-3 border border-grey-70 focus:ring-turquoise-60 focus:border-turquoise-60 block w-full rounded-r'
+                    }
+                    onChange={(e) => {
+                      const { value } = e.target
+                      setUserDetail((prevState) => ({
+                        ...prevState,
+                        phone_number: value
+                          .replace(/\D/g, '')
+                          .replace(/(^0+)|(^62+)/, ''),
+                      }))
+                      setError((prevState) => ({
+                        ...prevState,
+                        phone_number: validation(
+                          'register',
+                          'phone_number',
+                          '0' + value
+                        ),
+                      }))
+                    }}
+                    value={userDetail.phone_number}
+                    disabled={userDetail.is_checked}
+                  />
+                </div>
+                {error.phone_number !== '' &&
+                  error.phone_number !== undefined && (
+                    <span className="font-light text-xs text-flamengo-60">
+                      {error.phone_number}
+                    </span>
+                  )}
               </div>
-            ) : (
-              <div className="sm:col-span-6 -mt-4">
-                <button
-                  className="text-turquoise-60 text-sm cursor-default"
-                  onClick={() => clearAttributes()}
-                >
-                  Ganti nomor HP
-                </button>
-              </div>
-            )}
 
-            {userDetail.is_available && (
-              <>
-                {userDetail.member_id === 0 && (
+              {!userDetail.is_checked ? (
+                <div className="sm:col-span-6 -mt-3">
+                  <button
+                    type="button"
+                    className="bg-turquoise-60 text-white p-2 rounded disabled:cursor-not-allowed disabled:bg-turquoise-70 text-sm"
+                    onClick={() => searchUserByPhone()}
+                    disabled={
+                      userDetail.phone_number === '' ||
+                      (error.phone_number !== '' &&
+                        error.phone_number !== undefined)
+                    }
+                  >
+                    Lanjutkan
+                  </button>
+                </div>
+              ) : (
+                <div className="sm:col-span-6 -mt-4">
+                  <button
+                    className="text-turquoise-60 text-sm cursor-default"
+                    onClick={() => clearAttributes()}
+                  >
+                    Ganti nomor HP
+                  </button>
+                </div>
+              )}
+
+              {userDetail.is_available && (
+                <>
+                  {userDetail.member_id === 0 && (
+                    <div className="sm:col-span-6">
+                      <label
+                        htmlFor="first-name"
+                        className="block text-sm font-medium text-gray-70"
+                      >
+                        Email <span className="text-flamengo-60">*</span>
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="email"
+                          name="email"
+                          id="email"
+                          autoComplete="given-name"
+                          className={
+                            error.email !== '' && error.email !== undefined
+                              ? errorClass
+                              : defaultClass
+                          }
+                          onChange={(e) => {
+                            const { value } = e.target
+                            setUserDetail((prevState) => ({
+                              ...prevState,
+                              email: value,
+                            }))
+                            setError((prevState) => ({
+                              ...prevState,
+                              email: validation(
+                                'register',
+                                'email',
+                                '0' + value
+                              ),
+                            }))
+                          }}
+                          value={userDetail.email}
+                        />
+                        {error.email !== '' && error.email !== undefined && (
+                          <span className="font-light text-xs text-flamengo-60">
+                            {error.email}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
                   <div className="sm:col-span-6">
                     <label
                       htmlFor="first-name"
                       className="block text-sm font-medium text-gray-70"
                     >
-                      Email <span className="text-flamengo-60">*</span>
+                      Full name <span className="text-flamengo-60">*</span>
                     </label>
                     <div className="mt-1">
                       <input
-                        type="email"
-                        name="email"
-                        id="email"
+                        type="text"
+                        name="name"
+                        id="name"
                         autoComplete="given-name"
                         className={
-                          error.email !== '' && error.email !== undefined
+                          error.name !== '' && error.name !== undefined
                             ? errorClass
                             : defaultClass
                         }
@@ -446,136 +493,98 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                           const { value } = e.target
                           setUserDetail((prevState) => ({
                             ...prevState,
-                            email: value,
+                            name: value,
+                            name_alias: getInitialName(value),
                           }))
                           setError((prevState) => ({
                             ...prevState,
-                            email: validation('register', 'email', '0' + value),
+                            name: validation('register', 'name', value),
                           }))
                         }}
-                        value={userDetail.email}
+                        value={
+                          userDetail.member_id > 0
+                            ? userDetail.name_alias
+                            : userDetail.name
+                        }
+                        disabled={userDetail.member_id > 0}
                       />
-                      {error.email !== '' && error.email !== undefined && (
+                      {error.name !== '' && error.name !== undefined && (
                         <span className="font-light text-xs text-flamengo-60">
-                          {error.email}
+                          {error.name}
                         </span>
                       )}
                     </div>
                   </div>
-                )}
-                <div className="sm:col-span-6">
-                  <label
-                    htmlFor="first-name"
-                    className="block text-sm font-medium text-gray-70"
-                  >
-                    Full name <span className="text-flamengo-60">*</span>
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      autoComplete="given-name"
-                      className={
-                        error.name !== '' && error.name !== undefined
-                          ? errorClass
-                          : defaultClass
-                      }
-                      onChange={(e) => {
-                        const { value } = e.target
-                        setUserDetail((prevState) => ({
-                          ...prevState,
-                          name: value,
-                          name_alias: getInitialName(value),
-                        }))
-                        setError((prevState) => ({
-                          ...prevState,
-                          name: validation('register', 'name', value),
-                        }))
-                      }}
-                      value={
-                        userDetail.member_id > 0
-                          ? userDetail.name_alias
-                          : userDetail.name
-                      }
-                      disabled={userDetail.member_id > 0}
-                    />
-                    {error.name !== '' && error.name !== undefined && (
-                      <span className="font-light text-xs text-flamengo-60">
-                        {error.name}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="sm:col-span-6">
-                  <div className="mt-1 flex">
-                    <div className="flex items-center h-5">
-                      <input
-                        id="agreement"
-                        name="agreement"
-                        type="checkbox"
-                        className="focus:ring-turquoise-50 h-4 w-4 border border-turquoise-40 rounded"
-                        defaultChecked={userDetail.is_agreed}
-                        onChange={(e) => {
-                          setUserDetail((prevState) => ({
-                            ...prevState,
-                            is_agreed: e.target.checked,
-                          }))
-                        }}
-                      />
-                      <label
-                        htmlFor="agreement"
-                        className="font-medium text-gray-70 ml-2"
-                      >
-                        Dengan mendaftar, saya menyetujui{' '}
-                        <Link href="/tnc">
-                          <a
-                            className="text-blue-500"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                          >
-                            Syarat dan Ketentuan
-                          </a>
-                        </Link>{' '}
-                        yang berlaku di akunify.com
-                      </label>
+                  <div className="sm:col-span-6">
+                    <div className="mt-1 flex">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="agreement"
+                          name="agreement"
+                          type="checkbox"
+                          className="focus:ring-turquoise-50 h-4 w-4 border border-turquoise-40 rounded"
+                          defaultChecked={userDetail.is_agreed}
+                          onChange={(e) => {
+                            setUserDetail((prevState) => ({
+                              ...prevState,
+                              is_agreed: e.target.checked,
+                            }))
+                          }}
+                        />
+                        <label
+                          htmlFor="agreement"
+                          className="font-medium text-gray-70 ml-2"
+                        >
+                          Dengan mendaftar, saya menyetujui{' '}
+                          <Link href="/tnc">
+                            <a
+                              className="text-blue-500"
+                              target="_blank"
+                              rel="noreferrer noopener"
+                            >
+                              Syarat dan Ketentuan
+                            </a>
+                          </Link>{' '}
+                          yang berlaku di akunify.com
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="sm:col-span-6">
-                  <button
-                    type="button"
-                    className="main-btn pricing_btn w-full disabled:bg-turquoise-70 disabled:cursor-not-allowed"
-                    onClick={() => handleSubmitSubscribe()}
-                    disabled={isDisable || loading}
-                  >
-                    {loading ? (
-                      <div className="flex justify-center items-center">
-                        <div
-                          style={{ borderTopColor: 'transparent' }}
-                          className="w-5 h-5 border-l-2 border-2 border-solid border-white rounded-full animate-spin mr-2"
-                        ></div>
-                        Harap tunggu . . .
-                      </div>
-                    ) : (
-                      'Daftar Layanan'
-                    )}
-                  </button>
-                </div>
-              </>
-            )}
+                  <div className="sm:col-span-6">
+                    <button
+                      type="button"
+                      className="main-btn pricing_btn w-full disabled:bg-turquoise-70 disabled:cursor-not-allowed"
+                      onClick={() => handleSubmitSubscribe()}
+                      disabled={isDisable || loading}
+                    >
+                      {loading ? (
+                        <div className="flex justify-center items-center">
+                          <div
+                            style={{ borderTopColor: 'transparent' }}
+                            className="w-5 h-5 border-l-2 border-2 border-solid border-white rounded-full animate-spin mr-2"
+                          ></div>
+                          Harap tunggu . . .
+                        </div>
+                      ) : (
+                        'Daftar Layanan'
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
 
-            <NotificationModal
-              open={notification.show}
-              title={notification.title}
-              type={notification.type}
-              message={notification.message}
-              setOpen={() => closeNotification()}
-            />
+              <NotificationModal
+                open={notification.show}
+                title={notification.title}
+                type={notification.type}
+                message={notification.message}
+                setOpen={() => closeNotification()}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

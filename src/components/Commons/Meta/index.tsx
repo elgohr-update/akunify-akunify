@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { generateApplinkQuery } from './method'
 
 import defaultMeta from 'constants/meta'
 import isEmpty from 'utils/isEmpty'
@@ -8,15 +7,12 @@ import { MetaProps } from 'interfaces/meta'
 const Meta: React.FC<MetaProps> = ({
   pageTitle,
   pageDescription,
-  // appId,
   robots,
   author,
   og,
   fb,
-  appLink,
   twitter,
   structuredData,
-  bussiness,
   content,
 }: MetaProps) => (
   <Head>
@@ -174,57 +170,6 @@ const Meta: React.FC<MetaProps> = ({
       </>
     )}
 
-    {/* App link meta */}
-    {!isEmpty(appLink) && (
-      <>
-        <meta
-          key="iosUrl"
-          property="al:ios:url"
-          content={`ktbs://${appLink?.url}${generateApplinkQuery(
-            appLink?.query,
-            false
-          )}`}
-        />
-        <meta
-          key="iosAppStoreId"
-          property="al:ios:app_store_id"
-          content="1458307938"
-        />
-        <meta key="iosAppName" property="al:ios:app_name" content="Akunify" />
-        <meta
-          key="androidUrl"
-          property="al:android:url"
-          content={`ktbs://${appLink?.url}${generateApplinkQuery(
-            appLink?.query,
-            true
-          )}`}
-        />
-        <meta
-          key="androidAppName"
-          property="al:android:app_name"
-          content="Akunify"
-        />
-        <meta
-          key="androidPackage"
-          property="al:android:package"
-          content="com.android.akunify"
-        />
-        <meta
-          key="androidClass"
-          property="al:android:class"
-          content="com.akunify.android.ui.deeplink.DeepLinkActivity"
-        />
-        <meta
-          key="urlWeb"
-          property="al:web:url"
-          content={`${appLink?.web}${generateApplinkQuery(
-            appLink?.query,
-            false
-          )}`}
-        />
-      </>
-    )}
-
     {/* Mobile app meta */}
     <meta
       key="googlePlayApp"
@@ -296,35 +241,9 @@ const Meta: React.FC<MetaProps> = ({
     <meta key="twLabel2" name="twitter:label2" content={twitter?.label2} />
     <meta key="twData2" name="twitter:data2" content={twitter?.data2} />
 
-    <meta
-      key="bussinessStreet"
-      property="business:contact_data:street_address"
-      content={bussiness?.street_address}
-    />
-    <meta
-      key="bussinessLocality"
-      property="business:contact_data:locality"
-      content={bussiness?.locality}
-    />
-    <meta
-      key="bussinessRegion"
-      property="business:contact_data:region"
-      content={bussiness?.region}
-    />
-    <meta
-      key="bussinessPostalCode"
-      property="business:contact_data:postal_code"
-      content={bussiness?.postal_code}
-    />
-    <meta
-      key="bussinessCountry"
-      property="business:contact_data:country_name"
-      content={bussiness?.country_name}
-    />
-
     <title key="pageTitle">{pageTitle}</title>
 
-    {/* only in detail campaign */}
+    {/* only in detail service */}
     {author != 'Akunify' && (
       <>
         <meta key="rtVal" itemProp="ratingValue" content="4.8" />

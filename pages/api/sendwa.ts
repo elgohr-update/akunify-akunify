@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { fetchData } from 'utils/fetch-data'
 import getSecretHeader from 'utils/fetch-data/getSecretHeader'
+import { decryptData } from 'utils/encrypt'
 
 const runMiddleware = async (data: any): Promise<any> => {
   try {
@@ -37,7 +38,8 @@ const handler = async (
   res: NextApiResponse
 ): Promise<any> => {
   try {
-    const response = await runMiddleware(req.body)
+    const params = decryptData(req.body.content)
+    const response = await runMiddleware(params)
 
     if (response.status === 200) {
       res.status(200).json(response.data)

@@ -9,7 +9,7 @@ interface IUserDetail {
   phone_number: string
 }
 
-export const encryptData = (data: IUserDetail): string => {
+export const encryptData = (data: any): string => {
   const strJson = JSON.stringify(data)
   const iv = CryptoJS.lib.WordArray.random(BLOCK_SIZE)
 
@@ -28,7 +28,7 @@ export const encryptData = (data: IUserDetail): string => {
   return cipher
 }
 
-export const decryptData = (cipher: string): IUserDetail => {
+export const decryptData = (cipher: string): any => {
   const iv = CryptoJS.enc.Hex.parse(cipher.slice(0, BLOCK_SIZE * 2))
   const encrypted = CryptoJS.enc.Hex.parse(cipher.slice(BLOCK_SIZE * 2))
   const encryptedString = CryptoJS.enc.Base64.stringify(encrypted)

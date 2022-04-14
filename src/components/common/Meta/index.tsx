@@ -211,11 +211,6 @@ const Meta: React.FC<MetaProps> = ({
       property="product:price:currency"
       content={fb?.priceCurrency}
     />
-    <meta
-      key="productItemId"
-      property="product:retailer_item_id"
-      content={fb?.tripId as string}
-    />
 
     <meta key="twIphoneName" name="twitter:app:name:iphone" content="Akunify" />
     <meta key="twIphoneId" name="twitter:app:id:iphone" content="1458307938" />

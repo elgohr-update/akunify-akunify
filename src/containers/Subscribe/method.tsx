@@ -8,7 +8,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
     og={{
       type: 'product',
       title: `Patungan ${service?.attributes?.name} dengan Akunify.com`,
-      url: `${process.env.BASE_URL}/subscribe/${service?.id}/${service.short_url}`,
+      url: `${process.env.BASE_URL}subscribe/${service?.id}/${service?.attributes?.short_url}`,
       description: service?.attributes?.short_description,
       image: getImageUrl(service?.attributes?.image),
     }}
@@ -34,8 +34,8 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
       title: service?.attributes?.name,
       keywords: service?.attributes?.keywords,
       author: 'Akunify.com',
-      canonical: `${process.env.BASE_URL}/subscribe/${service?.id}/${service.short_url}`,
-      alternate: `${process.env.BASE_URL}/subscribe/${service?.id}/${service.short_url}`,
+      canonical: `${process.env.BASE_URL}subscribe/${service?.id}/${service?.attributes?.short_url}`,
+      alternate: `${process.env.BASE_URL}subscribe/${service?.id}/${service?.attributes?.short_url}`,
     }}
     structuredData={[
       `{
@@ -44,13 +44,13 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         "name": "${service?.attributes?.name}",
         "description": "${service?.attributes?.short_description}",
         "image": "${getImageUrl(service?.attributes?.image)}",
-        "url": "${process.env.BASE_URL}/subscribe/${service?.id}/${
-        service.short_url
+        "url": "${process.env.BASE_URL}subscribe/${service?.id}/${
+        service?.attributes?.short_url
       }",
         "offers": {
           "@type": "http://schema.org/Offer",
-          "url": "${process.env.BASE_URL}/subscribe/${service?.id}/${
-        service.short_url
+          "url": "${process.env.BASE_URL}subscribe/${service?.id}/${
+        service?.attributes?.short_url
       }",
           "availability": "http://schema.org/InStock",
           "priceCurrency": "Rp",
@@ -61,7 +61,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         "@context": "http://schema.org",
         "@type": "Store",
         "name": "Akunify.com",
-        "image": "${process.env.BASE_URL}/images/icon-akunify.png"
+        "image": "${process.env.BASE_URL}images/icon-akunify.png"
       }`,
     ]}
   />

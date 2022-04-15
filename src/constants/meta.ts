@@ -37,7 +37,7 @@ const defaultMeta = {
   content: {
     title: 'Akunify.com - Patungan akun premium',
     keywords:
-      'akunify, patungan akun, netflix, spotify, youtube premium, sharing subscribtion',
+      'akunify, situs patungan, netflix premium, spotify premium family, youtube premium, patungan akun netflix, patungan akun spotify, patungan akun youtube',
     author: 'Akunify.com',
     canonical: 'https://akunify.com',
     alternate: 'https://www.akunify.com/',

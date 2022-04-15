@@ -9,7 +9,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
       type: 'product',
       title: `Patungan ${service?.attributes?.name} dengan Akunify.com`,
       url: `${process.env.BASE_URL}/subscribe/${service?.id}/${service.short_url}`,
-      description: service?.attributes?.name,
+      description: service?.attributes?.short_description,
       image: getImageUrl(service?.attributes?.image),
     }}
     author="Akunify.com"
@@ -23,7 +23,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
       card: 'product',
       site: '@kitabisacom',
       title: `${service?.attributes?.name}`,
-      description: `${service?.attributes?.name}`,
+      description: `${service?.attributes?.short_description}`,
       image: `${getImageUrl(service?.attributes?.image)}`,
       label1: 'product',
       data1: `IDR${service?.attributes?.price}`,
@@ -42,7 +42,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         "@context": "https://schema.org/",
         "@type": "http://schema.org/Product",
         "name": "${service?.attributes?.name}",
-        "description": "${service?.attributes?.name}",
+        "description": "${service?.attributes?.short_description}",
         "image": "${getImageUrl(service?.attributes?.image)}",
         "url": "${process.env.BASE_URL}/subscribe/${service?.id}/${
         service.short_url

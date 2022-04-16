@@ -10,7 +10,7 @@ const defaultMeta = {
   og: {
     url: 'https://akunify.com/',
     type: 'website',
-    image: '/favicon/favicon-96x96.png',
+    image: '/images/og-images.png',
     title: 'Akunify.com - Patungan akun premium',
     description:
       'Situs berlangganan layanan premium seperti Netflix, Youtube dan Spotify yang murah, praktis dan terpercaya. Patungan menjadi lebih mudah dengan akunify.',
@@ -28,7 +28,7 @@ const defaultMeta = {
     title: 'Akunify.com',
     description:
       'Situs berlangganan layanan premium seperti Netflix, Youtube dan Spotify yang murah, praktis dan terpercaya. Patungan menjadi lebih mudah dengan akunify.',
-    image: '/favicon/favicon-96x96.png',
+    image: '/images/og-images.png',
     label1: 'price',
     data1: 'IDR25000',
     label2: 'category',

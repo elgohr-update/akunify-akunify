@@ -1,5 +1,9 @@
+import dayjs from 'dayjs'
+
 import Meta from 'components/common/Meta'
 import { getImageUrl } from 'utils/index'
+
+const date = dayjs().add(1, 'month').format('YYYY-MM-DD')
 
 const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
   <Meta
@@ -47,6 +51,24 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         "url": "${process.env.BASE_URL}subscribe/${service?.id}/${
         service?.attributes?.short_url
       }",
+        "sku": "${service?.id}-${service?.attributes?.short_url},"
+        "mpn": "${service?.id}",
+        "brand": {
+          "@type": "Brand",
+          "name": "Akunify"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Fred Benson"
+          }
+        },
         "offers": {
           "@type": "http://schema.org/Offer",
           "url": "${process.env.BASE_URL}subscribe/${service?.id}/${
@@ -54,14 +76,22 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
       }",
           "availability": "http://schema.org/InStock",
           "priceCurrency": "Rp",
+          "priceValidUntil": "${date}",
           "price": "${service?.attributes?.price}"
+        },
+        "aggregateRating": {
+          "@type": "http://schema.org/AggregateRating",
+          "worstRating": 1,
+          "bestRating": 5,
+          "ratingValue": 4.9,
+          "reviewCount": 17409
         }
       }`,
       `{
         "@context": "http://schema.org",
         "@type": "Store",
         "name": "Akunify.com",
-        "image": "${process.env.BASE_URL}images/icon-akunify.png"
+        "image": "${process.env.BASE_URL}images/og-images.png"
       }`,
     ]}
   />

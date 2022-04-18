@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+import { Image } from 'components/common'
+
 const Header: React.FC = () => {
   const router = useRouter()
   const [activeMenu, setActiveMenu] = useState<string>('home')
@@ -21,7 +23,7 @@ const Header: React.FC = () => {
               <nav className="flex items-center justify-between py-4 navbar navbar-expand-lg">
                 <Link href={`/`}>
                   <a className="navbar-brand mr-5">
-                    <img
+                    <Image
                       src="/images/logo-akunify.png"
                       alt="Logo akunify.com"
                       className="w-200 sm:w-100"

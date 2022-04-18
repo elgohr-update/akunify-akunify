@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Image } from 'components/common'
 import Description from 'components/Subscribe/Description'
 
 import { getImageUrl, currencyFormater } from 'utils/index'
@@ -33,7 +34,7 @@ const OrderDetail: React.FC<IOrderDetail> = ({
         <div className="rounded-md p-6 shadow-md mt-4 border">
           <div className="flex flex-wrap">
             <div className="w-1/4 p-2 text-center">
-              <img
+              <Image
                 src={getImageUrl(service?.attributes?.image)}
                 alt="Layanan image"
               />

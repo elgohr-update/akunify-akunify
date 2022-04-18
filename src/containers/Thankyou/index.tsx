@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
+import { Image } from 'components/common'
+
 const Thankyou: React.FC = () => {
   const router = useRouter()
 
@@ -10,7 +12,7 @@ const Thankyou: React.FC = () => {
 
   return (
     <div className="mt-110 mb-20 max-w-4xl m-auto p-12 text-center">
-      <img
+      <Image
         src={`/images/thankyou-page.svg`}
         alt={`thankyou-error-page`}
         className="max-w-100 mx-auto w-10/12"

@@ -40,3 +40,5 @@ yarn-error.log*
 
 # generated on build by webpack
 /public/robots.txt
+/public/sitemap.xml
+/public/sitemap-*.xml

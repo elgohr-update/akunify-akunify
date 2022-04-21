@@ -522,7 +522,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                           id="agreement"
                           name="agreement"
                           type="checkbox"
-                          className="focus:ring-turquoise-50 h-4 w-4 border border-turquoise-40 rounded"
+                          className="focus:ring-turquoise-50 border border-turquoise-40 rounded"
                           defaultChecked={userDetail.is_agreed}
                           onChange={(e) => {
                             setUserDetail((prevState) => ({

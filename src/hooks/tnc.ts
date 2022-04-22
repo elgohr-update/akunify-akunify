@@ -7,9 +7,8 @@ const useTnc = () => {
   const getTncList = useCallback(async (): Promise<any> => {
     try {
       const response = await fetchData({
-        apiHost: process.env.API_HOST,
         url: '/tnc',
-        method: 'GET'
+        method: 'GET',
       })
 
       setTermCondition(response?.data)
@@ -23,7 +22,7 @@ const useTnc = () => {
   }, [])
 
   return {
-    termCondition
+    termCondition,
   }
 }
 

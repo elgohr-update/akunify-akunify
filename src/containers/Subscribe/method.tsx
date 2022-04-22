@@ -12,7 +12,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
     og={{
       type: 'product',
       title: `Patungan ${service?.attributes?.name} dengan Akunify.com`,
-      url: `${process.env.BASE_URL}subscribe/${service?.id}/${service?.attributes?.short_url}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe/${service?.id}/${service?.attributes?.short_url}`,
       description: service?.attributes?.short_description,
       image: getImageUrl(service?.attributes?.image),
     }}
@@ -38,8 +38,8 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
       title: service?.attributes?.name,
       keywords: service?.attributes?.keywords,
       author: 'Akunify.com',
-      canonical: `${process.env.BASE_URL}subscribe/${service?.id}/${service?.attributes?.short_url}`,
-      alternate: `${process.env.BASE_URL}subscribe/${service?.id}/${service?.attributes?.short_url}`,
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe/${service?.id}/${service?.attributes?.short_url}`,
+      alternate: `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe/${service?.id}/${service?.attributes?.short_url}`,
     }}
     structuredData={[
       `{
@@ -48,7 +48,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         "name": "${service?.attributes?.name}",
         "description": "${service?.attributes?.short_description}",
         "image": "${getImageUrl(service?.attributes?.image)}",
-        "url": "${process.env.BASE_URL}subscribe/${service?.id}/${
+        "url": "${process.env.NEXT_PUBLIC_BASE_URL}/subscribe/${service?.id}/${
         service?.attributes?.short_url
       }",
         "sku": "${service?.id}-${service?.attributes?.short_url},"
@@ -71,9 +71,9 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         },
         "offers": {
           "@type": "http://schema.org/Offer",
-          "url": "${process.env.BASE_URL}subscribe/${service?.id}/${
-        service?.attributes?.short_url
-      }",
+          "url": "${process.env.NEXT_PUBLIC_BASE_URL}/subscribe/${
+        service?.id
+      }/${service?.attributes?.short_url}",
           "availability": "http://schema.org/InStock",
           "priceCurrency": "Rp",
           "priceValidUntil": "${date}",
@@ -91,7 +91,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
         "@context": "http://schema.org",
         "@type": "Store",
         "name": "Akunify.com",
-        "image": "${process.env.BASE_URL}images/og-images.png"
+        "image": "${process.env.NEXT_PUBLIC_BASE_URL}/images/og-images.png"
       }`,
     ]}
   />

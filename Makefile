@@ -28,7 +28,7 @@ install:
 config:
 	@echo "Generating config for ${APP_NAME} ${VERSION}"
 	mc config host add minio ${MINIO_URL} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY} --api S3v4
-	mc cp -r minio/params/${APP_NAME}/${MINIO_ENV_PATH}/.env params/
+	mc cp -r minio/params/${APP_NAME}/${MINIO_ENV_PATH}/.env .
 
 .PHONY: build
 build:

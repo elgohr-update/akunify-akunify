@@ -11,7 +11,7 @@ const sendWaMessage = async (
       message: message,
     })
     const response: any = fetchData({
-      apiHost: process.env.BASE_URL,
+      apiHost: process.env.NEXT_PUBLIC_BASE_URL,
       url: '/api/sendwa',
       method: 'POST',
       data: {

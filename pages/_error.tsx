@@ -1,6 +1,6 @@
 import ErrorContainer from 'containers/Error'
 
-const Error = ({ statusCode }: any): any => {
+const Error = ({ statusCode }: any): JSX.Element => {
   return <ErrorContainer code={statusCode} />
 }
 

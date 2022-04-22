@@ -16,8 +16,8 @@ const runMiddleware = async (data: any): Promise<any> => {
         }),
       },
       basicAuth: {
-        username: process.env.BASIC_AUTH_TELUH_USER || '',
-        password: process.env.BASIC_AUTH_TELUH_PASSWORD || '',
+        username: process.env.TELUH_BASIC_AUTH_USER || '',
+        password: process.env.TELUH_BASIC_AUTH_PASSWORD || '',
       },
       data: {
         type: 'whatsapp',

@@ -50,7 +50,7 @@ export const getHeaders = ({
 }
 
 export const getBaseAPI = (): string => {
-  return `${process.env.API_HOST}`
+  return `${process.env.NEXT_PUBLIC_API_HOST}`
 }
 
 export const getCookies = {

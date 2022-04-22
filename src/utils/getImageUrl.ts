@@ -3,7 +3,7 @@ const getImageUrl = (
   format?: 'large' | 'medium' | 'small' | 'thumbnail'
 ) => {
   const imageHost =
-    process.env.IMAGE_HOST || 'https://image-akunify.backpackr.xyz'
+    process.env.NEXT_PUBLIC_IMAGE_HOST || 'https://image-akunify.backpackr.xyz'
   const imgUrl = format
     ? image?.data?.attributes?.formats[format]?.url
     : image?.data?.attributes?.url

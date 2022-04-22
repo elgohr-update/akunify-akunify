@@ -1,11 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
-const dotenv = require('dotenv')
-
-const DEFAULT_ENV = 'params/.env'
-dotenv.config({ path: DEFAULT_ENV })
 
 module.exports = {
-  siteUrl: process.env.BASE_URL,
+  siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
   changefreq: 'monthly',
   priority: 0.7,
   sitemapSize: 5000,

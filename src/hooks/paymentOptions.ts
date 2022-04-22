@@ -7,7 +7,6 @@ const usePaymentOption = () => {
   const getPaymentOptionList = useCallback(async (): Promise<any> => {
     try {
       const response = await fetchData({
-        apiHost: process.env.API_HOST,
         url: '/payment-options?populate=image&filters[is_active][$eq]=true',
         method: 'GET',
       })

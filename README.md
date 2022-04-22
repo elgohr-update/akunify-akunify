@@ -11,7 +11,7 @@
 
 ## Environment Setup
 
-    cp params/.env.example params/.env
+    cp .env.example .env
 
 Running in your local
 

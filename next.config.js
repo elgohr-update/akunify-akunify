@@ -7,7 +7,7 @@ const nextConfig = {
   experimental: {
     outputStandalone: true,
   },
-  swcMinify: true,
+  // swcMinify: true,
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
 }

@@ -13,7 +13,7 @@ async function copyRobotsTxt() {
 
 async function copyNextStatic() {
   if (process.env.NODE_ENV === 'production') {
-    // await $`find .next/static -type f -name '*.map' -exec rm -f {} '\;'`
+    await $`find .next/static -type f -name '*.map' -exec rm -f {} '\;'`
     await $`cp -R .next/static .next/standalone/.next/`
     // eslint-disable-next-line no-console
     console.log('.next/static folder copied')

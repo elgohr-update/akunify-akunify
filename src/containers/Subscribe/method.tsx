@@ -7,7 +7,11 @@ const date = dayjs().add(1, 'month').format('YYYY-MM-DD')
 
 const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => (
   <Meta
-    pageTitle={'Subscribe - ' + service?.attributes?.name}
+    pageTitle={
+      'Patungan Akun - ' +
+      service?.attributes?.name +
+      ' Murah, Aman, Praktis & Terpercaya'
+    }
     pageDescription={service?.attributes?.short_description}
     og={{
       type: 'product',

@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js'
 
-const CIPHER_KEY = process.env.CIPHER_KEY || ''
+const CIPHER_KEY = process.env.NEXT_PUBLIC_CIPHER_KEY || ''
 const BLOCK_SIZE = 16
 
 interface IUserDetail {

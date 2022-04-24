@@ -69,7 +69,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
           },
         },
         auth: {
-          token: process.env.BEARER_TOKEN,
+          token: process.env.NEXT_PUBLIC_BEARER_TOKEN,
         },
       })
 
@@ -83,7 +83,7 @@ const Unsubscribe: React.FC<IRenewSubscribe> = ({
           },
         },
         auth: {
-          token: process.env.BEARER_TOKEN,
+          token: process.env.NEXT_PUBLIC_BEARER_TOKEN,
         },
       })
       sendWaNotification()

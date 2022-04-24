@@ -1,5 +1,5 @@
 const defaultMeta = {
-  pageTitle: 'Akunify.com - Patungan akun premium',
+  pageTitle: 'Patungan Akun Premium Murah, Aman, Praktis & Terpercaya',
   pageDescription:
     'Situs berlangganan layanan premium seperti Netflix, Youtube dan Spotify yang murah, praktis dan terpercaya. Patungan menjadi lebih mudah dengan akunify.',
   robots:
@@ -11,7 +11,7 @@ const defaultMeta = {
     url: 'https://akunify.com/',
     type: 'website',
     image: `${process.env.NEXT_PUBLIC_BASE_URL}/images/og-images.png`,
-    title: 'Akunify.com - Patungan akun premium',
+    title: 'Patungan Akun Premium Murah, Aman, Praktis & Terpercaya',
     description:
       'Situs berlangganan layanan premium seperti Netflix, Youtube dan Spotify yang murah, praktis dan terpercaya. Patungan menjadi lebih mudah dengan akunify.',
   },
@@ -35,7 +35,7 @@ const defaultMeta = {
     data2: 'Akunify.com',
   },
   content: {
-    title: 'Akunify.com - Patungan akun premium',
+    title: 'Patungan Akun Premium Murah, Aman, Praktis & Terpercaya',
     keywords:
       'akunify, situs patungan, netflix premium, spotify premium family, youtube premium, patungan akun netflix, patungan akun spotify, patungan akun youtube',
     author: 'Akunify.com',

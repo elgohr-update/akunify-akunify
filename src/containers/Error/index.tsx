@@ -20,6 +20,7 @@ const ErrorContainer = ({ code }: IErrorProps): JSX.Element => {
         src={`/images/${code}-page.svg`}
         alt={`${code}-error-page`}
         className="max-w-100"
+        withNext
       />
 
       <div className="text-center mt-8">

@@ -80,7 +80,8 @@ const OrderDetail: React.FC<IOrderDetail> = ({
             <div className="w-1/4 p-2 text-center">
               <Image
                 src={getImageUrl(service?.attributes?.image)}
-                alt="Layanan image"
+                alt={service?.attributes.name}
+                withNext
               />
             </div>
             <div className="w-3/4 p-2">

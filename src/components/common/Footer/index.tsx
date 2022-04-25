@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   return (
     <footer id="footer" className="footer_area bg-black relative z-10">
       <div className="shape absolute right-0 top-0 opacity-5 h-full overflow-hidden w-1/3">
-        <Image src="/images/logo-akunify.png" alt="logo akunify" />
+        <Image src="/images/logo-akunify.png" alt="logo akunify" withNext />
       </div>
       <div className="container">
         <div className="footer_widget pt-18 pb-120">
@@ -17,7 +17,11 @@ const Footer: React.FC = () => {
               <div className="footer_about mt-13 mx-3">
                 <div className="footer_logo">
                   <a href="#">
-                    <Image src="/images/logo-akunify.png" alt="logo akunify" />
+                    <Image
+                      src="/images/logo-akunify.png"
+                      alt="logo akunify"
+                      withNext
+                    />
                   </a>
                 </div>
                 <div className="footer_content mt-8">
@@ -102,6 +106,7 @@ const Footer: React.FC = () => {
                   <Image
                     src="/images/socmed/facebook.svg"
                     alt="Akunify Facebook"
+                    withNext
                   />
                 </a>
               </li>
@@ -114,6 +119,7 @@ const Footer: React.FC = () => {
                   <Image
                     src="/images/socmed/instagram.svg"
                     alt="Akunify Instagram"
+                    withNext
                   />
                 </a>
               </li>
@@ -126,6 +132,7 @@ const Footer: React.FC = () => {
                   <Image
                     src="/images/socmed/twitter.svg"
                     alt="Akunify Twitter"
+                    withNext
                   />
                 </a>
               </li>

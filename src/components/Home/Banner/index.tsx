@@ -8,37 +8,37 @@ const Banner: React.FC = () => {
       className="header_hero bg-gray relative z-10 overflow-hidden lg:flex items-center"
     >
       <div className="hero_shape shape_1">
-        <Image src="assets/images/shape/shape-1.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-1.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_2">
-        <Image src="assets/images/shape/shape-2.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-2.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_3">
-        <Image src="assets/images/shape/shape-3.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-3.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_4">
-        <Image src="assets/images/shape/shape-4.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-4.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_6">
-        <Image src="assets/images/shape/shape-1.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-1.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_7">
-        <Image src="assets/images/shape/shape-4.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-4.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_8">
-        <Image src="assets/images/shape/shape-3.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-3.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_9">
-        <Image src="assets/images/shape/shape-2.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-2.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_10">
-        <Image src="assets/images/shape/shape-4.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-4.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_11">
-        <Image src="assets/images/shape/shape-1.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-1.svg" alt="shape" withNext />
       </div>
       <div className="hero_shape shape_12">
-        <Image src="assets/images/shape/shape-2.svg" alt="shape" />
+        <Image src="/assets/images/shape/shape-2.svg" alt="shape" withNext />
       </div>
 
       <div className="container">
@@ -67,7 +67,11 @@ const Banner: React.FC = () => {
 
       <div className="header_image flex items-center">
         <div className="image 2xl:pl-25 w-full md:absolute md:mt-260">
-          <Image src="/images/illustration/cinema.svg" alt="Header Image" />
+          <Image
+            src="/images/illustration/cinema.svg"
+            alt="header illustration"
+            withNext
+          />
         </div>
       </div>
     </div>

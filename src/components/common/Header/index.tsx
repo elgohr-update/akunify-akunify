@@ -25,8 +25,9 @@ const Header: React.FC = () => {
                   <a className="navbar-brand mr-5">
                     <Image
                       src="/images/logo-akunify.png"
-                      alt="Logo akunify.com"
+                      alt="logo akunify"
                       className="w-200 sm:w-100"
+                      withNext
                     />
                   </a>
                 </Link>

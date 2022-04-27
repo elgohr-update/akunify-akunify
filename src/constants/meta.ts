@@ -3,7 +3,7 @@ const defaultMeta = {
   pageDescription:
     'Situs berlangganan layanan premium seperti Netflix, Youtube dan Spotify yang murah, praktis dan terpercaya. Patungan menjadi lebih mudah dengan akunify.',
   robots:
-    process.env.BUILD_ENV === 'production'
+    process.env.NEXT_PUBLIC_BUILD_ENV === 'production'
       ? 'index, follow, max-image-preview:large'
       : 'noindex, nofollow',
   author: 'Akunify.com',
@@ -42,6 +42,20 @@ const defaultMeta = {
     canonical: 'https://akunify.com',
     alternate: 'https://www.akunify.com/',
   },
+  structuredData: [
+    `{
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "${process.env.NEXT_PUBLIC_BASE_URL}"
+    }`,
+    `{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Akunify.com",
+      "url": "${process.env.NEXT_PUBLIC_BASE_URL}",
+      "logo": "${process.env.NEXT_PUBLIC_BASE_URL}/images/og-images.png",
+    }`,
+  ],
 }
 
 export default defaultMeta

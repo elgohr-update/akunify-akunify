@@ -7,17 +7,17 @@ import { decryptData } from 'utils/encrypt'
 const runMiddleware = async (data: any): Promise<any> => {
   try {
     const response: any = await fetchData({
-      apiHost: process.env.TELUH_API_HOST,
+      apiHost: process.env.NEXT_PUBLIC_TELUH_API_HOST,
       url: '/send_message',
       method: 'POST',
       headers: {
         ...getSecretHeader({
-          apiSecretKey: process.env.TELUH_API_SECRET,
+          apiSecretKey: process.env.NEXT_PUBLIC_TELUH_API_SECRET,
         }),
       },
       basicAuth: {
-        username: process.env.TELUH_BASIC_AUTH_USER || '',
-        password: process.env.TELUH_BASIC_AUTH_PASSWORD || '',
+        username: process.env.NEXT_PUBLIC_TELUH_BASIC_AUTH_USER || '',
+        password: process.env.NEXT_PUBLIC_TELUH_BASIC_AUTH_PASSWORD || '',
       },
       data: {
         type: 'whatsapp',

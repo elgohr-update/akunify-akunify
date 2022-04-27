@@ -257,7 +257,7 @@ const Meta: React.FC<MetaProps> = ({
       structuredData?.map((item, i) => (
         <script
           type="application/ld+json"
-          data-rh={author === 'Akunify' ? 'true' : 'false'}
+          data-rh={author === 'Akunify.com' ? 'true' : 'false'}
           dangerouslySetInnerHTML={{ __html: item }}
           key={`structure-${i}`}
         ></script>

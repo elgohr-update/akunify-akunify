@@ -2,7 +2,7 @@
 
 async function copyRobotsTxt() {
   const ROBOT_FILE_PATH =
-    process.env.BUILD_ENV === 'production'
+    process.env.NEXT_PUBLIC_BUILD_ENV === 'production'
       ? 'public/robots-production.txt'
       : 'public/robots-staging.txt'
 
@@ -21,7 +21,7 @@ async function copyNextStatic() {
 }
 
 async function generateSitemap() {
-  if (process.env.BUILD_ENV === 'production') {
+  if (process.env.NEXT_PUBLIC_BUILD_ENV === 'production') {
     await $`next-sitemap`
     // eslint-disable-next-line no-console
     console.log('sitemap.xml file generated')

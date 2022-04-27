@@ -119,10 +119,10 @@ const Meta: React.FC<MetaProps> = ({
     <meta key="frmtDt" name="format-detection" content="telephone=no" />
     <meta key="apName" name="application-name" content="Akunify.com" />
 
-    <meta key="msNv" content="#1b9cdc" name="msapplication-navbutton-color" />
+    <meta key="msNv" content="#ffffff" name="msapplication-navbutton-color" />
     <meta
       key="apmw"
-      content="#1b9cdc"
+      content="#ffffff"
       name="apple-mobile-web-app-status-bar-style"
     />
 

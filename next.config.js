@@ -8,7 +8,7 @@ const nextConfig = {
     outputStandalone: true,
   },
   // swcMinify: true,
-  productionBrowserSourceMaps: true,
+  // productionBrowserSourceMaps: true,
   reactStrictMode: true,
 }
 

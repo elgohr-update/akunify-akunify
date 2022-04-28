@@ -30,7 +30,7 @@ const HomeContainer = (): JSX.Element => {
       <Services data={services} />
       <Payment data={paymentOptions.data} />
       <Faq />
-      <Backtop />
+      {/* <Backtop /> */}
     </>
   )
 }

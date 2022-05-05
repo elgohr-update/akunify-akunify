@@ -53,7 +53,7 @@ const defaultMeta = {
       "@type": "Organization",
       "name": "Akunify.com",
       "url": "${process.env.NEXT_PUBLIC_BASE_URL}",
-      "logo": "${process.env.NEXT_PUBLIC_BASE_URL}/images/og-images.png",
+      "logo": "${process.env.NEXT_PUBLIC_BASE_URL}/images/og-images.png"
     }`,
   ],
 }

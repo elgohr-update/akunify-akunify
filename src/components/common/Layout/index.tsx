@@ -22,7 +22,7 @@ const Layout = (props: Props): JSX.Element => (
       allowClickAway
       notification
       notificationDelay={30000}
-      notificationSound={true}
+      notificationSound={false}
       className="z-50"
     />
     <Footer />

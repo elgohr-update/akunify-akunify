@@ -1,4 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import SnackBar from 'my-react-snackbar'
+import useCopyToClipboard from 'hooks/copyClipboard'
+import {
+  TwitterIcon,
+  FacebookIcon,
+  WhatsappIcon,
+  TelegramIcon,
+  TwitterShareButton,
+  FacebookShareButton,
+  WhatsappShareButton,
+  TelegramShareButton,
+} from 'react-share'
 
 import { Image } from 'components/common'
 import Description from 'components/Subscribe/Description'
@@ -24,8 +37,30 @@ const OrderDetail: React.FC<IOrderDetail> = ({
   showMore,
   setShowMore,
 }) => {
+  const router = useRouter()
+  const [open, setOpen] = useState<boolean>(false)
+  const [value, copy] = useCopyToClipboard()
+
+  const shareUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`
+
+  const copyClipboard = () => {
+    copy(shareUrl)
+    setOpen(true)
+  }
+
   return (
     <div>
+      <SnackBar
+        open={open}
+        message={'Success copied to clipboard!'}
+        position="top-center"
+        type="info"
+        yesLabel="Ok"
+        onYes={() => {
+          setOpen(false)
+        }}
+      />
+
       <div className="my-4">
         <div className="flex flex-wrap justify-between items-center pr-1">
           <h5 className="text-turquoise-90">Layanan yang dipesan</h5>
@@ -58,6 +93,37 @@ const OrderDetail: React.FC<IOrderDetail> = ({
             <p className="text-turquoise-90">
               {currencyFormater(service?.attributes.price)}/bulan
             </p>
+          </div>
+
+          <div className="mt-4">
+            <div className="flex flex-wrap">
+              <span className="mr-2">Bagikan: </span>
+              <div>
+                <FacebookShareButton url={shareUrl}>
+                  <FacebookIcon size={32} round={true} className="h-6" />
+                </FacebookShareButton>
+
+                <WhatsappShareButton url={shareUrl}>
+                  <WhatsappIcon size={32} round={true} className="h-6" />
+                </WhatsappShareButton>
+
+                <TelegramShareButton url={shareUrl}>
+                  <TelegramIcon size={32} round={true} className="h-6" />
+                </TelegramShareButton>
+
+                <TwitterShareButton url={shareUrl}>
+                  <TwitterIcon size={32} round={true} className="h-6" />
+                </TwitterShareButton>
+
+                <button onClick={() => copyClipboard()}>
+                  <Image
+                    src="/images/share/link.png"
+                    alt="share facebook"
+                    className="h-6"
+                  />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -25,9 +25,13 @@
       "pages/*": ["./pages/*"],
       "public/*": ["./public/*"],
       "styles/*": ["./src/styles/*"],
-      "utils/*": ["./src/utils/*"]
+      "utils/*": ["./src/utils/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typeRoots": [
+    "./node_modules",
+    "./src/types"
+  ]
 }

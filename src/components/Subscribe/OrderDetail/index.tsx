@@ -100,26 +100,26 @@ const OrderDetail: React.FC<IOrderDetail> = ({
               <span className="mr-2">Bagikan: </span>
               <div>
                 <FacebookShareButton url={shareUrl}>
-                  <FacebookIcon size={32} round={true} className="h-6" />
+                  <FacebookIcon size={36} round={true} className="h-8" />
                 </FacebookShareButton>
 
                 <WhatsappShareButton url={shareUrl}>
-                  <WhatsappIcon size={32} round={true} className="h-6" />
+                  <WhatsappIcon size={36} round={true} className="h-8" />
                 </WhatsappShareButton>
 
                 <TelegramShareButton url={shareUrl}>
-                  <TelegramIcon size={32} round={true} className="h-6" />
+                  <TelegramIcon size={36} round={true} className="h-8" />
                 </TelegramShareButton>
 
                 <TwitterShareButton url={shareUrl}>
-                  <TwitterIcon size={32} round={true} className="h-6" />
+                  <TwitterIcon size={36} round={true} className="h-8" />
                 </TwitterShareButton>
 
                 <button onClick={() => copyClipboard()}>
                   <Image
                     src="/images/share/link.png"
-                    alt="share facebook"
-                    className="h-6"
+                    alt="share link copy"
+                    className="h-8 mx-1"
                   />
                 </button>
               </div>

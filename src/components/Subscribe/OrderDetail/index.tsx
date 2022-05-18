@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import SnackBar from 'my-react-snackbar'
 import useCopyToClipboard from 'hooks/copyClipboard'
@@ -48,17 +48,21 @@ const OrderDetail: React.FC<IOrderDetail> = ({
     setOpen(true)
   }
 
+  useEffect(() => {
+    if (open) {
+      const timer = setTimeout(() => setOpen(false), 2500)
+      return () => clearTimeout(timer)
+    }
+  }, [open])
+
   return (
     <div>
       <SnackBar
         open={open}
         message={'Success copied to clipboard!'}
         position="top-center"
-        type="info"
-        yesLabel="Ok"
-        onYes={() => {
-          setOpen(false)
-        }}
+        color="#23D5D0"
+        closeOnClick={false}
       />
 
       <div className="my-4">

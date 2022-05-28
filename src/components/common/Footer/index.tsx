@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2 lg:w-5/12">
-              <div className="footer_link_wrapper flex flex-wrap mx-3">
+              <div className="footer_link_wrapper flex sm:flex-wrap xs:flex-wrap mx-3">
                 <div className="footer_link w-1/2 md:pl-13 mt-13">
                   <h2 className="footer_title text-xl font-semibold text-white">
                     Akunify.com
@@ -45,22 +45,33 @@ const Footer: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="footer_link w-1/2 md:pl-13 mt-13">
+                <div className="footer_link lg:w-1/2 md:w-1/2 xs:w-full md:pl-11 mt-13">
                   <h2 className="footer_title text-xl font-semibold text-white">
                     Reach Us
                   </h2>
                   <ul className="link pt-4">
-                    <li>
-                      <p className="text-white mt-4 hover:text-primary flex flex-wrap items-center">
-                        <PhoneIcon className="w-5 h-5 mr-2 text-turquoise-50" />{' '}
-                        0851-7152-5500
-                      </p>
-                    </li>
-                    <li>
-                      <p className="text-white mt-4 hover:text-primary flex flex-wrap items-center">
-                        <MailIcon className="w-5 h-5 mr-2 text-turquoise-50" />{' '}
+                    <Link
+                      href={`https://api.whatsapp.com/send/?phone=6285171525500&text=Hai%20Admin%20saya%20mau%20tanya`}
+                      passHref
+                    >
+                      <a target="_blank" rel="noopener noreferrer">
+                        <li className="flex items-center mt-4 w-full">
+                          <span>
+                            <PhoneIcon className="w-5 h-5 mr-2 text-turquoise-50" />
+                          </span>
+                          <span className="text-white hover:text-primary">
+                            0851-7152-5500
+                          </span>
+                        </li>
+                      </a>
+                    </Link>
+                    <li className="flex items-center mt-4 w-full">
+                      <span>
+                        <MailIcon className="w-5 h-5 mr-2 text-turquoise-50" />
+                      </span>
+                      <span className="text-white hover:text-primary">
                         info.akunify@gmail.com
-                      </p>
+                      </span>
                     </li>
                   </ul>
                 </div>

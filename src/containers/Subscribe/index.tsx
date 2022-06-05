@@ -281,7 +281,10 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
         //redirect to thanks page
         const timer = setTimeout(
-          () => router.push('/subscribe/thankyou'),
+          () =>
+            router.push(
+              `/subscribe/${service?.id}/${service?.attributes.short_url}/thankyou`
+            ),
           2 * 1000
         )
         return () => {

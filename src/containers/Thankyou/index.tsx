@@ -76,14 +76,14 @@ const Thankyou: React.FC<ThanksContainerProps> = ({ service }) => {
             {paymentOptions?.data?.length > 0 &&
               paymentOptions.data.map((item: any, i: number) => (
                 <div
-                  className="p-4 border-2 items-center rounded-md border-turquoise-60 flex"
+                  className="p-4 border items-center rounded-md border-turquoise-60 flex"
                   key={`pay-opt-${i}`}
                 >
-                  <div className="md:w-1/4 xs:w-1/2 md:p-2 lg:p-2 mr-2">
+                  <div className="md:w-1/4 xs:w-1/4 md:p-2 lg:p-2 mr-2">
                     <img src={getImageUrl(item.attributes.image)} alt="" />
                   </div>
-                  <div className="md:w-2/3 sm:w-1/2">
-                    <div className="flex flex-wrap">
+                  <div className="w-full pl-2">
+                    <div className="flex flex-wrap justify-between">
                       <span className="font-bold text-turquoise-80 md:text-lg xs:text-sm mr-5">
                         {item.attributes.account_number}{' '}
                       </span>
@@ -108,7 +108,7 @@ const Thankyou: React.FC<ThanksContainerProps> = ({ service }) => {
             onClick={handleClickHome}
             className="main-btn pricing_btn w-1/2"
           >
-            Kembali ke Homepage
+            Konfirmasi Pembayaran
           </button>
         </div>
       </div>

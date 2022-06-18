@@ -64,11 +64,19 @@ const Thankyou: React.FC<ThanksContainerProps> = ({ service }) => {
         </p>
 
         <div className="text-left mt-10 border-t pt-5">
-          <p className="font-bold text-lg text-turquoise-90 mb-2">
+          <p className="font-bold text-lg text-turquoise-90 mb-2 flex items-center space-x-2">
             Total Pembayaran:{' '}
-            {currencyFormater(service?.attributes?.price || 0)}
+            <span className="text-turquoise-70 ml-2">
+              {currencyFormater(service?.attributes?.price || 0)}
+            </span>
+            <DocumentDuplicateIcon
+              className="h-4 text-turquoise-70"
+              onClick={() => {
+                copyClipboard(service?.attributes?.price || 0)
+              }}
+            />
           </p>
-          <p className="font-semibold text-md text-turquoise-90">
+          <p className="font-semibold text-sm text-turquoise-90">
             Silahkan lakukan transfer ke rekening :{' '}
           </p>
 
@@ -76,7 +84,7 @@ const Thankyou: React.FC<ThanksContainerProps> = ({ service }) => {
             {paymentOptions?.data?.length > 0 &&
               paymentOptions.data.map((item: any, i: number) => (
                 <div
-                  className="p-4 border items-center rounded-md border-turquoise-60 flex"
+                  className="p-4 border-[0.5px] items-center rounded-md border-turquoise-60 flex"
                   key={`pay-opt-${i}`}
                 >
                   <div className="md:w-1/4 xs:w-1/4 md:p-2 lg:p-2 mr-2">

@@ -42,6 +42,11 @@ const OrderDetail: React.FC<IOrderDetail> = ({
   const [value, copy] = useCopyToClipboard()
 
   const shareUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`
+  const shareTitle = `Yuk, berlangganan ${
+    service?.attributes.name
+  } cuma dengan Rp${currencyFormater(
+    service?.attributes?.price || 0
+  )}/bulan. Berlangganan murah, praktis dan terpercaya hanya di akunify. - ${shareUrl}`
 
   const copyClipboard = () => {
     copy(shareUrl)
@@ -103,19 +108,19 @@ const OrderDetail: React.FC<IOrderDetail> = ({
             <div className="flex flex-wrap items-center">
               <span className="mr-2">Bagikan: </span>
               <div className="items-center pt-2">
-                <FacebookShareButton url={shareUrl}>
+                <FacebookShareButton url={shareUrl} title={shareTitle}>
                   <FacebookIcon size={36} round={true} className="h-8 mr-1" />
                 </FacebookShareButton>
 
-                <WhatsappShareButton url={shareUrl}>
+                <WhatsappShareButton url={shareUrl} title={shareTitle}>
                   <WhatsappIcon size={36} round={true} className="h-8 mr-1" />
                 </WhatsappShareButton>
 
-                <TelegramShareButton url={shareUrl}>
+                <TelegramShareButton url={shareUrl} title={shareTitle}>
                   <TelegramIcon size={36} round={true} className="h-8 mr-1" />
                 </TelegramShareButton>
 
-                <TwitterShareButton url={shareUrl}>
+                <TwitterShareButton url={shareUrl} title={shareTitle}>
                   <TwitterIcon size={36} round={true} className="h-8 mr-1" />
                 </TwitterShareButton>
 

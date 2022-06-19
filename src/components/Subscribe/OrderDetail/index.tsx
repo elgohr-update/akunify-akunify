@@ -46,7 +46,7 @@ const OrderDetail: React.FC<IOrderDetail> = ({
     service?.attributes.name
   } cuma dengan Rp${currencyFormater(
     service?.attributes?.price || 0
-  )}/bulan. Berlangganan murah, praktis dan terpercaya hanya di akunify. - ${shareUrl}`
+  )}/bulan. Berlangganan murah, praktis dan terpercaya hanya di akunify.`
 
   const copyClipboard = () => {
     copy(shareUrl)

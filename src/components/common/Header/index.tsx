@@ -28,6 +28,9 @@ const Header: React.FC = () => {
                       alt="logo akunify"
                       className="w-200 sm:w-100"
                       withNext
+                      layout="fixed"
+                      width={180}
+                      height={40}
                     />
                   </a>
                 </Link>

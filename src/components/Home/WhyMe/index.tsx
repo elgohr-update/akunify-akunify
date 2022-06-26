@@ -12,6 +12,9 @@ const Banner: React.FC = () => {
             src="/images/illustration/music-2.svg"
             alt="about akunify"
             withNext
+            layout="responsive"
+            width={100}
+            height={80}
           />
         </div>
       </div>

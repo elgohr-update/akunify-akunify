@@ -55,6 +55,10 @@ const Thankyou: React.FC<ThanksContainerProps> = ({ service }) => {
           src={`/images/thankyou-page.svg`}
           alt={`thankyou-error-page`}
           className="max-w-100 mx-auto md:w-3/5 lg:w-3/5 sm:w-11/12 mb-10"
+          withNext
+          layout="responsive"
+          width={100}
+          height={80}
         />
 
         <p className="text-turquoise-80 text-sm md:text-base mt-6">
@@ -88,7 +92,13 @@ const Thankyou: React.FC<ThanksContainerProps> = ({ service }) => {
                   key={`pay-opt-${i}`}
                 >
                   <div className="md:w-1/4 xs:w-1/4 md:p-2 lg:p-2 mr-2">
-                    <img src={getImageUrl(item.attributes.image)} alt="" />
+                    <Image
+                      src={getImageUrl(item.attributes.image)}
+                      alt="thank you page"
+                      layout="responsive"
+                      width={100}
+                      height={80}
+                    />
                   </div>
                   <div className="w-full pl-2">
                     <div className="flex flex-wrap justify-between">

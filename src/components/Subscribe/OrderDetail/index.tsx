@@ -82,6 +82,8 @@ const OrderDetail: React.FC<IOrderDetail> = ({
                 src={getImageUrl(service?.attributes?.image)}
                 alt={service?.attributes.name}
                 withNext
+                width={240}
+                height={120}
               />
             </div>
             <div className="w-3/4 p-2">
@@ -130,6 +132,8 @@ const OrderDetail: React.FC<IOrderDetail> = ({
                     src="/images/share/link.png"
                     alt="share link copy"
                     className="h-8 ml-1"
+                    width={32}
+                    height={32}
                   />
                 </button>
               </div>

@@ -44,6 +44,9 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                             alt="work"
                             className="w-full aspect-video"
                             withNext
+                            layout="responsive"
+                            width={100}
+                            height={62}
                           />
                         </div>
                         <div className="work_content">

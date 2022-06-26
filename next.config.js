@@ -10,6 +10,14 @@ const nextConfig = {
   // swcMinify: true,
   // productionBrowserSourceMaps: true,
   reactStrictMode: true,
+  images: {
+    disableStaticImages: true,
+    formats: ['image/avif', 'image/webp'],
+    domains: [
+      `${process.env.NEXT_PUBLIC_IMAGE_HOST.replace(/^https?:\/\//, '')}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL.replace(/^https?:\/\//, '')}`,
+    ],
+  },
 }
 
 module.exports = withPlugins(

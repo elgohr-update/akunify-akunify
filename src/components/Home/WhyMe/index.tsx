@@ -8,7 +8,14 @@ const Banner: React.FC = () => {
     <section id="why" className="about_area pt-120 relative">
       <div className="about_image flex items-end justify-end">
         <div className="image lg:pr-13 lg:pb-110 sm:pb-110 w-full">
-          <Image src="/images/illustration/music-2.svg" alt="about akunify" />
+          <Image
+            src="/images/illustration/music-2.svg"
+            alt="about akunify"
+            withNext
+            layout="responsive"
+            width={100}
+            height={80}
+          />
         </div>
       </div>
       <div className="container">

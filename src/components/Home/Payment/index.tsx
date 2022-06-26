@@ -26,11 +26,15 @@ const Payment: React.FC<IPaymentProps> = ({ data = [] }) => {
             data.map((item, i) => (
               <div
                 key={`payment-${i}`}
-                className="md:w-1/6 sm:w-1/2 xs:w-1/3 p-3 mx-4 xs:mx-0"
+                className="md:w-1/6 sm:w-1/2 xs:w-1/3 p-3 mx-4 xs:mx-0 items-center"
               >
                 <Image
                   src={getImageUrl(item.attributes.image)}
                   alt={item.attributes.name}
+                  withNext
+                  layout="responsive"
+                  width={100}
+                  height={28}
                 />
               </div>
             ))}

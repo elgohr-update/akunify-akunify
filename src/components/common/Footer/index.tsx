@@ -8,7 +8,14 @@ const Footer: React.FC = () => {
   return (
     <footer id="footer" className="footer_area bg-black relative z-10">
       <div className="shape absolute right-0 top-0 opacity-5 h-full overflow-hidden w-1/3">
-        <Image src="/images/logo-akunify.png" alt="logo akunify" />
+        <Image
+          src="/images/logo-akunify.png"
+          alt="logo akunify"
+          withNext
+          layout="responsive"
+          width={100}
+          height={80}
+        />
       </div>
       <div className="container">
         <div className="footer_widget pt-18 pb-120">
@@ -17,7 +24,14 @@ const Footer: React.FC = () => {
               <div className="footer_about mt-13 mx-3">
                 <div className="footer_logo">
                   <a href="#">
-                    <Image src="/images/logo-akunify.png" alt="logo akunify" />
+                    <Image
+                      src="/images/logo-akunify.png"
+                      alt="logo akunify"
+                      withNext
+                      layout="responsive"
+                      width={60}
+                      height={12}
+                    />
                   </a>
                 </div>
                 <div className="footer_content mt-8">
@@ -102,6 +116,10 @@ const Footer: React.FC = () => {
                   <Image
                     src="/images/socmed/facebook.svg"
                     alt="Akunify Facebook"
+                    withNext
+                    layout="fixed"
+                    width={32}
+                    height={32}
                   />
                 </a>
               </li>
@@ -114,6 +132,10 @@ const Footer: React.FC = () => {
                   <Image
                     src="/images/socmed/instagram.svg"
                     alt="Akunify Instagram"
+                    withNext
+                    layout="fixed"
+                    width={32}
+                    height={32}
                   />
                 </a>
               </li>
@@ -126,6 +148,10 @@ const Footer: React.FC = () => {
                   <Image
                     src="/images/socmed/twitter.svg"
                     alt="Akunify Twitter"
+                    withNext
+                    layout="fixed"
+                    width={32}
+                    height={32}
                   />
                 </a>
               </li>

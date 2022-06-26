@@ -13,6 +13,7 @@ const OfflineContainer = (): JSX.Element => {
         src={`/images/404-page.svg`}
         alt={`ofline-page`}
         className="max-w-100"
+        withNext
       />
 
       <div className="text-center mt-8">

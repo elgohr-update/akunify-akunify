@@ -9,16 +9,22 @@ import { getServiceDetail } from 'services/service'
 interface SubscribeProps {
   serviceDetail: any
   statusCode: number
+  disabledPreorder: boolean
 }
 
 const SubscribePage: React.FC<SubscribeProps> = (props) => {
-  const { serviceDetail, statusCode } = props
+  const { serviceDetail, statusCode, disabledPreorder } = props
 
   if (statusCode === 404) {
     return <Error statusCode={statusCode} />
   }
 
-  return <SubscribeContainer service={serviceDetail} />
+  return (
+    <SubscribeContainer
+      service={serviceDetail}
+      disabledPreorder={disabledPreorder}
+    />
+  )
 }
 
 export const getServerSideProps = async (ctx: NextPageContext) => {
@@ -32,11 +38,13 @@ export const getServerSideProps = async (ctx: NextPageContext) => {
 
   const statusCode = detail?.status || 404
   const serviceDetail = detail?.data || null
+  const disabledPreorder = query.disabled_preorder === 'true'
 
   return {
     props: {
       serviceDetail,
       statusCode,
+      disabledPreorder,
     },
   }
 }

@@ -3,6 +3,7 @@ import { fetchData } from 'utils/fetch-data'
 interface IRegisterMember {
   member: number
   service: number
+  email_service?: string
 }
 
 const subscribeService = async (body: IRegisterMember): Promise<boolean> => {

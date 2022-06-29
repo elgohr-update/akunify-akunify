@@ -253,6 +253,11 @@ const Meta: React.FC<MetaProps> = ({
       </>
     )}
 
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+
     {!isEmpty(structuredData) &&
       structuredData?.map((item, i) => (
         <script

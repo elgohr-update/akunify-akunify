@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import TermConditionContainer from 'containers/TermCondition'
 
-const Home: NextPage = () => {
+const TermConditionPage: NextPage = () => {
   return <TermConditionContainer />
 }
 
-export default Home
+export default TermConditionPage

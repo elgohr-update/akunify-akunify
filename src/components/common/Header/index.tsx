@@ -1,16 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/outline'
 
 import { Image } from 'components/common'
 
+import { getListServices } from 'services/service'
+
 const Header: React.FC = () => {
   const router = useRouter()
+  const [services, setServices] = useState<any[]>([])
+  const [showDropdown, setShowDropdown] = useState<boolean>(false)
   const [activeMenu, setActiveMenu] = useState<string>('home')
   const [mobileHide, setMobileHide] = useState<boolean>(true)
 
+  useEffect(() => {
+    getServicesList()
+  }, [])
+
+  const getServicesList = async () => {
+    try {
+      const response = await getListServices({ with_image: false })
+      setServices(response)
+    } catch (error) {
+      throw error
+    }
+  }
+
   const handleSetActiveMenu = (menu: 'home' | 'services' | 'faqs'): void => {
     setActiveMenu(menu)
+    setShowDropdown(false)
     setMobileHide(true)
   }
 
@@ -80,15 +99,57 @@ const Header: React.FC = () => {
                           </a>
                         </li>
                         <li className="nav-item ml-5 lg:ml-11">
-                          <a
-                            className={`page-scroll ${
-                              activeMenu === 'services' ? 'active' : ''
-                            }`}
-                            href="#services"
-                            onClick={() => handleSetActiveMenu('services')}
+                          <div className="inline-flex items-center">
+                            <a
+                              className={`page-scroll cursor-pointer ${
+                                activeMenu === 'services' ? 'active' : ''
+                              }`}
+                              onClick={() => {
+                                handleSetActiveMenu('services')
+                                setShowDropdown(!showDropdown)
+                              }}
+                            >
+                              Services
+                            </a>
+                            {showDropdown ? (
+                              <ChevronUpIcon
+                                className={`w-4 h-4 ml-2 ${
+                                  activeMenu === 'services'
+                                    ? 'text-turquoise-50'
+                                    : ''
+                                }`}
+                              />
+                            ) : (
+                              <ChevronDownIcon
+                                className={`w-4 h-4 ml-2 ${
+                                  activeMenu === 'services'
+                                    ? 'text-turquoise-50'
+                                    : ''
+                                }`}
+                              />
+                            )}
+                          </div>
+                          <ul
+                            className={`${
+                              showDropdown ? 'block' : 'hidden'
+                            } dropdown-menu min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-md shadow mt-1 m-0 bg-clip-padding border-none`}
                           >
-                            Services
-                          </a>
+                            {services.length > 0 &&
+                              services.map((menu, i) => (
+                                <li key={`submenu-${i}`}>
+                                  <Link
+                                    href={`/subscribe/${menu?.id}/${menu?.attributes?.short_url}`}
+                                  >
+                                    <a
+                                      className="dropdown-item text-sm py-2 px-4 font-normal"
+                                      onClick={() => setShowDropdown(false)}
+                                    >
+                                      {menu?.attributes?.name}
+                                    </a>
+                                  </Link>
+                                </li>
+                              ))}
+                          </ul>
                         </li>
                         <li className="nav-item ml-5 lg:ml-11">
                           <a

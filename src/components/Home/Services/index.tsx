@@ -28,12 +28,12 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
           </div>
         </div>
         <div className="container-fluid">
-          <div className="work_wrapper relative p-0 md:px-12">
-            <div className="row work_active md:px-8 sm:p-0 justify-center">
+          <div className="work_wrapper relative p-0 md:px-16">
+            <div className="row work_active md:px-14 sm:p-0 justify-center">
               {data.length > 0 &&
                 data.map((service, index) => (
                   <div
-                    className="w-full lg:w-1/5 pt-4"
+                    className="w-full lg:w-1/4 pt-4"
                     key={`service-${index}`}
                   >
                     <div className="single_item mx-auto">

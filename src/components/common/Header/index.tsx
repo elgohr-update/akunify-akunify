@@ -99,7 +99,7 @@ const Header: React.FC = () => {
                           </a>
                         </li>
                         <li className="nav-item ml-5 lg:ml-11">
-                          <div className="inline-flex items-center">
+                          <div className="inline-flex items-center hover:text-turquoise-50">
                             <a
                               className={`page-scroll cursor-pointer ${
                                 activeMenu === 'services' ? 'active' : ''

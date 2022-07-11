@@ -79,11 +79,66 @@ const Header: React.FC = () => {
                     className="items-center content-start mr-auto lg:justify-end navbar-nav lg:flex"
                   >
                     {router.pathname !== '/' && (
-                      <li className="nav-item ml-5 lg:ml-11">
-                        <Link href={`/`}>
-                          <a className={`page-scroll`}>Home</a>
-                        </Link>
-                      </li>
+                      <>
+                        <li className="nav-item ml-5 lg:ml-11">
+                          <Link href={`/`}>
+                            <a className={`page-scroll`}>Home</a>
+                          </Link>
+                        </li>
+                        <li className="nav-item ml-5 lg:ml-11">
+                          <div className="inline-flex items-center hover:text-turquoise-50">
+                            <a
+                              className={`page-scroll cursor-pointer ${
+                                activeMenu === 'services' ? 'active' : ''
+                              }`}
+                              onClick={() => {
+                                handleSetActiveMenu('services')
+                                setShowDropdown(!showDropdown)
+                              }}
+                            >
+                              Services
+                            </a>
+                            {showDropdown ? (
+                              <ChevronUpIcon
+                                className={`w-4 h-4 ml-2 ${
+                                  activeMenu === 'services'
+                                    ? 'text-turquoise-50'
+                                    : ''
+                                }`}
+                              />
+                            ) : (
+                              <ChevronDownIcon
+                                className={`w-4 h-4 ml-2 ${
+                                  activeMenu === 'services'
+                                    ? 'text-turquoise-50'
+                                    : ''
+                                }`}
+                              />
+                            )}
+                          </div>
+                          <ul
+                            className={`${
+                              showDropdown ? 'block' : 'hidden'
+                            } dropdown-menu min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-md shadow mt-1 m-0 bg-clip-padding border-none`}
+                          >
+                            {services.length > 0 &&
+                              services.map((menu, i) => (
+                                <li key={`submenu-${i}`}>
+                                  <Link
+                                    href={`/subscribe/${menu?.id}/${menu?.attributes?.short_url}`}
+                                  >
+                                    <a
+                                      className="dropdown-item text-sm py-2 px-4 font-normal"
+                                      onClick={() => setShowDropdown(false)}
+                                    >
+                                      {menu?.attributes?.name}
+                                    </a>
+                                  </Link>
+                                </li>
+                              ))}
+                          </ul>
+                        </li>
+                      </>
                     )}
                     {router.pathname === '/' && (
                       <>

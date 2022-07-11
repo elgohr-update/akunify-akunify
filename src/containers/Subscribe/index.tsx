@@ -112,13 +112,19 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
 
   useEffect(() => {
     const isNotValid = checkIsValidInput()
+
     if (userDetail.member_id > 0 && userDetail.is_agreed) {
       if (service.attributes.short_url === constant.youtub_short_url) {
-        if (userDetail.email_service) {
-          setIsDisable(false)
-        } else {
-          setIsDisable(true)
-        }
+        const emailServiceValid = validation(
+          'register',
+          'email_service',
+          userDetail.email_service
+        )
+        setIsDisable(
+          emailServiceValid !== '' && emailServiceValid !== undefined
+        )
+      } else {
+        setIsDisable(false)
       }
     } else {
       setIsDisable(isNotValid || !userDetail.is_agreed)
@@ -146,7 +152,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     )
     const email_service = validation(
       'register',
-      'email',
+      'email_service',
       userDetail.email_service
     )
 
@@ -242,6 +248,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
       name: userDetail.name,
       email: userDetail.email,
       phone_number: `0${userDetail.phone_number}`,
+      email_service: userDetail.email_service || '',
     }
     const encryptedId = encryptData(detailUser)
 
@@ -494,11 +501,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                                 }))
                                 setError((prevState) => ({
                                   ...prevState,
-                                  email: validation(
-                                    'register',
-                                    'email',
-                                    '0' + value
-                                  ),
+                                  email: validation('register', 'email', value),
                                 }))
                               }}
                               value={userDetail.email}
@@ -597,7 +600,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                                     email_service: validation(
                                       'register',
                                       'email_service',
-                                      '0' + value
+                                      value
                                     ),
                                   }))
                                 }}
@@ -621,10 +624,14 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                                   className="focus:ring-turquoise-50 border border-turquoise-40 rounded"
                                   defaultChecked={false}
                                   onChange={(e) => {
+                                    const userData =
+                                      userDetail.member_id > 0
+                                        ? decryptData(userDetail.encrypted_id)
+                                        : userDetail
                                     setUserDetail((prevState) => ({
                                       ...prevState,
                                       email_service: e.target.checked
-                                        ? userDetail.email
+                                        ? userData.email
                                         : '',
                                     }))
                                   }}
@@ -711,7 +718,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                               Harap tunggu . . .
                             </div>
                           ) : (
-                            'Daftar Layanan'
+                            'Daftar Layanan' + `${isDisable.toString()}`
                           )}
                         </button>
                       </div>

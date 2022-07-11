@@ -32,6 +32,19 @@ const register = (
       },
     ],
   },
+  email_service: {
+    rules: [
+      { validation: minMax.required(value, 'Email tidak boleh kosong.') },
+      { validation: pattern.email(value, 'Hanya diisi dengan format email.') },
+      {
+        validation: minMax.maxLength(
+          50,
+          value,
+          'Email terlalu panjang (maksimal 50 karakter).'
+        ),
+      },
+    ],
+  },
   phone_number: {
     rules: [
       {

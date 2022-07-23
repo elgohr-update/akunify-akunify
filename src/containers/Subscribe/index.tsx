@@ -618,8 +618,8 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                             <div className="flex">
                               <div className="flex items-center h-5">
                                 <input
-                                  id="agreement"
-                                  name="agreement"
+                                  id="sameemail"
+                                  name="sameemail"
                                   type="checkbox"
                                   className="focus:ring-turquoise-50 border border-turquoise-40 rounded"
                                   defaultChecked={false}
@@ -637,7 +637,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                                   }}
                                 />
                                 <label
-                                  htmlFor="agreement"
+                                  htmlFor="sameemail"
                                   className="font-medium ml-2 text-sm text-turquoise-60"
                                 >
                                   Samakan dengan akun pengguna
@@ -645,19 +645,24 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                               </div>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    )}
 
-                          <div className="mt-2 sm:col-span-6 border border-yellow-200 bg-yellow-100 rounded-md">
-                            <div className="text-left p-4">
-                              <div className="font-semibold text-base text-gray-500">
-                                Harap Diperhatikan :
-                              </div>
-                              <div className="text-sm text-gray-500">
-                                Berdasarkan aturan Youtube yang berlaku, sebelum
-                                melakukan pendaftaran pastikan akun Youtube kamu
-                                belum pernah berpindah family selama 12 bulan
-                                terakhir
-                              </div>
-                            </div>
+                    {constant.additional_notif_id.includes(service.id) && (
+                      <div className="mt-4 border border-yellow-200 bg-yellow-100 rounded-md">
+                        <div className="text-left p-4">
+                          <div className="font-semibold text-base text-gray-500">
+                            Harap Diperhatikan :
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            Berdasarkan aturan{' '}
+                            <b>{(service?.attributes?.name).split(' ')[0]}</b>{' '}
+                            yang berlaku, sebelum melakukan pendaftaran pastikan
+                            akun{' '}
+                            <b>{(service?.attributes?.name).split(' ')[0]}</b>{' '}
+                            kamu belum pernah berpindah family selama 12 bulan
+                            terakhir
                           </div>
                         </div>
                       </div>

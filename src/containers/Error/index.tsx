@@ -20,13 +20,15 @@ const ErrorContainer = ({ code }: IErrorProps): JSX.Element => {
         src={`/images/${code}-page.svg`}
         alt={`${code}-error-page`}
         className="max-w-100"
+        width={480}
+        height={320}
         withNext
       />
 
       <div className="text-center mt-8">
         <button
           onClick={handleClickHome}
-          className="main-btn pricing_btn w-1/2"
+          className="main-btn pricing_btn w-3/5"
         >
           Kembali ke Homepage
         </button>

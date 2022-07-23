@@ -1,8 +1,8 @@
 import React from 'react'
 import { NextPageContext } from 'next'
-import SubscribeContainer from 'containers/Subscribe'
 
 import Error from 'pages/_error'
+import SubscribeContainer from 'containers/Subscribe'
 
 import { getServiceDetail } from 'services/service'
 

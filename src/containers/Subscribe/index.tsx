@@ -723,7 +723,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                               Harap tunggu . . .
                             </div>
                           ) : (
-                            'Daftar Layanan' + `${isDisable.toString()}`
+                            'Daftar Layanan'
                           )}
                         </button>
                       </div>

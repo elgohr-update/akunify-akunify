@@ -5,45 +5,33 @@ import { getImageUrl } from 'utils/index'
 
 const date = dayjs().add(1, 'month').format('YYYY-MM-DD')
 
-const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe/${service?.id}/${service?.attributes?.short_url}`
+const BlogDetailMeta = ({ blog }: { blog: any }): JSX.Element => {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${blog?.attributes?.slug}`
 
   return (
     <Meta
-      pageTitle={
-        'Patungan Akun ' +
-        service?.attributes?.name +
-        ' Murah, Aman, Praktis & Terpercaya'
-      }
-      pageDescription={service?.attributes?.short_description}
+      pageTitle={blog?.attributes?.title}
+      pageDescription={blog?.attributes?.short_description}
       og={{
         type: 'product',
-        title: `Patungan ${service?.attributes?.name} dengan Akunify.com`,
+        title: blog?.attributes?.title,
         url: url,
-        description: service?.attributes?.short_description,
-        image: getImageUrl(service?.attributes?.image),
+        description: blog?.attributes?.short_description,
+        image: getImageUrl(blog?.attributes?.image, 'thumbnail'),
       }}
       author="Akunify.com"
-      fb={{
-        availability: 'in stock',
-        condition: 'new',
-        priceAmount: `${service?.attributes?.price}`,
-        priceCurrency: 'Rp',
-      }}
       twitter={{
         card: 'product',
         site: '@akunify.com',
-        title: `${service?.attributes?.name}`,
-        description: `${service?.attributes?.short_description}`,
-        image: `${getImageUrl(service?.attributes?.image)}`,
-        label1: 'product',
-        data1: `IDR${service?.attributes?.price}`,
-        label2: 'category',
-        data2: `Services`,
+        title: `${blog?.attributes?.title}`,
+        description: `${blog?.attributes?.short_description}`,
+        image: `${getImageUrl(blog?.attributes?.image)}`,
+        label1: 'category',
+        data1: `blogs`,
       }}
       content={{
-        title: service?.attributes?.name,
-        keywords: service?.attributes?.keywords,
+        title: blog?.attributes?.title,
+        keywords: blog?.attributes?.keywords,
         author: 'Akunify.com',
         canonical: url,
         alternate: url,
@@ -52,12 +40,12 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => {
         `{
           "@context": "https://schema.org/",
           "@type": "http://schema.org/Product",
-          "name": "${service?.attributes?.name}",
-          "description": "${service?.attributes?.short_description}",
-          "image": "${getImageUrl(service?.attributes?.image)}",
+          "name": "${blog?.attributes?.title}",
+          "description": "${blog?.attributes?.short_description}",
+          "image": "${getImageUrl(blog?.attributes?.image)}",
           "url": "${url}",
-          "sku": "${service?.id}-${service?.attributes?.short_url}",
-          "mpn": "${service?.id}",
+          "sku": "${blog?.id}-${blog?.attributes?.slug}",
+          "mpn": "${blog?.id}",
           "brand": {
             "@type": "Brand",
             "name": "Akunify"
@@ -80,7 +68,7 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => {
             "availability": "http://schema.org/InStock",
             "priceCurrency": "Rp",
             "priceValidUntil": "${date}",
-            "price": "${service?.attributes?.price}"
+            "price": "${blog?.attributes?.price}"
           },
           "aggregateRating": {
             "@type": "http://schema.org/AggregateRating",
@@ -101,4 +89,4 @@ const ServiceDetailMeta = ({ service }: { service: any }): JSX.Element => {
   )
 }
 
-export { ServiceDetailMeta }
+export { BlogDetailMeta }

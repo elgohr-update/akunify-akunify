@@ -13,10 +13,13 @@ const Header: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
   const [activeMenu, setActiveMenu] = useState<string>('home')
   const [mobileHide, setMobileHide] = useState<boolean>(true)
+  const [subMenuClass, setSubMenuClass] = useState('')
 
   useEffect(() => {
     getServicesList()
   }, [])
+
+  useEffect(() => {}, [mobileHide])
 
   const getServicesList = async () => {
     try {
@@ -30,7 +33,6 @@ const Header: React.FC = () => {
   const handleSetActiveMenu = (menu: 'home' | 'services' | 'faqs'): void => {
     setActiveMenu(menu)
     setShowDropdown(false)
-    setMobileHide(true)
   }
 
   return (
@@ -78,146 +80,95 @@ const Header: React.FC = () => {
                     id="nav"
                     className="items-center content-start mr-auto lg:justify-end navbar-nav lg:flex"
                   >
-                    {router.pathname !== '/' && (
-                      <>
-                        <li className="nav-item ml-5 lg:ml-11">
-                          <Link href={`/`}>
-                            <a className={`page-scroll`}>Home</a>
-                          </Link>
-                        </li>
-                        <li className="nav-item ml-5 lg:ml-11">
-                          <div className="inline-flex items-center hover:text-turquoise-50">
-                            <a
-                              className={`page-scroll cursor-pointer ${
-                                activeMenu === 'services' ? 'active' : ''
-                              }`}
-                              onClick={() => {
-                                handleSetActiveMenu('services')
-                                setShowDropdown(!showDropdown)
-                              }}
-                            >
-                              Services
-                            </a>
-                            {showDropdown ? (
-                              <ChevronUpIcon
-                                className={`w-4 h-4 ml-2 ${
-                                  activeMenu === 'services'
-                                    ? 'text-turquoise-50'
-                                    : ''
-                                }`}
-                              />
-                            ) : (
-                              <ChevronDownIcon
-                                className={`w-4 h-4 ml-2 ${
-                                  activeMenu === 'services'
-                                    ? 'text-turquoise-50'
-                                    : ''
-                                }`}
-                              />
-                            )}
-                          </div>
-                          <ul
-                            className={`${
-                              showDropdown ? 'block' : 'hidden'
-                            } dropdown-menu min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-md shadow mt-1 m-0 bg-clip-padding border-none`}
-                          >
-                            {services.length > 0 &&
-                              services.map((menu, i) => (
-                                <li key={`submenu-${i}`}>
-                                  <Link
-                                    href={`/subscribe/${menu?.id}/${menu?.attributes?.short_url}`}
-                                  >
-                                    <a
-                                      className="dropdown-item text-sm py-2 px-4 font-normal"
-                                      onClick={() => setShowDropdown(false)}
-                                    >
-                                      {menu?.attributes?.name}
-                                    </a>
-                                  </Link>
-                                </li>
-                              ))}
-                          </ul>
-                        </li>
-                      </>
-                    )}
-                    {router.pathname === '/' && (
-                      <>
-                        <li className="nav-item ml-5 lg:ml-11">
+                    <li className="nav-item ml-5 lg:ml-11">
+                      {router.pathname === '/' ? (
+                        <a
+                          className={`page-scroll ${
+                            activeMenu === 'home' ? 'active' : ''
+                          }`}
+                          href="#home"
+                          onClick={() => {
+                            handleSetActiveMenu('home')
+                            setMobileHide(true)
+                          }}
+                        >
+                          Home
+                        </a>
+                      ) : (
+                        <Link href={`/`}>
                           <a
-                            className={`page-scroll ${
-                              activeMenu === 'home' ? 'active' : ''
-                            }`}
-                            href="#home"
-                            onClick={() => handleSetActiveMenu('home')}
+                            className={`page-scroll`}
+                            onClick={() => {
+                              setShowDropdown(false)
+                              setActiveMenu('home')
+                            }}
                           >
                             Home
                           </a>
-                        </li>
-                        <li className="nav-item ml-5 lg:ml-11">
-                          <div className="inline-flex items-center hover:text-turquoise-50">
-                            <a
-                              className={`page-scroll cursor-pointer ${
-                                activeMenu === 'services' ? 'active' : ''
-                              }`}
-                              onClick={() => {
-                                handleSetActiveMenu('services')
-                                setShowDropdown(!showDropdown)
-                              }}
-                            >
-                              Services
-                            </a>
-                            {showDropdown ? (
-                              <ChevronUpIcon
-                                className={`w-4 h-4 ml-2 ${
-                                  activeMenu === 'services'
-                                    ? 'text-turquoise-50'
-                                    : ''
-                                }`}
-                              />
-                            ) : (
-                              <ChevronDownIcon
-                                className={`w-4 h-4 ml-2 ${
-                                  activeMenu === 'services'
-                                    ? 'text-turquoise-50'
-                                    : ''
-                                }`}
-                              />
-                            )}
-                          </div>
-                          <ul
-                            className={`${
-                              showDropdown ? 'block' : 'hidden'
-                            } dropdown-menu min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-md shadow mt-1 m-0 bg-clip-padding border-none`}
-                          >
-                            {services.length > 0 &&
-                              services.map((menu, i) => (
-                                <li key={`submenu-${i}`}>
-                                  <Link
-                                    href={`/subscribe/${menu?.id}/${menu?.attributes?.short_url}`}
-                                  >
-                                    <a
-                                      className="dropdown-item text-sm py-2 px-4 font-normal"
-                                      onClick={() => setShowDropdown(false)}
-                                    >
-                                      {menu?.attributes?.name}
-                                    </a>
-                                  </Link>
-                                </li>
-                              ))}
-                          </ul>
-                        </li>
-                        <li className="nav-item ml-5 lg:ml-11">
-                          <a
-                            className={`page-scroll ${
-                              activeMenu === 'faqs' ? 'active' : ''
+                        </Link>
+                      )}
+                    </li>
+                    <li className="nav-item ml-5 lg:ml-11">
+                      <a
+                        className={`page-scroll cursor-pointer ${
+                          activeMenu === 'services' ? 'active' : ''
+                        }`}
+                        onClick={() => {
+                          setActiveMenu('services')
+                          setShowDropdown(!showDropdown)
+                        }}
+                      >
+                        <div className="flex items-center justify-between space-x-1">
+                          Services
+                          <ChevronDownIcon
+                            className={`w-4 h-4 ml-1 ${
+                              showDropdown ? 'rotate-180' : ''
                             }`}
-                            href="#faqs"
-                            onClick={() => handleSetActiveMenu('faqs')}
-                          >
-                            FAQ
-                          </a>
-                        </li>
-                      </>
+                          />
+                        </div>
+                      </a>
+                      <ul
+                        className={`${
+                          showDropdown ? 'block' : 'hidden'
+                        } dropdown-menu shadow ${
+                          mobileHide ? 'absolute' : 'contents'
+                        } bg-white min-w-max text-base z-50 float-left py-2 list-none text-left rounded-md mt-1 m-0 bg-clip-padding border-none`}
+                      >
+                        {services.length > 0 &&
+                          services.map((menu, i) => (
+                            <li key={`submenu-${i}`}>
+                              <Link
+                                href={`/subscribe/${menu?.id}/${menu?.attributes?.short_url}`}
+                              >
+                                <a
+                                  className="dropdown-item text-sm p-4 font-normal"
+                                  onClick={() => {
+                                    setShowDropdown(false)
+                                    setMobileHide(true)
+                                  }}
+                                >
+                                  {menu?.attributes?.name}
+                                </a>
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </li>
+                    {router.pathname === '/' && (
+                      <li className="nav-item ml-5 lg:ml-11">
+                        <a
+                          className={`page-scroll ${
+                            activeMenu === 'faqs' ? 'active' : ''
+                          }`}
+                          href="#faqs"
+                          onClick={() => {
+                            handleSetActiveMenu('faqs')
+                            setMobileHide(true)
+                          }}
+                        >
+                          FAQ
+                        </a>
+                      </li>
                     )}
                   </ul>
                 </div>

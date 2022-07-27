@@ -34,7 +34,7 @@ const BlogDetailContainer: React.FC<IBlogContainer> = ({ detail }) => {
           </div>
 
           <Image
-            src={getImageUrl(detail?.attributes?.image, 'medium')}
+            src={getImageUrl(detail?.attributes?.image)}
             alt={detail?.attributes?.slug}
             className="mb-5"
           />

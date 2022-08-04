@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
-
-// import ReactMarkdown from 'react-markdown'
 import { Image } from 'components/common'
 
 import { getImageUrl, currencyFormater } from 'utils/index'
@@ -12,8 +10,6 @@ interface IServicesProps {
 }
 
 const Services: React.FC<IServicesProps> = ({ data = [] }) => {
-  // const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
-
   return (
     <Fragment>
       <section id="services" className="work_area bg-gray pt-120">
@@ -21,7 +17,6 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
           <div className="row justify-center">
             <div className="w-ull lg:w-1/2">
               <div className="section_title text-center pb-6">
-                {/* <h5 className="sub_title">Layanan Akunify</h5> */}
                 <h4 className="main_title">Layanan</h4>
               </div>
             </div>
@@ -64,9 +59,12 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                             href="/subscribe/[service_id]/[slug]"
                             as={`/subscribe/${service.id}/${service.attributes?.short_url}`}
                           >
-                            <a className="main-btn pricing_btn w-full">
+                            <button
+                              className="main-btn pricing_btn w-full"
+                              disabled={!service.attributes.is_active}
+                            >
                               Mulai Berlangganan
-                            </a>
+                            </button>
                           </Link>
                         </div>
                       </div>

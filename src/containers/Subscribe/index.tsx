@@ -451,6 +451,7 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
                         className="bg-turquoise-60 text-white p-2 rounded disabled:cursor-not-allowed disabled:bg-turquoise-70 text-sm"
                         onClick={() => searchUserByPhone()}
                         disabled={
+                          !service?.attributes?.is_active ||
                           userDetail.phone_number === '' ||
                           (error.phone_number !== '' &&
                             error.phone_number !== undefined)

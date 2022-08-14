@@ -12,6 +12,7 @@ import {
   WhatsappShareButton,
   TelegramShareButton,
 } from 'react-share'
+import { InformationCircleIcon } from '@heroicons/react/outline'
 
 import { Image } from 'components/common'
 import Description from 'components/Subscribe/Description'
@@ -31,6 +32,8 @@ interface IAttribute {
   image: string
   description: string
   price: number | string
+  preorder: boolean
+  is_active: boolean
 }
 const OrderDetail: React.FC<IOrderDetail> = ({
   service,
@@ -94,6 +97,24 @@ const OrderDetail: React.FC<IOrderDetail> = ({
             </div>
           </div>
 
+          {service?.attributes?.preorder && (
+            <div className="bg-yellow-100 w-full border border-yellow-200 rounded-md p-2 my-1">
+              <div className="text-yellow-500 items-center text-sm inline">
+                Untuk layanan preorder, pembayaran dilakukan setelah kuota dalam
+                satu grup terpenuhi
+              </div>
+            </div>
+          )}
+
+          {!service?.attributes?.is_active && (
+            <div className="bg-red-100 w-full border border-red-300 rounded-md p-2 text-sm mx-1 my-1">
+              <div className="ml-2 text-red-500">
+                Untuk layanan preorder, pembayaran dilakukan setelah kuota dalam
+                satu grup terpenuhi
+              </div>
+            </div>
+          )}
+
           <Description
             isShow={showMore}
             content={service?.attributes?.description}
@@ -102,11 +123,10 @@ const OrderDetail: React.FC<IOrderDetail> = ({
 
           <div className="flex flex-wrap justify-between mt-2">
             <p className="font-semibold text-turquoise-90">Total pembayaran</p>
-            <p className="text-turquoise-90">
+            <p className="text-turquoise-90 font-bold">
               {currencyFormater(service?.attributes.price)}/bulan
             </p>
           </div>
-
           <div className="mt-6">
             <div className="flex flex-wrap items-center">
               <span className="mr-2">Bagikan: </span>

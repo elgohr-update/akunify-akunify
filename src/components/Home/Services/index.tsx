@@ -48,6 +48,12 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                           <h4 className="work_title text-xl md:text-2xl min-h-[80px]">
                             <a href="#">{service.attributes?.name}</a>
                           </h4>
+                          {service.attributes?.preorder && (
+                            <div className="bg-yellow-100 text-yellow-600 text-xs font-semibold p-1 rounded-sm max-w-fit">
+                              Preorder
+                            </div>
+                          )}
+
                           <p className="mt-2">
                             <span className="font-semibold text-turquoise-90">
                               {currencyFormater(service.attributes?.price)}

@@ -344,7 +344,7 @@ a, button {
   @apply fill-current text-turquoise-50;
 }
 .pricing_btn {
-  @apply py-3 px-6 bg-turquoise-50 text-white mt-4 rounded-md disabled:bg-turquoise-20 disabled:cursor-not-allowed;
+  @apply py-3 px-6 bg-turquoise-50 text-white mt-4 rounded-md disabled:bg-slate-300 disabled:cursor-not-allowed;
 }
 .pricing_btn .disabled {
   @apply bg-turquoise-50 text-white;

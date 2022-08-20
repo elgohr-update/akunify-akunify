@@ -358,6 +358,8 @@ const SubscribeContainer: React.FC<SubscribeContainerProps> = (props) => {
     }
   }
 
+  console.log('service', service)
+
   return (
     <>
       <ServiceDetailMeta service={service} />

@@ -79,7 +79,7 @@ const OrderDetail: React.FC<IOrderDetail> = ({
           {/* <p className="text-turquoise-50 cursor-pointer text-sm">Ubah paket</p> */}
         </div>
         <div className="rounded-md p-6 shadow-md mt-4 border">
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap mb-4">
             <div className="w-1/4 p-2 text-center">
               <Image
                 src={getImageUrl(service?.attributes?.image)}
@@ -94,11 +94,16 @@ const OrderDetail: React.FC<IOrderDetail> = ({
               <p className="font-bold text-gray-70">
                 {currencyFormater(service?.attributes.price)}
               </p>
+              {service.attributes?.preorder && (
+                <div className="bg-yellow-100 text-yellow-600 text-xs font-semibold p-1 rounded-sm max-w-fit">
+                  Preorder
+                </div>
+              )}
             </div>
           </div>
 
-          {service?.attributes?.preorder && (
-            <div className="bg-yellow-100 w-full border border-yellow-200 rounded-md p-2 my-1">
+          {service?.attributes?.preorder && service?.attributes?.is_active && (
+            <div className="bg-yellow-100 w-full border border-yellow-200 rounded-md p-2 mb-2 mx-1">
               <div className="text-yellow-500 items-center text-sm inline">
                 Untuk layanan preorder, pembayaran dilakukan setelah kuota dalam
                 satu grup terpenuhi
@@ -107,10 +112,9 @@ const OrderDetail: React.FC<IOrderDetail> = ({
           )}
 
           {!service?.attributes?.is_active && (
-            <div className="bg-red-100 w-full border border-red-300 rounded-md p-2 text-sm mx-1 my-1">
+            <div className="bg-red-100 w-full border border-red-300 rounded-md p-2 text-sm mb-2 mx-1">
               <div className="ml-2 text-red-500">
-                Untuk layanan preorder, pembayaran dilakukan setelah kuota dalam
-                satu grup terpenuhi
+                Mohon maaf, untuk sementara layanan tidak dapat dipesan.
               </div>
             </div>
           )}

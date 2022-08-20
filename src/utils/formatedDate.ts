@@ -19,9 +19,11 @@ const formatedDate = (strDate: string, withTime?: boolean): string => {
   const separateDateTime = date.split(' ')
   const splitDate = separateDateTime[0].split('-')
 
-  return `${splitDate[2]} ${months[Number(splitDate[1]) - 1]} ${splitDate[0]} ${
-    withTime ? separateDateTime[1] + 'WIB' : ''
+  const resultDate = `${splitDate[2]} ${months[Number(splitDate[1]) - 1]} ${
+    splitDate[0]
   }`
+
+  return !withTime ? resultDate : `${resultDate} ${separateDateTime[1]} WIB`
 }
 
 export default formatedDate

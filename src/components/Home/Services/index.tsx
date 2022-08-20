@@ -66,8 +66,11 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                             as={`/subscribe/${service.id}/${service.attributes?.short_url}`}
                           >
                             <button
-                              className="main-btn pricing_btn w-full"
-                              disabled={!service.attributes.is_active}
+                              className={`main-btn w-full ${
+                                service.attributes.is_active
+                                  ? 'pricing_btn'
+                                  : 'pricing_btn_disabled'
+                              }`}
                             >
                               Mulai Berlangganan
                             </button>

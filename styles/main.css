@@ -346,6 +346,9 @@ a, button {
 .pricing_btn {
   @apply py-3 px-6 bg-turquoise-50 text-white mt-4 rounded-md disabled:bg-slate-300 disabled:cursor-not-allowed;
 }
+.pricing_btn_disabled {
+  @apply py-3 px-6 bg-slate-300 text-white mt-4 rounded-md;
+}
 .pricing_btn .disabled {
   @apply bg-turquoise-50 text-white;
   @apply py-3 px-6 text-gray-40 mt-8 rounded-md;

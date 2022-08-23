@@ -45,14 +45,21 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                           />
                         </div>
                         <div className="work_content">
-                          <h4 className="work_title text-xl md:text-2xl min-h-[80px]">
-                            <a href="#">{service.attributes?.name}</a>
-                          </h4>
-                          {service.attributes?.preorder && (
-                            <div className="bg-yellow-100 text-yellow-600 text-xs font-semibold p-1 rounded-sm max-w-fit">
-                              Preorder
-                            </div>
-                          )}
+                          <div className="min-h-[64px]">
+                            <h4 className="work_title text-xl md:text-2xl">
+                              <a href="#">
+                                {String(service.attributes?.name).substring(
+                                  0,
+                                  25
+                                )}
+                              </a>
+                            </h4>
+                            {service.attributes?.preorder && (
+                              <div className="bg-yellow-100 text-yellow-600 text-xs font-semibold p-1 rounded-sm max-w-fit">
+                                Preorder
+                              </div>
+                            )}
+                          </div>
 
                           <p className="mt-2">
                             <span className="font-semibold text-turquoise-90">
@@ -65,13 +72,7 @@ const Services: React.FC<IServicesProps> = ({ data = [] }) => {
                             href="/subscribe/[service_id]/[slug]"
                             as={`/subscribe/${service.id}/${service.attributes?.short_url}`}
                           >
-                            <button
-                              className={`main-btn w-full ${
-                                service.attributes.is_active
-                                  ? 'pricing_btn'
-                                  : 'pricing_btn_disabled'
-                              }`}
-                            >
+                            <button className={`main-btn w-full pricing_btn`}>
                               Mulai Berlangganan
                             </button>
                           </Link>

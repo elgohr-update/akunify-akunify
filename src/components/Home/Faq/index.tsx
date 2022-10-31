@@ -24,6 +24,7 @@ const Faq: React.FC = () => {
         'Tenang, kami berikan masa tenggang hingga 2x24 jam dari tanggal jatuh tempo. Jika telah melewati 2x24 jam kamu akan dikeluarkan dari grup premium.',
     },
   ]
+
   return (
     <section id="faqs" className="work_area bg-gray pt-120 pb-110">
       <div className="container">

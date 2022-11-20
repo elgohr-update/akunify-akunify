@@ -10,5 +10,6 @@ module.exports = {
     await config.transform(config, '/subscribe/1/netflix-premium'),
     await config.transform(config, '/subscribe/2/spotify-premium-family'),
     await config.transform(config, '/subscribe/3/youtube-premium-family'),
+    await config.transform(config, '/subscribe/4/disney-hotstar'),
   ],
 }
